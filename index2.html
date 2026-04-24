@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programação Web – URI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Mobile toggle -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <h1>Inovação Web</h1>
+            <p>URI – Ciência da Computação</p>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li><a href="#inicio" class="active">
+                    <span class="icon">🏠</span> Início
+                </a></li>
+            <li><a href="#fundamentos">
+                    <span class="icon">🌐</span> Introdução à Programação Web e fundamentos da Internet
+                </a></li>
+            <li><a href="#http-methods">
+                    <span class="icon">📡</span> Protocolo HTTP, DNS e Modelo Cliente-Servidor
+                </a></li>
+            <li><a href="#sem-html">
+                    <span class="icon">📄</span> HTML5: Estrutura, Semântica e Boas Práticas
+                </a></li>
+            <li><a href="#deploy">
+                    <span class="icon">🚀</span> Servidores Web, Hospedagem e Deploy
+                </a></li>
+            <li><a href="#ux-ui">
+                    <span class="icon">🎨</span> Design de Interfaces e Usabilidade na Web
+                </a></li>
+            <li><a href="#acessibilidade">
+                    <span class="icon">♿</span> UX/UI Design, Acessibilidade e Frameworks
+                </a></li>
+            <li><a href="#css3">
+                    <span class="icon">💅</span> CSS3: Estilização, Layout e Responsividade
+                </a></li>
+            <li><a href="#javascript">
+                    <span class="icon">⚡</span> JavaScript: Sintaxe Básica e Manipulação do DOM
+                </a></li>
+            <li><a href="#projetos-js">
+                    <span class="icon">🕹️</span> Projetos JS & APIs Locais
+                </a></li>
+            <li><a href="#performance">
+                    <span class="icon">📈</span> Módulo 10: Performance & SEO
+                </a></li>
+            <li><a href="#seguranca">
+                    <span class="icon">🔒</span> Módulo 11: Segurança na Web
+                </a></li>
+            <li><a href="#frameworks">
+                    <span class="icon">🏗️</span> Módulo 12: Frameworks Modernos
+                </a></li>
+            <li><a href="#ui-lab">
+                    <span class="icon">🧪</span> UI Lab: Componentes Interativos
+                </a></li>
+
+            <!-- ── LINKS DE REVISÃO E SHOWCASE ── -->
+            <li style="margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 0.75rem;">
+                <a href="revisao.html" target="_blank" style="background: linear-gradient(90deg, rgba(244,63,94,0.1), rgba(99,102,241,0.08)); border: 1px solid rgba(244,63,94,0.2);">
+                    <span class="icon">📋</span> Revisão para Prova
+                </a>
+            </li>
+            <li>
+                <a href="showcase.html" target="_blank" style="background: linear-gradient(90deg, rgba(14,165,233,0.1), rgba(99,102,241,0.08)); border: 1px solid rgba(14,165,233,0.2);">
+                    <span class="icon">🎨</span> Web Showcase Interativo
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">© 2026 URI – Web Programming</div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="page-content" id="pageContent">
+
+        <!-- ── 1. INÍCIO ──────────────────────────── -->
+
+
+        <section id="inicio">
+            <div class="hero-badge">✦ Portfólio de Atividades</div>
+            <h1 class="hero-title">Explorando o<br>Desenvolvimento Web</h1>
+            <p class="hero-desc">
+                Uma coleção de atividades práticas desenvolvidas no curso de
+                <strong>Programação Web</strong> na URI. Navegue pelo menu lateral
+                para explorar cada conteúdo.
+            </p>
+            <div class="hero-links">
+                <a href="https://www.w3schools.com" target="_blank" class="btn-primary">Aprender mais →</a>
+                <a href="#sem-html" class="btn-outline">Ver conteúdos</a>
+            </div>
+
+            <div class="clock-pill">
+                <span class="clock-label">Brasília</span>
+                <span id="brasilia-time">--:--:--</span>
+                <span id="brasilia-date" class="clock-date"></span>
+            </div>
+        </section>
+
+        <section id="fundamentos">
+            <span class="section-tag">Módulo 1</span>
+            <h2>Introdução à Programação Web e fundamentos da Internet</h2>
+            <p class="lead">
+                A evolução da Internet e o funcionamento por trás dos bastidores, unindo
+                <strong>Protocolos</strong>, <strong>DNS</strong> e o modelo <strong>Cliente/Servidor</strong>.
+            </p>
+
+            <div class="features-grid">
+                <div class="feat-card">
+                    <div class="feat-icon">🌐</div>
+                    <h3>Evolução da Web</h3>
+                    <p>Web 1.0 (Páginas estáticas) até a Web 4.0 (A.I e IoT) e os protocolos criados por <strong>Tim
+                            Berners-Lee</strong>.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon">📡</div>
+                    <h3>Protocolos</h3>
+                    <p>O <strong>HTTP/S</strong> (Hypertext Transfer Protocol) transferindo dados seguros (TLS) em
+                        conjunto com o TCP/IP ou QUIC (HTTP/3).</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon">🔍</div>
+                    <h3>DNS e IPs</h3>
+                    <p>Sistemas de nomes de domínio convertendo URLs (como example.com) em IPs numéricos e estrutura de
+                        nível superior (TLD, SLD).</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon">🛠️</div>
+                    <h3>DevTools</h3>
+                    <p>O poderoso kit integrado ao navegador para inspecionar, debugar e analisar redes (Network) usando
+                        requests HAR.</p>
+                </div>
+            </div>
+
+            <div class="theory-block">
+                <h3>📖 O Modelo Cliente/Servidor & Protocolos</h3>
+                <p>A Internet baseia-se num fluxo simples: o cliente (Navegador/Front-End) realiza uma
+                    <strong>Requisição (Request)</strong> e o servidor (Back-End) retorna uma <strong>Resposta
+                        (Response)</strong> com arquivos ou dados (HTML/JSON).
+                </p>
+                <p>Os protocolos garantem o formato unificado dessa comunicação. O <strong>HTTP</strong> é a base na web
+                    (frequentemente com sua versão mais escalável e segura HTTP/3 utilizando QUIC). Os <strong>Métodos
+                        HTTP</strong> principais são: GET (buscar dados e recarregar páginas), POST (enviar dados
+                    novos), PUT/PATCH (atualizar) e DELETE.</p>
+                <p>Por trás das URLs amigáveis (ex: <code>https://www.meusite.com.br</code>) existe o sistema
+                    <strong>DNS (Domain Name System)</strong> que converte este texto em um endereço IP, utilizando
+                    hierarquia de TLD (Top Level Domain, ex .br) e SLD (.com).
+                </p>
+
+                <div
+                    style="background: rgba(15, 23, 42, 0.4); padding: 1rem; border-radius: 8px; font-family: monospace; font-size: 0.85rem; margin-top: 1rem; color: #6ee7b7;">
+                    // Request Example
+                    GET /articles/hello.html HTTP/1.1
+                    Host: www.example.com
+                </div>
+            </div>
+
+            <div class="theory-block">
+                <h3>💼 Carreiras em Desenvolvimento WEB</h3>
+                <p>A divisão entre cliente e servidor reflete perfeitamente as profissões no mercado e na arquitetura
+                    web:</p>
+                <ul
+                    style="margin-left: 1.5rem; color: #cbd5e1; margin-top: 0.5rem; margin-bottom: 0.5rem; line-height: 1.8">
+                    <li><strong>Front-end Developer:</strong> Cria a interface visual e o rosto da aplicação.
+                        Interagindo com navegadores e APIs. É o "Dev do Cliente". Usa HTML, CSS e React/Angular.</li>
+                    <li><strong>Back-end Developer:</strong> Desenvolve a lógica e integra com Banco de Dados e
+                        segurança. Processando as Requisições. Usa Node.js, Java, Python ou .NET.</li>
+                    <li><strong>Full Stack Developer:</strong> Atua ponta a ponta no Front e no Back-end entregando
+                        soluções completas.</li>
+                    <li><strong>QA / DevOps / Arquiteto:</strong> Responsáveis pela infraestrutura virtual, testes
+                        automatizados e topologia arquitetural moderna e escalável.</li>
+                </ul>
+            </div>
+
+            <div class="exercise-card">
+                <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">Hands-on: Analisando o DevTools Numérico Real</h3>
+                <p style="margin-bottom: 0.5rem">Utilizando a ferramenta integrada dos navegadores (Chrome, Firefox,
+                    Safari) é essencial debugar e analisar tráfego de requisições. Cumpra os passos e envie ao
+                    professor:</p>
+                <ol>
+                    <li>Abra o navegador e ative o painel do DevTools (F12).</li>
+                    <li>Acesse um site contendo informações de request (ex: baitabusca.com) e observe a aba <span
+                            style="background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px;">Network</span>
+                        começar a preencher.</li>
+                    <li>Filtre os tipos por <code>Doc (Document)</code> para encontrar a primeira requisição que entrega
+                        a página HTML. Analise também suas abas auxiliares como Headers para encontrar a URL base, os
+                        métodos verbos HTTP enviados e os códigos Status da resposta do servidor (ex: status 200
+                        significando sucesso pleno em HTTP Code).</li>
+                    <li>Com a aba Network focada no contexto, exporte o seu registro em um arquivo <code>.HAR</code> que
+                        armazena essas logs na sua máquina.</li>
+                    <li>Tire 3 prints de evidência: a lista de requests da aba Network inteira, a janela de Headers
+                        lateral e a janela de Response com o retorno cru.</li>
+                    <li>Faça uma requisição extra usando Formulário com botão ou acesso via POST para analisar o corpo
+                        da comunicação.</li>
+                    <li>Zipe todos os prints com o arquivo .HAR para e-mail e envie ao professor:
+                        <code>[seu nome] - [turma] - Usando DevTools</code>.
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+
+        <!-- ── 2. PROTOCOLO HTTP, DNS ────────────── -->
+        <section id="http-methods">
+            <span class="section-tag">Módulo 2</span>
+            <h2>Protocolo HTTP, DNS e Modelo Cliente-Servidor</h2>
+            <p class="lead">Entendendo os verbos das requisições, camadas web e fluxo de arquitetura REST.</p>
+            <div class="methods-grid">
+
+
+                <!-- ── GET ──────────────────────────── -->
+                <div class="http-m-card get">
+                    <div class="card-title">
+                        <h2>GET</h2>
+                        <span class="emoji">🛍️</span>
+                    </div>
+                    <span class="url-pill">GET /v1/products/iphone</span>
+                    <div class="section">
+                        <span class="label response">Response</span>
+                        <div class="code-block">&lt;HTML&gt;
+                            &lt;HEAD&gt;iphone&lt;/HEAD&gt;
+                            &lt;BODY&gt;
+                            &lt;H1&gt;iPhone 14&lt;/H1&gt;
+                            &lt;P&gt;This is an iPhone 14&lt;/P&gt;
+                            &lt;/BODY&gt;
+                            &lt;/HTML&gt;</div>
+                    </div>
+                    <p class="description">Retrieve a single item<br>or a list of items</p>
+                </div>
+
+                <!-- ── PUT ──────────────────────────── -->
+                <div class="http-m-card put">
+                    <div class="card-title">
+                        <h2>PUT</h2>
+                        <span class="emoji">✋</span>
+                    </div>
+                    <span class="url-pill">PUT /v1/users/123</span>
+                    <div class="section">
+                        <span class="label request">Request Body</span>
+                        <div class="code-block">{ "name": "bob",
+                            "email": "bob@bytebytego.com"
+                            }</div>
+                    </div>
+                    <div class="section">
+                        <span class="label response">Response</span>
+                        <div class="code-block">HTTP/1.1 <span class="s200">200 OK</span></div>
+                    </div>
+                    <p class="description">Update an item</p>
+                </div>
+
+                <!-- ── POST ─────────────────────────── -->
+                <div class="http-m-card post">
+                    <div class="card-title">
+                        <h2>POST</h2>
+                        <span class="emoji">📧</span>
+                    </div>
+                    <span class="url-pill">POST /v1/users</span>
+                    <div class="section">
+                        <span class="label request">Request Body</span>
+                        <div class="code-block">{ "firstname": "bob",
+                            "lastname": "xxx",
+                            "email": "bob@bytebytego.com"
+                            }</div>
+                    </div>
+                    <div class="section">
+                        <span class="label response">Response</span>
+                        <div class="code-block">HTTP/1.1 <span class="s201">201 Created</span></div>
+                    </div>
+                    <p class="description">Create an item</p>
+                </div>
+
+                <!-- ── DELETE ───────────────────────── -->
+                <div class="http-m-card delete">
+                    <div class="card-title">
+                        <h2>DELETE</h2>
+                        <span class="emoji">🗑️</span>
+                    </div>
+                    <span class="url-pill">DELETE /v1/users/123</span>
+                    <div class="section">
+                        <span class="label response">Response</span>
+                        <div class="code-block">HTTP/1.1 <span class="s200">200 OK</span>
+                            HTTP/1.1 <span class="s204">204 NO CONTENT</span></div>
+                    </div>
+                    <p class="description">Delete an item</p>
+                </div>
+
+                <!-- ── PATCH ────────────────────────── -->
+                <div class="http-m-card patch">
+                    <div class="card-title">
+                        <h2>PATCH</h2>
+                        <span class="emoji">🩹</span>
+                    </div>
+                    <span class="url-pill">PATCH /v1/users/123</span>
+                    <div class="section">
+                        <span class="label request">Request Body</span>
+                        <div class="code-block">{
+                            "email": "bob@bytebytego.com"
+                            }</div>
+                    </div>
+                    <div class="section">
+                        <span class="label response">Response</span>
+                        <div class="code-block">HTTP/1.1 <span class="s200">200 OK</span></div>
+                    </div>
+                    <p class="description"><span class="hlp">Partially</span> modify an item</p>
+                </div>
+
+                <!-- ── HEAD ─────────────────────────── -->
+                <div class="http-m-card head">
+                    <div class="card-title">
+                        <h2>HEAD</h2>
+                        <span class="emoji">🔗</span>
+                    </div>
+                    <span class="url-pill">HEAD /v1/products/iphone</span>
+                    <div class="section">
+                        <span class="label response">Response</span>
+                        <div class="code-block">HTTP/1.1 <span class="s200">200 OK</span></div>
+                    </div>
+                    <p class="description">Identical to GET but <span class="hl">no<br>message body</span> in the
+                        response</p>
+                </div>
+
+                <!-- ── CONNECT ──────────────────────── -->
+                <div class="http-m-card connect">
+                    <div class="card-title">
+                        <h2>CONNECT</h2>
+                        <span class="emoji">🌐</span>
+                    </div>
+                    <span class="url-pill">CONNECT xxx.com:80</span>
+                    <div class="section">
+                        <span class="label request">Request</span>
+                        <div class="code-block">Host: xxx: 80
+                            Proxy-Authorization: basic
+                            RXhhbXBsZTphaQ==</div>
+                    </div>
+                    <div class="section">
+                        <span class="label response">Response</span>
+                        <div class="code-block">HTTP/1.1 <span class="s200">200 OK</span></div>
+                    </div>
+                    <p class="description">Create a two-way connection<br>with a <span class="hl">proxy server</span>
+                    </p>
+                </div>
+
+                <!-- ── OPTIONS ──────────────────────── -->
+                <div class="http-m-card options">
+                    <div class="card-title">
+                        <h2>OPTIONS</h2>
+                        <span class="emoji">⚙️</span>
+                    </div>
+                    <span class="url-pill">OPTIONS /v1/users</span>
+                    <div class="section">
+                        <span class="label response">Response</span>
+                        <div class="code-block">HTTP/1.1 200 OK
+                            Allow: GET, POST, DELETE,
+                            HEAD, OPTIONS</div>
+                    </div>
+                    <p class="description">Return a list of <span class="hlg">supported</span><br>HTTP methods</p>
+                </div>
+
+                <!-- ── TRACE ────────────────────────── -->
+                <div class="http-m-card trace">
+                    <div class="card-title">
+                        <h2>TRACE</h2>
+                        <span class="emoji">🔍</span>
+                    </div>
+                    <span class="url-pill">TRACE /index.html</span>
+                    <div class="section">
+                        <span class="label response">Response</span>
+                        <div class="code-block">Host: xxxxxx
+                            Via: 1.1 xxxx: 3221
+                            X-Forwarded-For: xx.xxx.xxx.x</div>
+                    </div>
+                    <p class="description">Perform a message loop-back test,<br>providing a <span class="hl">debugging
+                            mechanism</span></p>
+                </div>
+
+
+            </div>
+        </section>
+
+        <section id="sem-html">
+            <span class="section-tag">Módulo 3</span>
+            <h2>HTML5: Estrutura, Semântica e Boas Práticas</h2>
+            <p class="lead">
+                O HTML (HyperText Markup Language) é o esqueleto da sua página. Apresentamos
+                tags comuns e estruturais recomendadas pelo W3C.
+            </p>
+
+            <div class="code-wrapper">
+                <div class="snippet-header"><span>HTML5 Skeleton</span><span>index.html</span></div>
+                <pre class="code-example"><code><span class="comment">&lt;!-- Estrutura básica de um documento HTML5 --&gt;</span>
+<span class="keyword">&lt;!DOCTYPE</span> <span class="attr">html</span><span class="keyword">&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="string">"pt-BR"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Minha Aula de Web<span class="tag">&lt;/title&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;h1&gt;</span>Olá, Mundo!<span class="tag">&lt;/h1&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code></pre>
+            </div>
+
+            <div class="info-block">
+                <h3>Tags Essenciais e Incomuns</h3>
+                <p>Veja como algumas tags se comportam nativamente:</p>
+                <div
+                    style="background: rgba(255,255,255,0.05); padding: 1.25rem; border-radius: 8px; margin-top:1rem; display: flex; flex-direction: column; gap:0.5rem; text-align:left;">
+                    <p>Você pode <mark>destacar partes do texto</mark> facilmente com a tag <code>&lt;mark&gt;</code>.
+                    </p>
+                    <p>Ao falar sobre a linguagem, você pode usar uma abreviação para <abbr
+                            title="HyperText Markup Language"
+                            style="cursor:help; border-bottom:1px dotted #ccc;">HTML</abbr>.</p>
+                    <p>Barra de Progresso ou cota: <meter value="0.6" style="width: 100%; max-width: 200px;"></meter>
+                        60% com a tag <code>&lt;meter&gt;</code></p>
+                </div>
+            </div>
+
+            <!-- Formulários e Tabelas -->
+            <div class="features-grid" style="grid-template-columns: 1fr 1fr; margin-top: 1.5rem">
+                <!-- Tabela -->
+                <div class="feat-card" style="align-items: flex-start; text-align:left">
+                    <h3>Dados Tabulares <code>&lt;table&gt;</code></h3>
+                    <p style="margin-bottom:1rem; font-size:0.85rem">Use para organizar informações linha/coluna.</p>
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                        <thead>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+                                <th style="text-align: left; padding: 0.5rem">Tag</th>
+                                <th style="text-align: left; padding: 0.5rem">Uso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 0.5rem"><code>&lt;form&gt;</code></td>
+                                <td style="padding: 0.5rem">Formulários</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.5rem"><code>&lt;iframe&gt;</code></td>
+                                <td style="padding: 0.5rem">Conteúdo externo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Formulário Simples -->
+                <div class="feat-card" style="align-items: flex-start; text-align:left">
+                    <h3>Formulários <code>&lt;form&gt;</code></h3>
+                    <p style="margin-bottom:1rem; font-size:0.85rem">Usado para coletar e enviar inputs do usuário.</p>
+                    <form onsubmit="event.preventDefault();"
+                        style="display: flex; flex-direction: column; gap:0.5rem; width:100%">
+                        <div style="display:flex; flex-direction:column; gap:0.25rem">
+                            <label for="nomeTeste" style="font-size:0.8rem">Nome</label>
+                            <input type="text" id="nomeTeste" placeholder="João da Silva"
+                                style="padding:0.4rem; border-radius:4px; border:none; background:rgba(255,255,255,0.9); outline:none">
+                        </div>
+                        <button type="submit" class="btn-primary"
+                            style="padding:0.4rem; font-size:0.85rem; width:100%">Testar Envio</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- iFrame embed -->
+            <div class="info-block" style="margin-top: 1.5rem">
+                <h3>Conteúdo Externo com <code>&lt;iframe&gt;</code></h3>
+                <p style="margin-bottom: 1rem;">O iframe permite incorporar documentos, mapas ou vídeos dentro da
+                    página.</p>
+                <div style="border-radius: 12px; overflow:hidden; border: 1px solid rgba(255,255,255,0.1)">
+                    <iframe width="100%" height="700" src="https://www.baitabusca.com" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="exercise-card" style="margin-top: 2rem;">
+                <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">Hands-on: HTML Fundacional</h3>
+                <p style="margin-bottom: 0.5rem">Implemente localmente os seguintes exercícios construindo as páginas
+                    solicitadas. Você vinculará elas usando âncoras para exercitar estruturação de árvore de navegação:
+                </p>
+                <ol>
+                    <li><strong>A Página Principal:</strong> Criar o arquivo <code>index.html</code>. Nele adicione a
+                        estrutura base, defina um <code>h1</code> de boas-vindas com título. Insira um texto ("Venha
+                        aprender mais sobre HTML..") direcionando ao portal de desenvolvedores oficial em nova aba
+                        vazia. Inclua uma imagem que represente tecnologia no fundo.</li>
+                    <li><strong>Sobre os Autores:</strong> Crie um file paralelo <code>sobre.html</code> contendo menu
+                        de Header que retorne ao HTML raíz. Adicione uma descrição profissional textual. Logo abaixo,
+                        crie suas metas numéricas numa estrutura sequencial (Lista Ordenada &lt;ol&gt;) e pontue
+                        características da sua cidade noutra estrutura passiva não direcional (Lista não Ordenada
+                        &lt;ul&gt;).</li>
+                    <li><strong>Painel de Informações de Contato:</strong> Crie a UI em <code>contato.html</code>.
+                        Adicione nela o formulário via estrutura nativa para entrada base contendo Input do tipo Texto
+                        (Seu Nome), Input verificado (Seu email) e caixa ampliada Textarea. Insira os clássicos contatos
+                        de rede social linkados a perfis.</li>
+                    <li><strong>Mídia e Players Integrados:</strong> Crie a página auxiliar <code>links.html</code>.
+                        Aplique nela iframes responsivos mostrando vídeos educacionais das playlist e dezenas de
+                        referenciamentos aos portais das instituições associadas.</li>
+                    <li><strong>Revisões Finais W3C:</strong> Escolha e implante tags secretas especiais dentro das
+                        páginas (usando mark, abbr ou meter) descobrindo seus construtores e utilidades em MDN. E para
+                        atestar perfeição para o navegador: selecione sua DOM e faça a validação usando as regras de
+                        parsing no <a href="https://validator.w3.org/" target="_blank" style="color:var(--accent)">W3C
+                            Validator Oficial Org</a> que irá diagnosticar suas falhas perante as atualizações do DOM
+                        para conserto final.</li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="deploy">
+            <span class="section-tag">Módulo 4</span>
+            <h2>Servidores Web, Hospedagem e Deploy</h2>
+            <p class="lead">
+                Como versionamos códigos em <strong>Git</strong> e publicamos sistemas usando a infraestrutura moderna
+                de Computação em Nuvem e CI/CD.
+            </p>
+
+            <div class="features-grid">
+                <div class="feat-card">
+                    <div class="feat-icon">🔀</div>
+                    <h3>Git e Versionamento</h3>
+                    <p>Criação de branches e salvamento do progresso, permitindo trabalhar de forma
+                        <strong>distribuída</strong> (Trunk-Based Development).
+                    </p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon">🏢</div>
+                    <h3>Server Dedicado & VPS</h3>
+                    <p>Uso de hardware 100% exclusivo (Dedicado) versus compartilhamento de um ambiente isolado em nuvem
+                        (VPS).</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon">☁️</div>
+                    <h3>Hospedagem Compartilhada/Cloud</h3>
+                    <p>Dividindo recursos para reduzir custos, ou clusters e nuvem escalável (AWS, DigitalOcean,
+                        Render).</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon">⚙️</div>
+                    <h3>CI/CD Pipelines</h3>
+                    <p>Fluxo de Integração e Implantação Contínuas: redução de erros humanos e entregas (Deploy) 100%
+                        automatizadas em produção.</p>
+                </div>
+            </div>
+
+            <div class="theory-block">
+                <h3>📖 Integração Contínua (CI/CD) e Controle de Fluxo</h3>
+                <p>O <strong>Git</strong> é o standard de mercado para sistema de controle de versão livre e open source
+                    (VCS) distribuído de alta perfomance. Todo desenvolvedor rastreia seu desenvolvimento via commits
+                    diários, seja no terminal ou ferramentas visuais, trabalhando num método colaborativo (Trunk-Based
+                    Development) sem conflitar arquivos alheios quebrando o site.</p>
+                <p>Quando configurado com repositórios e branches numa base contínua online de integração e entrega
+                    (Pipelines DevSecOps CI/CD), seu novo código injetado é enviado ao ar (Cloud, VPS) em minutos sem
+                    necessidade de transferências manuais de arquivos via FTP. O repositório enxerga os comandos de
+                    <code>git push</code> e inicia scripts de Pipeline.
+                </p>
+            </div>
+
+            <div class="info-block" style="margin-top: 1.5rem">
+                <h3>🚀 Pipeline de Deploy Básico</h3>
+                <div
+                    style="background: rgba(15, 23, 42, 0.4); padding: 1rem; border-radius: 8px; font-family: monospace; font-size: 0.85rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap:0.4rem">
+                    <span style="color:#4ade80">$ git add .</span>
+                    <span style="color:#60a5fa">$ git commit -m "feat: adicionando novas rotas"</span>
+                    <span style="color:#fcd34d">$ git push origin main</span>
+                    <span style="color:#9ca3af; margin-top:0.5rem"># Servidores render.com capturam o push e atualizam o
+                        deploy!</span>
+                </div>
+            </div>
+
+            <div class="exercise-card">
+                <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">Hands-on: Subindo sua primeira Hospedagem</h3>
+                <p style="margin-bottom: 0.5rem">A atividade de desafio aqui é hospedar os seus arquivos HTML que estão
+                    locais para a nuvem acessível usando Render cloud computing.</p>
+                <ol>
+                    <li>Realize o cadastro num gerenciador de hospedagem de código remoto, no nosso caso o
+                        <strong>GitHub</strong>.
+                    </li>
+                    <li>Siga o link de Inscrição na Github Classroom do professor e autorize a chave da aplicação em
+                        "Accept terms" e "join the Repo".</li>
+                    <li>Commit seus arquivos da pasta para essa conta web e aguarde o upload no GitHub.</li>
+                    <li>Hospede numa Nuvem de serviços da web (usaremos o <a href="https://render.com" target="_blank"
+                            style="color:var(--accent)">Render.com</a> e Static Sites gratuitos).</li>
+                    <li>No Dashboard clice em "New Static Site", conceda credenciais de vinculação ao github na tela do
+                        provedor.</li>
+                    <li>Selecione o repositório HTML nas etapas do Render, apontando a raiz de arquivos, e inicie o
+                        Deploy.</li>
+                    <li>Leia as abas de Logging até encontrar <code>Build Success</code>.</li>
+                    <li>Colete a nova <span style="font-family: monospace; text-transform:lowercase; color:#cbd5e1">URI
+                            de Acesso HTTPS</span>.</li>
+                    <li>Envie para email de provas: O assunto é <code>[Nome] - My First Website</code> e cole todo este
+                        link.</li>
+                </ol>
+            </div>
+        </section>
+
+
+        <!-- ── 5. INTERFACES E DESIGN ────────────── -->
+        <section id="ux-ui">
+            <span class="section-tag">Módulo 5</span>
+            <h2>Design de Interfaces e Usabilidade na Web</h2>
+            <p class="lead">Hierarquia visual, estudo de prototipação e usabilidade essencial utilizando Wireframes,
+                Mockups e Protótipos simulando navegação interativa na web.</p>
+        </section>
+
+        <!-- ── 6. ACESSIBILIDADE E FRAMEWORKS ────── -->
+        <section id="acessibilidade">
+            <span class="section-tag">Módulo 6</span>
+            <h2>UX/UI Design, Acessibilidade e Frameworks</h2>
+            <p class="lead">Padrões de consistência, testes rigorosos WCAG, otimizações de contraste e estruturação para
+                leitores de tela em layouts modernos.</p>
+            <div class="features-grid">
+                <div class="feat-card">
+                    <div class="feat-icon">♿</div>
+                    <h3>Acessibilidade WCAG</h3>
+                    <p>Regras para garantir navegação a leitores de tela, alto contraste, semáforo de acessibilidade e
+                        foco semântico para inputs.</p>
+                </div>
+            </div>
+            <div class="theory-block">
+                <h3>📖 Desenhando Experiências e Projetando o Vazio</h3>
+                <p>Todo programador Front-end precisa interpretar UI/UX (User Interface e User Experience). O ciclo de
+                    vida do design começa num rascunho base feito até em papel (<strong>Wireframes</strong>). Depois
+                    converte-se em <strong>Mockups</strong> coloridos estáticos, para finalmente virar
+                    <strong>Protótipos</strong> clicáveis em softwares como o <strong>Figma</strong>.
+                </p>
+                <p>Nenhuma boa UI sobrevive com péssima Acessibilidade. Seguir os padrões <strong>WCAG</strong> globais
+                    garantem uma Web acessível (Screen Readers, Auto Contraste) para deficientes visuais.</p>
+                <div style="display:flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+                    <a href="https://www.accessibilitychecker.org/" target="_blank" class="btn-outline"
+                        style="border-color: rgba(255,255,255,0.2)">Acessibility Checker</a>
+                    <a href="https://wave.webaim.org/" target="_blank" class="btn-outline"
+                        style="border-color: rgba(255,255,255,0.2)">WAVE By WebAIM</a>
+                    <a href="https://figma.com/" target="_blank" class="btn-outline"
+                        style="border-color: rgba(255,255,255,0.2)">Figma Design</a>
+                </div>
+            </div>
+
+            <div class="exercise-card">
+                <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">Hands-on: Avaliação Real de Acessibilidade</h3>
+                <p style="margin-bottom: 0.5rem">O seu trabalho como dev moderno é analisar e corrigir sites não
+                    amigáveis. Escolha uma das piores UIs dos primórdios (ex: <code>arngren.net</code>,
+                    <code>userinyerface.com</code>, <code>theroommovie.com</code>, <code>art.yale.edu</code>) ou sites
+                    como uol/terra:
+                </p>
+                <ol>
+                    <li>Acesse a URL defeituosa no seu navegador.</li>
+                    <li>Utilize as ferramentas (Accessibilitychecker ou Wave) para gerar o laudo da página.</li>
+                    <li>Compreenda os pontos estruturais do que gerou reprovação de UI/UX ou contraste.</li>
+                    <li>Simulando que você é o "Lead Engineer" recém-contratado, identifique no mínimo <strong>5 pontos
+                            de melhorias drásticas</strong> e escreva as soluções técnicas propostas (ex: aumentar
+                        contraste da fonte x no banner y para cumprir regras).</li>
+                    <li>Envie esse report executivo pro Cliente/Professor no email.</li>
+                </ol>
+            </div>
+
+        </section>
+
+        <section id="css3">
+            <span class="section-tag">Módulo 7</span>
+            <h2>CSS3: Estilização, Layout e Responsividade</h2>
+            <p class="lead">
+                O CSS (Cascading Style Sheets) formata o esqueleto HTML atribuindo beleza, proporções fluidas e
+                inteligência de renderização para todas as telas (Responsive Web Design).
+            </p>
+
+            <div class="code-wrapper">
+                <div class="snippet-header"><span>CSS Flexbox Alignment</span><span>style.css</span></div>
+                <pre class="code-example"><code><span class="tag">.container</span> {
+    <span class="keyword">display</span>: flex;
+    <span class="keyword">justify-content</span>: center;
+    <span class="keyword">align-items</span>: center;
+    <span class="keyword">gap</span>: <span class="string">20px</span>;
+}
+
+<span class="tag">.item</span> {
+    <span class="keyword">background</span>: <span class="string">#0ea5e9</span>;
+    <span class="keyword">padding</span>: <span class="string">1.5rem</span>;
+    <span class="keyword">border-radius</span>: <span class="string">8px</span>;
+}</code></pre>
+            </div>
+
+            <div class="theory-block">
+                <h3>📖 O Modelo de Caixas (Box Model) e Regras</h3>
+                <p>Nenhuma tag foge dessa matemática do CSS Box Model. Toda as larguras/alturas são divididas em:
+                    <code>Content</code> (o recheio real), circulado pelo <code>Padding</code> (o espaçamento interno
+                    que engorda a tag), delimitado pelas linhas do <code>Border</code> e finalmente o
+                    <code>Margin</code> (o espaço estéril invisível externo que empurra os vizinhos da tag de longe).
+                </p>
+                <p>Sempre garanta que seus Seletores atinjam alvos de forma hierárquica usando Classes
+                    (<code>.minha-classe</code>) e ID (<code>#meu-id</code>). Cuidado ao setar dimensões rígidas: o uso
+                    de Medidas Relativas globais <code>%</code> e de tela <code>vw</code> e <code>vh</code> (Viewport
+                    Width/Height), <code>rem</code> (Relativo ao root), mais as operações vivas com <code>calc()</code>
+                    são vitalícios e mandatórios frente ao pixel-perfect.</p>
+            </div>
+
+            <div class="exercise-card">
+                <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">Hands-on: Montando Layout 2D Responsivo com CSS
+                    Grid</h3>
+                <p style="margin-bottom: 0.5rem">Implemente um novo projeto limpo chamado <code>layout-grid.html</code>
+                    usando o layout bidimensional mais avançado do mercado, o CSS Grid:</p>
+                <ol>
+                    <li>Na raiz zere o espaço global colocando a formatação body HTML <code>margin: 10%</code> no
+                        stylesheet inline ou target header local.</li>
+                    <li>Estruture a dom criando uma caixa parente principal flexivel:
+                        <code>&lt;div class="wrapper"&gt;</code> e a converta para display do tipo container atômico no
+                        estilo com <code>display: grid;</code>.
+                    </li>
+                    <li>Especifique as tracks de espaço fracionadas dela com propriedades para layout:
+                        <code>grid-template-columns: 10% 10% 10% 10% 10%;</code> (Distribuindo uniformemente em blocos
+                        fluidos).
+                    </li>
+                    <li>Adicione um respiro padronizado (calhas) entre cada item via declaração no wrapper class css:
+                        <code>grid-gap: 10vw;</code> e pinte o fundo <code>background-color</code> em tons dark gray.
+                    </li>
+                    <li>Construa na DOM cerca de 5 filhos blocos internos sequencias
+                        <code>&lt;div class="box a"&gt;A&lt;/div&gt;</code> repetidos sequencialmente. Pinte os
+                        quadrados classes com fundo branco, arredonde pontas via <code>border-radius: 5px</code> preveja
+                        espaçamento <code>padding: 10%</code> interno dentro do bloco para a tipografia "A" saltar longe
+                        da borda interna.
+                    </li>
+                    <li>Realize a visualização técnica expandindo e encolhendo toda janela desktop ou testando via
+                        device mode (mobile emulate DevTools F12) observando flexibilidade do esqueleto global CSS
+                        nativo.</li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="javascript">
+            <span class="section-tag">Módulo 8</span>
+            <h2>JavaScript: Sintaxe Básica e Manipulação do DOM</h2>
+            <p class="lead">
+                Da <strong>Sintaxe Básica</strong>, variáveis (<code>let</code>, <code>const</code>) e laços até a
+                manipulação direta do HTML em tempo real e eventos.
+            </p>
+
+            <div class="code-wrapper">
+                <div class="snippet-header"><span>JavaScript Variables & Events</span><span>script.js</span></div>
+                <pre class="code-example"><code><span class="comment">// Declaração de variáveis modernas</span>
+<span class="keyword">const</span> nome = <span class="string">"URI Erechim"</span>;
+<span class="keyword">let</span> contador = <span class="string">0</span>;
+
+<span class="comment">// Manipulando o DOM</span>
+<span class="keyword">const</span> botao = <span class="func">document.querySelector</span>(<span class="string">"#meuBotao"</span>);
+
+botao.<span class="func">addEventListener</span>(<span class="string">"click"</span>, () =&gt; {
+    contador++;
+    <span class="func">console.log</span>(<span class="string">`Clique nº ${contador}`</span>);
+});</code></pre>
+            </div>
+
+            <div class="features-grid">
+                <div class="feat-card">
+                    <div class="feat-icon">📜</div>
+                    <h3>História</h3>
+                    <p>Criado em 10 dias (1995) por Brendan Eich. Hoje, a principal linguagem de navegadores
+                        (ECMAScript).</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon">📦</div>
+                    <h3>Variáveis e Hoisting</h3>
+                    <p>Entendendo a diferença de escopo entre <code>var</code> (global/içamento) e
+                        <code>let/const</code> (escopo de bloco).
+                    </p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon">📚</div>
+                    <h3>Arrays & Coleções</h3>
+                    <p>Facilite o trabalho usando funções nativas como <code>map()</code>, <code>filter()</code> e
+                        <code>reduce()</code>.
+                    </p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon">🖱️</div>
+                    <h3>Manipulação DOM</h3>
+                    <p>Alterações dinâmicas sem recarregar a página. Modificando CSS pelo JS via
+                        <code>document.querySelector</code>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="theory-block" style="margin-top: 2rem">
+                <h3>📖 Variáveis e Coleções (Arrays)</h3>
+                <p>O JavaScript possuí forte tipagem não-declarada. Historicamente variáveis eram salvas de forma
+                    confusa no escopo Root Memory via palavra <code>var</code> sofrendo manipulações sujas pelo Hoisting
+                    (içamento orgânico do interpretador que causava vazamento do dado global). Hoje usa-se apenas blocos
+                    protegidos criando constantes matemáticas com <code>const PI = 3.14</code> e variáveis dinâmicas
+                    seguras com <code>let idade = 20</code> que morrem ao final do bloco de execução.</p>
+                <p>No domínio das manipulações massivas de dados, o JS detém as Listas ou Vetores baseados em JSON, ou
+                    seja <strong>Arrays</strong>. Algumas das funções utilitárias embutidas no protótipo das arrays que
+                    usaremos frequentemente incluem: <code>.forEach()</code> (passar para ler todos os itens),
+                    <code>.map()</code> (modificar os dados e retornar nova lista editada), <code>.filter()</code>
+                    (descarta falsos deixando só o procurado) e <code>.reduce()</code> (acumula todos os itens de uma
+                    lista em uma só conta matemática/resultado).
+                </p>
+            </div>
+
+            <div class="exercise-card">
+                <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">Hands-on: Funções Utilitárias e Dates</h3>
+                <p style="margin-bottom: 0.5rem">Com base nas explicações da aula, o aluno deverá programar (em seu
+                    própio arquivo script.js vinculado ao HTML) e executar as cinco funções abaixo. Passando os
+                    parâmetros algorítmicos corretos simulando regras do mundo real (Strings, Ints, Datas). Pratique a
+                    checagem no <code>console.log()</code> do DevTools ou na UI abaixo:</p>
+                <ol>
+                    <li><code>nomeCompleto(nome, sobrenome)</code>: Recebe strings isoladas. Deve gerar concatenação
+                        string formatada com as crases para interpolação nativa (<code>`${nome}...`</code>).</li>
+                    <li><code>calcularIdade(ano)</code>: Recebe int. Subtraí o ano nascido pelo tempo corrente de
+                        execução do motor para deduzir a idade estática da pessoa sem analisar aniversário.</li>
+                    <li><code>jaFezAniversario(mes, dia)</code>: Verificação relacional condicional usando If/Else
+                        encadeado ou de blocos. Invoque o objeto de relógio <code>new Date()</code> obtendo dia corrente
+                        do PC. Retorna flag <code>true</code> se a pessoa local for mais velha no ano em questão.</li>
+                    <li><code>diasParaOAniversario(mes, dia)</code>: Trabalhando o JS Date em matemática. Transforma
+                        anos em métrica universal usando <code>.getTime()</code> (milissegundos limpos). Calcula as
+                        distâncias baseadas e divide sua somatória (1000 * 60 * 60 * 24). Retornando a soma total
+                        numérica final de dias isolados.</li>
+                    <li><code>mensagem()</code>: Função pai (wrapper logic) instanciando/invocando suas co-vizinhas.
+                        Monta a string "O seu nome completo é X" atrelado à "Sua idade atual é Y e seu níver...",
+                        avaliando condicional do <code>JaFezAniversario()</code> nativo. Retornando os anos que falta
+                        pra atingir os cem de idade.</li>
+                </ol>
+            </div>
+
+            <div class="theory-block" style="background: rgba(14, 165, 233, 0.1); border-color: var(--primary);">
+                <h3>📡 Integração com Backend (API)</h3>
+                <p>O JavaScript permite buscar dados de servidores externos sem recarregar a página usando a
+                    <strong>Fetch API</strong>. No nosso projeto, conectamos com o servidor Node.js que criamos.
+                </p>
+
+                <div class="code-wrapper">
+                    <div class="snippet-header"><span>Connecting to our fake-api</span><span>api.js</span></div>
+                    <pre class="code-example"><code><span class="keyword">async function</span> <span class="func">getFeaturedProducts</span>() {
+    <span class="keyword">try</span> {
+        <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="func">fetch</span>(<span class="string">"http://localhost:3000/featured"</span>);
+        <span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="func">json</span>();
+        
+        <span class="func">console.log</span>(<span class="string">"Produtos da API:"</span>, data);
+    } <span class="keyword">catch</span> (erro) {
+        <span class="func">console.error</span>(<span class="string">"Erro ao buscar dados:"</span>, erro);
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <h3 style="color:var(--txt);">Demos Interativos</h3>
+                <p style="margin-bottom: 1rem; color: #cbd5e1;">Testes rápidos de interação programada.</p>
+
+                <div class="js-demo-grid">
+                    <!-- Relógio / data -->
+                    <div class="js-card">
+                        <h3>⏰ Que horas são?</h3>
+                        <div id="js-clock-display">Clique no botão abaixo</div>
+                        <button class="demo-btn" id="btnHoras">Mostrar hora atual</button>
+                        <p id="js-clock-output"></p>
+                    </div>
+
+                    <!-- Formulário -->
+                    <div class="js-card">
+                        <h3>📝 Formulário interativo</h3>
+                        <form class="demo-form" id="demoForm">
+                            <input type="text" name="nome" placeholder="Seu nome" id="formNome" required>
+                            <input type="email" name="email" placeholder="Seu e-mail" id="formEmail" required>
+                            <button type="submit" class="demo-btn">Enviar</button>
+                        </form>
+                        <p id="js-form-output"></p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <h3>Funções e Cálculos Dinâmicos</h3>
+                    <p style="margin-bottom: 1rem; color: #cbd5e1;">Testes de funções criadas em aula retornando
+                        resultados baseados em parâmetros ou datas.</p>
+
+                    <div class="features-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                        <div class="feat-card" style="padding: 1rem">
+                            <h3 style="font-size:1rem; margin-bottom:0.5rem">Nome Completo</h3>
+                            <input type="text" id="fnNome" placeholder="Nome"
+                                style="width:100%; padding:0.4rem; border-radius:4px; border:none; margin-bottom:0.4rem">
+                            <input type="text" id="fnSobrenome" placeholder="Sobrenome"
+                                style="width:100%; padding:0.4rem; border-radius:4px; border:none; margin-bottom:0.4rem">
+                            <button class="btn-primary" onclick="testarNomeCompleto()"
+                                style="width:100%; padding:0.5rem; font-size:0.8rem">Retornar Nome</button>
+                        </div>
+                        <div class="feat-card" style="padding: 1rem">
+                            <h3 style="font-size:1rem; margin-bottom:0.5rem">Idade Atual</h3>
+                            <input type="number" id="fnAnoIdade" placeholder="Ano (ex: 1995)"
+                                style="width:100%; padding:0.4rem; border-radius:4px; border:none; margin-bottom:0.4rem">
+                            <button class="btn-primary" onclick="testarCalcularIdade()"
+                                style="width:100%; padding:0.5rem; font-size:0.8rem; margin-top:2rem">Retornar
+                                Idade</button>
+                        </div>
+                        <div class="feat-card" style="padding: 1rem">
+                            <h3 style="font-size:1rem; margin-bottom:0.5rem">Já fez aniversário?</h3>
+                            <input type="number" id="fnDiaNiver" placeholder="Dia (1-31)"
+                                style="width:100%; padding:0.4rem; border-radius:4px; border:none; margin-bottom:0.4rem">
+                            <input type="number" id="fnMesNiver" placeholder="Mês (1-12)"
+                                style="width:100%; padding:0.4rem; border-radius:4px; border:none; margin-bottom:0.4rem">
+                            <button class="btn-primary" onclick="testarFezAniversario()"
+                                style="width:100%; padding:0.5rem; font-size:0.8rem">Checar</button>
+                        </div>
+                        <div class="feat-card" style="padding: 1rem">
+                            <h3 style="font-size:1rem; margin-bottom:0.5rem">Dias p/ Aniversário</h3>
+                            <input type="number" id="fnDiaFalta" placeholder="Dia (1-31)"
+                                style="width:100%; padding:0.4rem; border-radius:4px; border:none; margin-bottom:0.4rem">
+                            <input type="number" id="fnMesFalta" placeholder="Mês (1-12)"
+                                style="width:100%; padding:0.4rem; border-radius:4px; border:none; margin-bottom:0.4rem">
+                            <button class="btn-primary" onclick="testarDiasParaAniversario()"
+                                style="width:100%; padding:0.5rem; font-size:0.8rem">Calcular Dias</button>
+                        </div>
+                        <div class="feat-card" style="padding: 1rem">
+                            <h3 style="font-size:1rem; margin-bottom:0.5rem">Mensagem Especial</h3>
+                            <input type="text" id="fnNomeMsg" placeholder="Nome"
+                                style="width:100%; padding:0.4rem; border-radius:4px; border:none; margin-bottom:0.4rem">
+                            <input type="number" id="fnAnoMsg" placeholder="Ano Nascimento"
+                                style="width:100%; padding:0.4rem; border-radius:4px; border:none; margin-bottom:0.4rem">
+                            <button class="btn-primary" onclick="testarMensagem()"
+                                style="width:100%; padding:0.5rem; font-size:0.8rem">Retornar Frase</button>
+                        </div>
+                        <div class="feat-card" style="padding: 1rem">
+                            <h3 style="font-size:1rem; margin-bottom:0.5rem">Anos p/ 100 Anos</h3>
+                            <input type="text" id="fnNomeCem" placeholder="Nome"
+                                style="width:100%; padding:0.4rem; border-radius:4px; border:none; margin-bottom:0.4rem">
+                            <input type="number" id="fnAnoCem" placeholder="Ano Nascimento"
+                                style="width:100%; padding:0.4rem; border-radius:4px; border:none; margin-bottom:0.4rem">
+                            <button class="btn-primary" onclick="testarAnosParaCem()"
+                                style="width:100%; padding:0.5rem; font-size:0.8rem">Verificar Cem</button>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <section id="projetos-js">
+            <span class="section-tag">Módulo 7 · Projetos Práticos</span>
+            <h2>Navigator APIs e Jogos</h2>
+            <p class="lead">
+                Uso prático do ecossistema JS para interagir com o dispositivo através do Navigator e criar um
+                <strong>Jogo dos Cliques</strong> com estado e temporizadores.
+            </p>
+
+            <div class="api-grid">
+
+                <div class="api-card">
+                    <div class="api-card-icon">💾</div>
+                    <h3>Web Storage</h3>
+                    <p>Salve seu nome localmente no navegador com <code class="code-tag">localStorage</code>.</p>
+                    <div class="name-input-row">
+                        <input type="text" id="nomeInput" placeholder="Seu nome">
+                        <button class="demo-btn" onclick="salvarNome()">Salvar</button>
+                    </div>
+                    <p id="nav-welcome"></p>
+                </div>
+
+                <div class="api-card">
+                    <div class="api-card-icon">📍</div>
+                    <h3>Geolocalização</h3>
+                    <p>Acesse sua localização via <code class="code-tag">navigator.geolocation</code>.</p>
+                    <button class="demo-btn" onclick="pegarLocalizacao()">Mostrar localização</button>
+                    <p id="geo-result"></p>
+                    <button class="demo-btn" style="margin-top:0.5rem;background:#6366f1"
+                        onclick="copiarLocalizacao()">Copiar coords</button>
+                </div>
+
+                <div class="api-card">
+                    <div class="api-card-icon">🔔</div>
+                    <h3>Notificações</h3>
+                    <p>Solicite permissão e dispare notificações push locais.</p>
+                    <button class="demo-btn" onclick="notificar()">Ativar notificação</button>
+                </div>
+
+                <div class="api-card">
+                    <div class="api-card-icon">🖥️</div>
+                    <h3>Fullscreen</h3>
+                    <p>Expanda a página para tela cheia com <code class="code-tag">requestFullscreen()</code>.</p>
+                    <button class="demo-btn" onclick="telaCheia()">Tela cheia</button>
+                </div>
+
+                <div class="api-card">
+                    <div class="api-card-icon">🔁</div>
+                    <h3>History API</h3>
+                    <p>Manipule a URL sem recarregar com <code class="code-tag">history.pushState()</code>.</p>
+                    <button class="demo-btn" onclick="mudarPagina()">Alterar URL</button>
+                </div>
+
+                <div class="api-card">
+                    <div class="api-card-icon">📳</div>
+                    <h3>Vibração</h3>
+                    <p>Acione a vibração do dispositivo via <code class="code-tag">navigator.vibrate()</code>.</p>
+                    <div class="api-btn-group">
+                        <button class="demo-btn" onclick="vibrarCurto()">Curta (100ms)</button>
+                        <button class="demo-btn" style="background:#6366f1" onclick="vibrarPadrao()">Padrão SOS</button>
+                    </div>
+                    <p id="vibrate-result"></p>
+                </div>
+
+                <div class="api-card">
+                    <div class="api-card-icon">🔋</div>
+                    <h3>Battery API</h3>
+                    <p>Consulte o nível e estado da bateria com <code class="code-tag">navigator.getBattery()</code>.
+                    </p>
+                    <button class="demo-btn" onclick="verBateria()">Ver bateria</button>
+                    <div id="battery-result" class="api-info-box"></div>
+                </div>
+
+                <div class="api-card">
+                    <div class="api-card-icon">🌐</div>
+                    <h3>Online / Offline</h3>
+                    <p>Detecte conexão em tempo real com <code class="code-tag">navigator.onLine</code> e eventos de
+                        rede.</p>
+                    <div id="online-status" class="api-status-badge"></div>
+                    <p id="online-log" class="api-log"></p>
+                </div>
+
+                <div class="api-card">
+                    <div class="api-card-icon">📤</div>
+                    <h3>Web Share</h3>
+                    <p>Compartilhe conteúdo nativamente com <code class="code-tag">navigator.share()</code>.</p>
+                    <button class="demo-btn" onclick="compartilhar()">Compartilhar página</button>
+                    <p id="share-result"></p>
+                </div>
+
+                <div class="api-card">
+                    <div class="api-card-icon">📷</div>
+                    <h3>Dispositivos de Mídia</h3>
+                    <p>Liste câmeras e microfones com <code class="code-tag">navigator.mediaDevices</code>.</p>
+                    <button class="demo-btn" onclick="listarDispositivos()">Listar dispositivos</button>
+                    <ul id="media-list" class="api-device-list"></ul>
+                </div>
+
+            </div>
+            <!-- Fechamento do Projetos JS original de APIs-->
+
+            <hr style="border:0; border-top: 1px solid rgba(255,255,255,0.1); margin: 3rem 0; clear:both">
+
+            <!-- ── JOGO (agora dentro de projetos-js) ─────────────────────── -->
+            <div id="jogo">
+                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem">Jogo do Clique Rápido</h3>
+                <p class="lead" style="margin-bottom: 2rem">
+                    Quantas vezes você consegue clicar em <strong>5 segundos</strong>? Teste seus reflexos!
+                </p>
+
+                <div class="game-area">
+                    <div class="game-score-board">
+                        <div>
+                            <div class="game-score-val" id="g-score">0</div>
+                            <div class="game-score-label">Pontos</div>
+                        </div>
+                        <div>
+                            <div class="game-timer" id="g-timer">5s</div>
+                            <div class="game-score-label">Tempo</div>
+                        </div>
+                    </div>
+
+                    <div class="game-btns">
+                        <button class="btn-game-start" id="g-start">▶ Iniciar</button>
+                        <button class="btn-game-click" id="g-click" disabled>⚡ Clique!</button>
+                    </div>
+
+                    <p class="game-result" id="g-result"></p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ── 10. PERFORMANCE & SEO ──────────────── -->
+        <section id="performance">
+            <span class="section-tag">Módulo 10</span>
+            <h2>Performance & SEO</h2>
+            <p class="lead">Entregando experiências ultrarrápidas e garantindo que seu site seja encontrado pelos
+                motores de busca.</p>
+
+            <div class="theory-block" style="border-color: #10b981; background: rgba(16, 185, 129, 0.05);">
+                <h3>🚀 Core Web Vitals & Otimização</h3>
+                <p>Navegar em um site lento afasta usuários. O Google utiliza as <strong>Core Web Vitals</strong> (LCP,
+                    FID, CLS) para medir a saúde da experiência do usuário:</p>
+                <ul class="audit-list">
+                    <li class="audit-item">
+                        <div class="audit-score">98</div>
+                        <div><strong>Performance:</strong> Use Lazy Loading para imagens e minificação de arquivos.
+                        </div>
+                    </li>
+                    <li class="audit-item">
+                        <div class="audit-score">100</div>
+                        <div><strong>SEO:</strong> Use Meta Tags adequadas, Alt em imagens e Semântica correta.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="code-wrapper">
+                <div class="snippet-header"><span>Lazy Loading & Meta Tags</span><span>index.html</span></div>
+                <pre
+                    class="code-example"><code><span class="comment">&lt;!-- Imagem com carregamento preguiçoso --&gt;</span>
+<span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="string">"foto.jpg"</span> <span class="attr">loading</span>=<span class="string">"lazy"</span> <span class="attr">alt</span>=<span class="string">"Descrição"</span><span class="tag">&gt;</span>
+
+<span class="comment">&lt;!-- Meta tags para SEO e Social Media --&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="string">"description"</span> <span class="attr">content</span>=<span class="string">"Curso de Web na URI"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="string">"og:title"</span> <span class="attr">content</span>=<span class="string">"Programação Web"</span><span class="tag">&gt;</span></code></pre>
+            </div>
+        </section>
+
+        <!-- ── 11. SEGURANÇA ──────────────────────── -->
+        <section id="seguranca">
+            <span class="section-tag">Módulo 11</span>
+            <h2>Segurança na Web</h2>
+            <p class="lead">Protegendo dados sensíveis e prevenindo ataques comuns na internet moderna.</p>
+
+            <div class="features-grid">
+                <div class="feat-card">
+                    <div class="feat-icon">🛡️</div>
+                    <h3>HTTPS & SSL</h3>
+                    <p>Criptografia de ponta a ponta para que os dados não sejam interceptados no caminho.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon">🌐</div>
+                    <h3>CORS</h3>
+                    <p>Cross-Origin Resource Sharing: Controlando quem pode acessar os recursos da sua API.</p>
+                </div>
+                <div class="feat-card">
+                    <div class="feat-icon">🚫</div>
+                    <h3>XSS & Injection</h3>
+                    <p>Sempre sanitize os inputs do usuário para evitar execução de scripts maliciosos (Cross-Site
+                        Scripting).</p>
+                </div>
+            </div>
+
+            <div class="theory-block" style="border-color: #f43f5e; background: rgba(244, 63, 94, 0.05);">
+                <h3>⚠️ Boas Práticas de Segurança</h3>
+                <p>Nunca confie no cliente. Todas as validações feitas no Front-end <strong>devem</strong> ser
+                    replicadas no Back-end. Utilize cabeçalhos de segurança (como Helmet em Node.js) e mantenha suas
+                    dependências atualizadas.</p>
+            </div>
+        </section>
+
+        <!-- ── 12. FRAMEWORKS MODERNOS ────────────── -->
+        <section id="frameworks">
+            <span class="section-tag">Módulo 12</span>
+            <h2>Frameworks Modernos</h2>
+            <p class="lead">Escalando o desenvolvimento com componentes reutilizáveis e estados reativos.</p>
+
+            <div class="theory-block">
+                <h3>⚛️ Por que usar React, Vue ou Angular?</h3>
+                <p>Quando as aplicações crescem, manipular o DOM manualmente com Vanilla JS torna-se difícil. Frameworks
+                    trazem:</p>
+                <ul style="margin: 1rem 0 1rem 1.5rem; color:#cbd5e1;">
+                    <li><strong>Virtual DOM:</strong> Atualizações velozes mudando apenas o necessário.</li>
+                    <li><strong>Componentização:</strong> Dividir a UI em pequenas peças independentes.</li>
+                    <li><strong>Ecossistema:</strong> Bibliotecas prontas para rotas, estado global e testes.</li>
+                </ul>
+            </div>
+
+            <div class="code-wrapper">
+                <div class="snippet-header"><span>React Counter Component</span><span>Counter.jsx</span></div>
+                <pre class="code-example"><code><span class="keyword">function</span> <span class="func">Counter</span>() {
+  <span class="keyword">const</span> [count, setCount] = <span class="func">useState</span>(0);
+
+  <span class="keyword">return</span> (
+    <span class="tag">&lt;div&gt;</span>
+      <span class="tag">&lt;p&gt;</span>Você clicou {count} vezes<span class="tag">&lt;/p&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attr">onClick</span>={ () => <span class="func">setCount</span>(count + 1) }<span class="tag">&gt;</span>
+        Clique aqui
+      <span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  );
+}</code></pre>
+            </div>
+        </section>
+
+        <!-- ── UI LAB ─────────────────────────────── -->
+        <section id="ui-lab"
+            style="background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.1), transparent);">
+            <span class="section-tag">Extra</span>
+            <h2>UI Lab: Componentes Interativos</h2>
+            <p class="lead">Exemplos práticos de componentes visuais modernos para inspirar seus projetos.</p>
+
+            <div class="lab-grid">
+                <!-- Ripple Button -->
+                <div class="lab-item">
+                    <h3>Ripple Effect</h3>
+                    <p style="font-size: 0.8rem; color: var(--txt2);">Botão com efeito de onda ao clicar (Material
+                        Design style).</p>
+                    <button class="ripple-btn">Clique para ver o efeito</button>
+                    <code class="code-tag">CSS Animation</code>
+                </div>
+
+                <!-- CSS Loader -->
+                <div class="lab-item">
+                    <h3>CSS Loader</h3>
+                    <p style="font-size: 0.8rem; color: var(--txt2);">Feedback visual clássico para estados de
+                        carregamento.</p>
+                    <span class="loader"></span>
+                    <code class="code-tag">border-bottom-color</code>
+                </div>
+
+                <!-- Glassmorphism -->
+                <div class="lab-item">
+                    <h3>Glassmorphism</h3>
+                    <p style="font-size: 0.8rem; color: var(--txt2);">Efeito de vidro fosco usando desfoque de fundo.
+                    </p>
+                    <div class="glass-preview">
+                        Cartão de Vidro
+                    </div>
+                    <code class="code-tag">backdrop-filter: blur()</code>
+                </div>
+            </div>
+
+            <div class="exercise-card" style="margin-top: 3rem;">
+                <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">Hands-on Final: Desafio do Arquiteto</h3>
+                <p>Como projeto final desta trilha, você deve escolher um dos componentes do UI Lab e aplicá-lo em uma
+                    nova página de "Dashboard" do seu sistema, garantindo nota máxima em SEO no Lighthouse.</p>
+            </div>
+        </section>
+
+        <!-- ── FOOTER ────────────────────────────── -->
+    </div><!-- /page-content -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

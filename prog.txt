@@ -1,0 +1,2717 @@
+
+
+Programação WEB
+Professor Douglas Tagliari
+Fevereiro 2026
+
+Um pouco sobre mim…
+
+Natural de Erechim;
+
+Graduado Bacharel em Ciência da Computação pela URI Campus de Erechim em 2013.
+
+Pós-Graduado em Inteligência Artificial e Perícia Cibernética pela Uniminas;
+
+Programador na empresa Compass.UOL desde 2012, e atualmente gerente técnico de pré-vendas internacional.
+
+Fundador da plataforma BaitaBusca.com
+
+
+Objetivos da Matéria
+
+Compreender os princípios básicos e boas práticas de desenvolvimento de software para Web, conhecer os princípios de design de páginas web responsivas e com recursos de acessibilidade, compreender o projeto e arquiteturas de software para web, e desenvolver softwares para web (Front-End e Back-End).
+Avaliações
+
+Prova 1 - 40%
+Prova 2 - 40%
+Trabalhos Discente Efetivos (TDE) - 20%
+
+Nota do PI não será utilizada nesta matéria
+
+Demais Pontos…
+Intervalo - horário 20:50
+Futebol
+Celular
+IA
+
+
+https://datareportal.com/
+Introdução à Programação Web e fundamentos da Internet
+
+Introdução à Programação Web e fundamentos da Internet
+
+9
+https://datareportal.com/
+Introdução à Programação Web e fundamentos da Internet
+
+https://datareportal.com/
+Introdução à Programação Web e fundamentos da Internet
+
+Hoje: navegadores modernos suportam HTML5, CSS3, JavaScript e padrões de segurança como HTTPS/TLS.
+IMPORTANTE: Sem protocolos, não haveria entendimento; sem navegadores, não haveria janela para o mundo digital.
+Década de 1960-1980 – Redes militares e acadêmicas (ARPANET) usavam protocolos experimentais para troca de dados. O objetivo principal da ARPANET era fornecer uma rede de comunicação confiável e descentralizada que pudesse suportar um ataque nuclear
+1983 – Surge o TCP/IP, padrão oficial da ARPANET, que se torna a base da internet.
+1990 – Tim Berners-Lee desenvolve o WorldWideWeb, primeiro navegador.
+Evoluções: Web 1.0 | Web 2.0 | Web 3.0 | Web 4.0
+1991 – Tim Berners-Lee, no CERN, cria o HTTP (Hypertext Transfer Protocol) e o HTML, possibilitando páginas ligadas por hiperlinks.
+Evoluções: Http1.0 | Http1.1 | Http2.0 | Http3.0
+1993 – Lançamento do Mosaic, popularizando a web com interface gráfica.
+1994-1995 – Netscape Navigator domina o mercado.
+1995-2001 – Internet Explorer cresce com o Windows.
+2000+ – Firefox, Safari, Chrome e navegadores móveis.
+Origem dos Protocolos e Navegadores
+Introdução à Programação Web e fundamentos da Internet
+Na segunda guerra mundial, várias tecnologias foram descobertas
+Microondas por exemplo um soldado percebeu que quando ficava próximo de radares que detectavam aviões inimigos, percebeu que chocolate no bolso derretia e a partir daí avançaram com análises
+
+Evolução da Web
+World Wide Web nasceu no início dos anos 1990, criada por Tim Berners-Lee no CERN (Organização Europeia para a Pesquisa Nuclear), com a proposta de facilitar o compartilhamento de informações entre cientistas. Ela uniu três tecnologias básicas: HTML (para estruturar conteúdo), HTTP (para transportar dados) e URL (para localizar recursos).
+Web 1.0 — páginas estáticas, navegação por links/diretórios, baixa interação.
+Web 2.0 — redes sociais, colaboração, conteúdo gerado pelo usuário.
+Web 3.0 — web semântica, dados estruturados, máquinas interpretando contexto.
+Web 4.0 — integração com IoT, IA, personalização.
+Introdução à Programação Web e fundamentos da Internet
+
+QUIC (Quick UDP Internet Connections) é um protocolo de transporte moderno criado pelo Google, que visa tornar a internet mais rápida e segura
+
+
+
+HTTP/1.1
+Conexões persistentes (Keep-Alive)
+Pipelining:  permite o envio de uma segunda solicitação enquanto aguarda a resposta da primeira
+Melhor cache, headers e controle de erros
+HTTP/2 	
+Multiplexação: várias requisições em uma única conexão
+Compressão de headers
+Mais rápido e eficiente
+HTTP/3 
+Usa QUIC (sobre UDP) no lugar do TCP
+Menor latência e mais segurança
+Otimizado para mobile e redes instáveis
+Evolução do HTTP
+Protocolo HTTP, DNS e Modelo Cliente-Servidor
+HTTP/1.1
+Conexões persistentes (Keep-Alive)
+Pipelining:  permite o envio de uma segunda solicitação enquanto aguarda a resposta da primeira
+Melhor cache, headers e controle de erros
+
+HTTP/2 	
+Multiplexação: várias requisições em uma única conexão
+Compressão de headers
+Mais rápido e eficiente
+
+HTTP/3 
+Usa QUIC (sobre UDP) no lugar do TCP
+Menor latência e mais segurança
+Otimizado para mobile e redes instáveis
+
+A comutação de pacotes é uma técnica de transmissão de dados em redes de computadores onde a informação é dividida em pequenas unidades chamadas pacotes. Esses pacotes são enviados individualmente pela rede, podendo seguir rotas diferentes, e são reagrupados no destino para formar a mensagem original. Essa abordagem otimiza o uso da largura de banda e aumenta a robustez da comunicação, pois a falha de um caminho não impede a entrega dos dados. 
+IP - identifica cada dispositivo - comunicação de origem e destino.
+Comutação de pacotes.
+O principal meio de comunicação entre máquinas na internet é o protocolo TCP/IP.
+Como Funciona a Internet?
+Introdução à Programação Web e fundamentos da Internet
+
+Uma URL, ou Localizador Uniforme de Recursos, é um endereço que identifica um recurso na internet, como uma página web, imagem ou arquivo. É basicamente o "endereço" que você digita no navegador para acessar um site ou recurso específico
+Estrutura da URL:
+Protocolo: Indica o método usado para acessar o recurso (por exemplo, http, https, ftp);
+Domínio: É o nome do servidor onde o recurso está hospedado (por exemplo, example.com);
+Caminho: Especifica a localização do recurso no servidor (por exemplo, /articles/my-article.html);
+String de Consulta (opcional): Fornece parâmetros adicionais para a solicitação (por exemplo, ?id=1234&category=shoes&color=blue);
+Âncora (opcional): permite que você se conecte a uma parte específica de uma página da web ou de um documento (por exemplo, #material-theming).
+O que é uma URL?
+Introdução à Programação Web e fundamentos da Internet
+
+TCP (Transmission Control Protocol)
+UDP (User Datagram Protocol) - ideal para aplicações que priorizam velocidade em vez de garantia de entrega. Ex: vídeo e voz
+Um protocolo é um conjunto de regras e procedimentos que governam a troca de dados entre diferentes dispositivos e sistemas, permitindo que eles se comuniquem e interajam de forma padronizada. É como uma linguagem comum que computadores e outros dispositivos usam para trocar informações na internet e em redes locais. 
+Protocolos de Comunicação:
+HTTP/s (Hypertext Transfer Protocol)
+Função: protocolo base da comunicação na web, responsável por transferir páginas, imagens, vídeos e outros recursos entre cliente e servidor.
+Como funciona: o cliente envia uma requisição (request) e o servidor responde (response) com o conteúdo solicitado.
+HTTP/S & FTP & SMTP usam TCP como transporte
+Protocolo HTTP, DNS e Modelo Cliente-Servidor
+Portas Padrões:
+Http: 80
+Https: 443
+FTP: 21
+SMTP: 587
+O HTTPS é a versão segura do HTTP. Ele mantém a mesma função, trocar informações entre cliente e servidor, mas adiciona uma camada de segurança usando o TLS (Transport Layer Security). O “cadeado” no navegador indica que a conexão é segura e que o site possui um certificado digital válido.
+Para ter HTTPS com TLS (Transport Layer Security) em seu site, você precisa obter e instalar um certificado SSL/TLS. Isso envolve adquirir o certificado de uma Autoridade Certificadora (CA), configurar seu servidor web para usá-lo e garantir que seu site esteja acessível através do protocolo HTTPS
+HTTPS garante confidencialidade (dados não podem ser lidos por terceiros), integridade (dados não são alterados) e autenticação (confirma a identidade do servidor).
+
+TLD (Top-Level Domain), ou Domínio de Nível Superior, refere-se à extensão no final de um nome de domínio (como .com, .org, .br), que indica o tipo de organização ou localização geográfica de um site na hierarquia da internet
+
+SLD (Second-Level Domain)
+
+Sem o DNS, você precisaria memorizar sequências de números como 192.168.1.1 em vez de nomes simples de sites.
+DNS (Domain Name System)
+Ao digitar um endereço, o navegador consulta servidores DNS para encontrar o IP correspondente e acessar o site.
+
+.com.br → Domínio de nível superior com código de país (ccTLD), específico do Brasil, gerenciado pelo Registro.br.
+.com → Domínio de nível superior genérico (gTLD), usado no mundo todo
+
+www.meusite.com.br
+│   │       │   └── TLD de país (.br)
+│   │       └── SLD (.com)
+│   └── Subdomínio (www)
+Seu Provedor
+Protocolo HTTP, DNS e Modelo Cliente-Servidor
+DNS, que significa Sistema de Nomes de Domínio (Domain Name System), é um sistema de banco de dados distribuído que converte nomes de domínio em endereços IP. Em sua essência, o DNS resolve um problema simples, mas crucial: humanos preferem nomes memoráveis, enquanto computadores precisam de números. Sem o DNS, você precisaria memorizar sequências de números como 192.168.1.1 em vez de nomes simples de sites.
+
+Ao todo são 13 servidores espalhados por todo o mundo e são responsáveis pela tradução de nomes em primeiro nível. São mantidos por 12 Instituições independentes. 
+
+Quando a máquina local não tem em cache um IP (v4 ou v6) para um determinado nome, ela solicita a tradução do mesmo para um Servidor DNS local, este, por sua vez, pode fazer uma consulta ao Servidor Raiz mais próximo na Internet para resolver o nome. 
+
+Alguns Servidores Raiz tem mais de 100 espelhos ou instâncias espalhadas pelo Globo. No Brasil, inclusive, temos várias instâncias instaladas.
+DNS (Domain Name System)
+Protocolo HTTP, DNS e Modelo Cliente-Servidor
+Os Servidores DNS raiz estão espalhados por todo o mundo e são responsáveis pela tradução de nomes em primeiro nível Hoje são 13 Servidores diferentes mantidos por 12 Instituições independentes. Se cair? Alguns Servidores Raiz tem mais de 100 espelhos ou instâncias espalhadas pelo Globo. No Brasil, inclusive, temos várias instâncias instaladas.
+
+No Brasil
+CGI.br (Comitê Gestor da Internet no Brasil) — Define diretrizes e políticas para a internet no país.
+Registro.br — Registra e mantém domínios .br.
+CERT.br — Coordena respostas a incidentes de segurança no Brasil.
+NIC.br (Núcleo de Informação e Coordenação do Ponto BR) — Executa ações técnicas, opera o Registro.br e serviços críticos.
+
+Governança na Internet
+Protocolo HTTP, DNS e Modelo Cliente-Servidor
+No Mundo
+ICANN (Internet Corporation for Assigned Names and Numbers) — Coordena a atribuição de nomes de domínio e endereços IP globalmente.
+IETF (Internet Engineering Task Force) - Define padrões técnicos e protocolos da internet (HTTP, TCP/IP, etc.).
+W3C (World Wide Web Consortium) - Define padrões da web como HTML, CSS e regras de acessibilidade.
+A governança da internet é multissetorial, ou seja, governos, empresas, academia e sociedade civil participam juntos das decisões — nenhum ator sozinho “controla” a internet.
+
+1 - Validar existência de domínio
+
+https://who.is
+
+https://registro.br
+https://godaddy.com
+https://hostinger.com
+2 - Identificar quem é o proprietário do domínio
+3 - Visualizar  Certificados HTTPS 
+
+chrome://net-internals/?#dns
+
+
+https://www.ssllabs.com/ssltest
+
+
+4 - Identificar IP através do DNS
+https://www.godaddy.com/pt-br/dominios/gerador-de-nomes
+5 - Apoio de Inteligência artificial
+DNS na Prática
+Protocolo HTTP, DNS e Modelo Cliente-Servidor
+
+Front-end é o “rosto” da aplicação, focado na experiência do usuário.Back-end é o “cérebro” da aplicação, responsável pela lógica e funcionamento nos bastidores.
+Cliente: Front-end
+
+O que é: parte visível e interativa da aplicação, com a qual o usuário final interage.
+
+Tecnologias comuns: HTML, CSS, JavaScript, frameworks (React, Angular, Vue).
+Servidor: Back-End
+
+O que é: Parte de processamento dos dados, regras de negócio e integrações.
+
+Tecnologias: Node.js, PHP, Java, Python, bancos de dados (MySQL, MongoDB).
+Escalabilidade
+Segurança
+Flexibilidade
+Reuso
+Atualizações rápidas
+Modelo Cliente / Servidor
+Protocolo HTTP, DNS e Modelo Cliente-Servidor
+Front-end é o “rosto” da aplicação, focado na experiência do usuário.Back-end é o “cérebro” da aplicação, responsável pela lógica e funcionamento nos bastidores.Modelo cliente-servidor está presente não só na web, mas também em jogos online, apps de celular e serviços de streaming como Netflix e Spotify.Mas por que fazemos essa separação?
+
+Request - Solicitação de algo a um servidor.
+Response - Resposta da solicitação.
+
+Methods:
+GET — Solicita dados de um recurso; usado para buscar informações sem alterar o estado no servidor.
+POST — Envia dados para criar um novo recurso no servidor.
+PUT — Substitui informação existente por novos dados.
+PATCH — Atualiza parcialmente um recurso existente.
+DELETE — Remove um recurso do servidor.
+HTTP Messages
+É possível ver todas as requisições e respostas em tempo real usando o DevTools do navegador, na aba Network.
+
+CODE Status: https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Status
+Response Code Status
+Respostas Informativas (100 – 199)
+Respostas bem-sucedidas (200 – 299)
+Mensagens de redirecionamento (300 – 399)
+Respostas de erro do cliente (400 – 499)
+Respostas de erro do servidor (500 – 599)
+Protocolo HTTP, DNS e Modelo Cliente-Servidor
+
+Integrado ao navegador (Chrome, Firefox, Edge, Safari) para inspecionar e analisar as aplicações web.
+Elements — Inspecionar e alterar HTML/CSS em tempo real.
+Console — Executar comandos JavaScript e ver mensagens de log ou erros.
+Network — Monitorar requisições e respostas HTTP, tempo de carregamento e cache.
+Application — Ver dados locais: cookies, localStorage, sessionStorage.
+Performance — Analisar tempo de execução e renderização.
+Lighthouse — Gerar auditoria de performance, SEO, acessibilidade e PWA.
+DevTools
+Protocolo HTTP, DNS e Modelo Cliente-Servidor
+https://developer.chrome.com/docs/devtools/overview?hl=pt-br
+
+Abra o navegador Chrome ou Firefox.
+Ative DevTools: F12 (Windows) ou Cmd+Opt+I (Mac).
+Selecione aba Network.
+Na barra de endereço, entre em um site qualquer para analisar.
+Ex: https://www.baitabusca.com
+Observe a lista de requisições que surge na aba Network.
+Filtre por Doc (document) para ver a requisição principal.
+
+Inspecionar uma requisição (10 min)
+Clique em uma das requisição .
+Na aba, vá em Headers: observe Request URL, Method, Status Code.
+Vá em Response: examine o corpo retornado (HTML/JSON).
+Vá em Timing: observe latência, DNS lookup, TCP connection, SSL handshake.
+
+Capturar e salvar evidência (5 min)
+Com a requisição selecionada, exporte o HAR file
+Salve o arquivo <seu-nome>-example.har.
+Teste no https://toolbox.googleapps.com/apps/har_analyzer/
+Tire 3 capturas de tela (Network list; Headers; Response).
+Compacte e envie por e-mail para o professor com o assunto:
+[seu nome] - [turma] - Usando DevTools
+dtagliari@uricer.edu.br
+Fazer uma requisição via formulário (POST) (10 min)
+Abra uma página com um formulário simples (pode usar uma página de exemplo local https://baitabusca.com/cadastro
+ ou https://httpbin.org/forms/post).
+Preencha e envie o formulário.
+Na aba Network, filtre por XHR para ver requisições Ajax/post.
+Inspecione Request Payload (body) e Response.
+Hands-on
+Exercício 1 - Inspecionar requisições reais usando DevTools (método, status, headers e corpo); 
+
+Protocolo HTTP, DNS e Modelo Cliente-Servidor
+
+No mercado de trabalho, a divisão entre desenvolvedores front-end e back-end reflete o modelo cliente-servidor: o front-end cuida da interface e da experiência do usuário, enquanto o back-end lida com a lógica, dados e segurança da aplicação. Já o full stack reúne habilidades das duas áreas, conseguindo criar soluções completas. Embora o full stack seja valorizado pela versatilidade, muitas empresas optam por especialistas em cada camada para garantir maior profundidade técnica e qualidade no desenvolvimento.
+🎨 Front-end Developer (3k até 12k)
+Cria a interface do usuário, garante usabilidade, acessibilidade e responsividade.Tecnologias: HTML, CSS, JavaScript, React, Vue, Angular
+⚙️ Back-end Developer (3k até 12k)
+Desenvolve a lógica do sistema, APIs, regras de negócio e banco de dados.Tecnologias: Node.js, Java, Python, PHP, .NET, SQL / NoSQL
+🔄 Full Stack Developer (8k até 15k)
+Atua no front-end e no back-end, entregando aplicações completas.Perfil: versátil, comum em startups e squads enxutos
+🧱 Arquiteto de Software (8k até 20k)
+Define arquitetura, padrões, tecnologias e garante escalabilidade e segurança.Foco: visão sistêmica e decisões técnicas de alto impacto
+🧪 QA / Test Engineer (3k até 7k)
+Garante a qualidade do software com testes manuais e automatizados.Ferramentas: Cypress, Selenium, Playwright, Jest
+☁️ DevOps Engineer (10k até 20k)
+Automatiza deploys, infraestrutura e monitora sistemas em produção.Tecnologias: Docker, Kubernetes, AWS, CI/CD
+📱 Web Mobile / PWA Developer  (4k até 12k)
+Cria aplicações web com experiência de app e foco em performance mobile.Tecnologias: React Native, Flutter, PWA
+🤖 Especializações com IA
+🧠 AI Developer / AI Engineer  (4k até 15k)
+Integra modelos de IA em aplicações web, chatbots e automações inteligentes.Tecnologias: OpenAI, Gemini, Claude, Python, Node.js
+🔌 AI Integration Engineer  (4k até 15k)
+Conecta sistemas existentes com IA e fluxos RAG (IA + dados).Perfil: back-end ou full stack com foco em integração
+🏗️ AI Solutions Architect (12k até 20k)
+Define arquitetura de sistemas com IA, cuidando de custo, segurança e escala.Foco: IA aplicada ao negócio
+Carreiras em Desenvolvimento WEB
+2026
+Plus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+E-mails sobre Tecnologia
+Resumindo a década de avanços que rolam em IA toda semana. Ferramentas, prompts, novidades e modelos... direto no seu inbox, for free, todas as terças e quintas
+
+No mercado de trabalho, a divisão entre desenvolvedores front-end e back-end reflete o modelo cliente-servidor: o front-end cuida da interface e da experiência do usuário, enquanto o back-end lida com a lógica, dados e segurança da aplicação. Já o full stack reúne habilidades das duas áreas, conseguindo criar soluções completas. Embora o full stack seja valorizado pela versatilidade, muitas empresas optam por especialistas em cada camada para garantir maior profundidade técnica e qualidade no desenvolvimento.
+
+
+
+
+Aulas de Inglês
+Receba 70% de desconto na aula experimental com professores que cobram $ 7 ou mais.
+
+
+
+
+
+
+
+
+
+
+
+
+Tech
+Plus
+
+
+
+
+Cashback Inteligente
+É dinheiro de volta para você usar como quiser!  Pra começar, toma  R$ 5
+
+
+
+
+
+
+
+
+ 
+
+
+
+2026
+
+Sites Estáticos
+Conteúdo fixo, baixo custo, manutenção simples.
+
+Sites Dinâmicos
+Geram conteúdo conforme interação do usuário.
+
+Aplicações Web
+Sistemas complexos (e-commerce, redes sociais, CRMs).
+
+PWA (Progressive Web Apps)
+Apps híbridos com funcionalidades offline.
+
+Aplicações de Streaming
+Netflix, Amazon Prime Video, Disney+, Spotify.
+Tipos de Aplicação WEB
+HTML5: Estrutura, Semântica e Boas Práticas
+
+Introdução ao HTML
+Compreender estrutura e semântica
+Base conceitual
+Prática com HTML Puro
+Front-end HTML
+HTML5: Estrutura, Semântica e Boas Práticas
+
+Em 2004, alguns desenvolvedores da Apple, Mozilla e Opera formaram o WHATWG (Web Hypertext Application Technology Group) para criar o HTML5 e montaram a comunidade de manutenção e desenvolvimento de padrões web, incluindo DOM, Fetch e HTML.
+
+A versão do HTML 5 virou um living standard (padrão vivo), o que significa que está sempre evoluindo, dentro da mesma versão HTML5. 
+Evolução do HTML
+HTML 5
+Adeus plugins
+Aposentou o Flash e outros plugins.
+Trouxe <video>, <audio> e APIs gráficas e suporte nativo a SVG.
+
+Tags novas com propósito
+HTML5 introduziu tags semânticas que melhoram SEO e acessibilidade: <header>, <nav>, <article>, <section>, <footer>.Essas tags ajudam leitores de tela a entender melhor a estrutura da página.
+
+APIs embutidas
+HTML5 não é só HTML: veio junto com várias APIs integradas que antes precisava de bibliotecas externas:
+Geolocation API (pega localização do usuário)
+Web Storage (armazenamento local e de sessão)
+WebSockets (comunicação em tempo real)
+Offline Cache (funcionar mesmo sem internet, depois evoluiu para Service Workers)
+HTML5: Estrutura, Semântica e Boas Práticas
+
+HTML é como o esqueleto de um site, definindo a estrutura e o conteúdo que será exibido, como textos, imagens, links e tabelas;
+
+Ele utiliza tags (marcadores) e atributos que dizem ao navegador como mostrar cada parte do conteúdo;
+
+HTML não é uma linguagem de programação e sim uma linguagem de marcação usada para definir a estrutura do conteúdo.
+
+HTML está em toda parte e é a peça central da tríade web (HTML, CSS, JavaScript).
+
+Abre portas para frameworks como React, Angular, VUE e back-end.
+
+É um conhecimento valorizado em áreas fora da programação (marketing, design, SEO).
+O que é HTML (HyperText Markup Language)
+HTML5: Estrutura, Semântica e Boas Práticas
+Linguagem de marcação
+
+Site da Microsoft, em 1994
+Site da Google, em 1997, 1998
+HTML5: Estrutura, Semântica e Boas Práticas
+
+Cabeçalho <head>
+Head não é exibida no navegador da Web quando a página é carregada.
+Contém informações como title , links para <CSS>, links para favicons personalizados e outros metadados.
+Os metadados descrevem a página, mas não aparecem diretamente para o usuário. Auxiliam os navegadores, buscadores e redes sociais a entenderem melhor o conteúdo.
+Os metadados são identificados pela tag <meta> dentro do cabeçalho da página.  <meta name:”twitter:title" />
+Elementos/Tags são usados para estruturar e definir a semântica do conteúdo da página;
+
+<p> <div> <span> <h1> <h2> <h3>
+Atributos são usados dentro da tag de abertura para adicionar informações extras sobre o elemento;
+
+<a href="https://example.com">Website</a>
+<div id=”exemplo” class=”myDiv” />
+
+https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference
+Divisão do HTML
+Corpo <body>
+HTML5: Estrutura, Semântica e Boas Práticas
+Fazer em conjunto um html simples
+
+Estruturas
+As tags pareadas consistem em duas instruções:
+Uma tag de abertura (também chamada de tag inicial) que marca o início de um bloco;
+Uma tag de fechamento que é igual à tag de abertura, mas com uma barra adicional /
+<html>, <body>, <p>, <div>, <a>, <h1>
+
+Tags não pareadas, também conhecidas como tags fechadas, não têm conteúdo interno;
+Elas formam elementos gráficos ou símbolos em uma página. Assim, as tags HTML não pareadas possuem apenas uma tag de abertura.
+<img>, <br>, <hr>, <input>, <meta>
+O HTML não sofre de erros de sintaxe porque os navegadores o analisam permissivamente, o que significa que a página ainda é exibida mesmo se houver erros de sintaxe.
+HTML5: Estrutura, Semântica e Boas Práticas
+O elemento <html> (ou HTML root element) representa a raiz de um documento HTML.
+- Essa estrutura tem uma semelhança com a nossa anatomia;
+- Esperançosamente, essa analogia ajudará você a entender melhor o HTML.
+
+Tabelas são úteis para apresentar informações de maneira estruturada e organizada em páginas web
+ 
+<table>: Define a tabela em si.
+<tr>: Define uma linha na tabela.
+<td>: Define uma célula de dados dentro de uma linha.
+<th>: Define uma célula de cabeçalho, geralmente usada para títulos de colunas.
+<thead>: Adicionar cabeçalho
+<tbody>: Corpo
+<tfoot>: Rodapé
+
+Tabelas HTML devem ser usadas para dados tabulares (informações fáceis de trabalhar em linhas e colunas)
+Tabelas de layout reduzem a acessibilidade;
+As tabelas não são responsivas automaticamente;
+Tabelas produzem sopa de tags, difícil manter e entender;
+
+https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_table_test
+<table>
+HTML5: Estrutura, Semântica e Boas Práticas
+É possível adicionar cabeçalhos (<thead>), corpo (<tbody>) e rodapés (<tfoot>) à tabela para melhor organização do conteúdo. 
+
+Embora as tabelas possam ser usadas para layouts de página, essa prática é considerada obsoleta e o CSS moderno (como Flexbox e Grid) é mais recomendado para essa finalidade
+
+O <iframe> é útil para integrar conteúdo externo, mas deve ser usado com cautela.Cuidados:
+Pode afetar segurança (conteúdo de terceiros).
+Pode impactar performance.
+Nem todos os sites permitem ser carregados em <iframe> (usam X-Frame-Options).
+<iframe>
+Carregar outra página dentro da sua página.
+
+Usos comuns:
+Embed de vídeos do YouTube.
+Inclusão de mapas do Google Maps ou ferramentas externas (ex.: chat, formulários).
+
+https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_iframe
+<link>
+O link nos permitem vincular documentos a outros documentos ou recursos, vincular partes específicas de documentos ou disponibilizar aplicativos em um endereço da web.
+Uma URL pode apontar para arquivos HTML, arquivos de texto, imagens, documentos de texto, arquivos de vídeo e áudio ou qualquer outro conteúdo na web. Se o navegador não souber como exibir ou manipular o arquivo, ele perguntará se você deseja abri-lo (nesse caso, a tarefa de abrir ou manipular o arquivo é transferida para um aplicativo nativo adequado no dispositivo) ou baixá-lo (nesse caso, você pode tentar lidar com isso mais tarde).
+<link href="/css/style.css" rel="stylesheet" />
+
+
+
+URL absoluta = Endereço Completo.
+URL relativa = Caminho em relação ao local do arquivo.
+
+https://www.w3schools.com/tags/tag_a.asp
+HTML5: Estrutura, Semântica e Boas Práticas
+Cuidados:
+	•	Pode afetar segurança (conteúdo de terceiros).
+	•	Pode impactar performance.
+	•	Nem todos os sites permitem ser carregados em <iframe> (usam X-Frame-Options).
+
+Botões são usados para acionar funcionalidades, o que é útil ao criar controles de interface do usuário.
+
+Botões geralmente são criados usando <button>elementos HTML (às vezes, também são criados usando <input>elementos com type atributos definidos como button ou submit)
+
+<button type="button">Click Me!</button>
+
+É possível criar botões usando <input>
+<input type="submit">
+<input type="reset">
+<input type="button">.
+
+<form>
+<button>
+Os formulários são criados usando elementos como <form>, <label>, <input> e <select>
+
+Usado para enviar informações para um servidor de site;
+
+Existem vários tipos de entrada de campo de texto especializados:
+<input type="number">
+<input type="password">
+<input type="tel">
+
+Anatomia de um FORM:
+https://www.w3schools.com/tags/tag_form.asp
+
+HTML5: Estrutura, Semântica e Boas Práticas
+botão solitário não faz nada de útil sozinhoPara que ele faça algo útil, você precisará colocá-lo dentro de um formulário (que abordaremos mais adiante) ou adicionar JavaScript.
+
+<ol> e <ul>
+Listas Ordenadas e não Ordenadas
+
+HTML5: Estrutura, Semântica e Boas Práticas
+
+Criar a página principal – index.html
+Estrutura básica do HTML (<!DOCTYPE html>, <html>, <head>, <body>).
+Adicionar um título do site e charset utf-8
+Criar um menu de navegação (<nav>) com links para as outras páginas: Início, Sobre, Contato, Links.
+Colocar um detalhamento de boas-vindas com h1 
+Crie um parágrafo com a mensagem “Venha aprender mais sobre HTML e CSS e inclua um link para o site w3schools.com
+Inclua uma imagem simples ou um banner).
+Finalizar com um rodapé (<footer>) com seu nome e número da turma.
+
+Hands-on
+Exercício 1 - HTML Página Principal
+HTML5: Estrutura, Semântica e Boas Práticas
+Valide seu HTML
+https://www.freeformatter.com/html-validator.html
+Downloads
+
+Criar a página Sobre – sobre.html
+
+Criar cabeçalho e menu de navegação iguais ao da página inicial.
+
+Adicionar um parágrafo com uma breve descrição sobre você.
+
+Criar uma lista não ordenada (<ul>) com seus conhecimentos técnicos.
+
+Criar uma lista ordenada (<ol>) com suas metas/objetivos.
+
+Rodapé igual ao da página principal.
+Exercício 2
+HTML Página Sobre
+Exercício 3 HTML Página Contato
+Criar a página Contato - contato.html
+
+Cabeçalho e menu iguais.
+
+Adicionar um formulário (<form> POST) com:
+Nome (<input type="text">)
+Email (<input type="email">)
+Mensagem (<textarea>)
+Botão enviar (<button>)
+
+Inserir links para redes sociais que abrem em nova aba
+
+Rodapé igual às outras páginas.
+Exercício 4 HTML Página Links
+Criar a página Links - links.html
+
+Cabeçalho e menu iguais.
+
+Criar uma lista não ordenada (<ul>) de sites de estudo (ex.: Mozilla, W3Schools).
+
+Criar outra lista com links de sites pessoais favoritos (YouTube, Spotify, etc)
+
+Um iFrame com um vídeo do youtube
+
+Configurar alguns links para abrir na mesma aba e outros em nova aba.
+
+Rodapé igual às demais páginas.
+HTML5: Estrutura, Semântica e Boas Práticas
+há um valor de atributo não conforme ("carpet") 
+e um atributo não conforme ("texture")
+que não são permitidos por esta especificação:
+
+Utilizar 2 tags incomuns na página principal (index.html)
+Acesse MDN Elements (https://developer.mozilla.org/pt-BR/docs/Web/HTML/Reference/Elements).
+Escolha tags pouco usuais (existem mais de 100), por exemplo:
+<mark> → marca texto como se fosse um marca-texto.
+<abbr> → mostra a abreviação e, ao passar o mouse, aparece o significado.
+<meter> → representa uma medida dentro de um intervalo (tipo barra de progresso de nota).
+Inserir essas duas tags dentro da página index.html, em algum parágrafo ou seção.
+Compartilhar em aula qual utilizou e qual a função do elemento.
+Exercício 5
+HTML Surpresa
+Exercício 6
+Validar HTML
+Acesse um validador de HTML como:
+W3C HTML Validator (https://validator.w3.org/)
+WebAIM WAVE https://wave.webaim.org
+Realize a correção dos códigos dos problemas encontrados.
+Exercício 7
+Subir no GitHub
+Configurar sua conta no github
+Se inscrever na ClassRoom: https://classroom.github.com/a/BvgPlDCG
+Subir todo o HTML criado em aula
+HTML5: Estrutura, Semântica e Boas Práticas
+há um valor de atributo não conforme ("carpet") 
+e um atributo não conforme ("texture")
+que não são permitidos por esta especificação:
+
+Repository Access Issue
+You no longer have access to your assignment repository. Contact your teacher for support
+1 - Acessar: https://github.com/settings/organizations
+2 - Aceitar a nova organização.
+Problema em acessar o Classroom?
+
+HTML5: Estrutura, Semântica e Boas Práticas
+
+Competências Mínimas Exigidas / IA Impact
+
+Plus
+
+O Git é um VCS (Version Control System) sistema de controle de versão distribuído, gratuito e de código aberto, usado para rastrear alterações em qualquer projeto de desenvolvimento de software.
+
+
+📜 Versionamento: guarda todas as versões do código
+👥 Colaboração: permite que vários devs trabalhem no mesmo projeto sem sobrescrever código alheio
+🔀 Branches: testar ideias e criar novas funcionalidades sem quebrar o projeto principal
+♻️ Reversão: se algo der errado, é possível voltar a versões anteriores
+🌍 Trabalho distribuído: funciona offline e sincroniza depois
+🚀 Confiança: base para práticas modernas como CI/CD, DevOps e desenvolvimento ágil
+O que é o GIT e o que ele faz?
+
+Servidores Web, Hospedagem e Deploy
+
+Github Branches
+
+Branches principais:
+main (produção)
+develop (desenvolvimento)
+Servidores Web, Hospedagem e Deploy
+Branches auxiliares:
+feature/* → novas funcionalidades
+release/* → preparação para versão
+hotfix/* → correção rápida em produção
+
+
+
+
+Vantagem: organização e previsibilidade
+Desvantagem: mais burocracia, lento para integração contínua
+
+Criar/clonar um repositório (git init ou git clone)
+Editar arquivos do projeto
+Adicionar alterações (git add .)
+Salvar versão (git commit -m "mensagem")
+Boas descrições de commits mostram a sua organização e preocupação com quem irá avaliar a alteração.
+Enviar para servidor remoto (git push)
+Atualizar localmente (git pull)
+
+https://docs.github.com/pt/get-started/using-git/about-git
+Fluxo Básico de utilização do GIT
+Percentagens de Adoção (Dados de Março de 2025):
+Git: Aproximadamente 93,87%. 
+SVN (Subversion): Aproximadamente 5,18%. 
+CVS: Praticamente nulo, com uma percentagem mínima, sendo considerado uma ferramenta mais antiga e obsoleta em relação ao Git e ao SVN.
+https://git-scm.com/doc
+Por qual motivo devo estudar GIT?
+Servidores Web, Hospedagem e Deploy
+Principais projetos open-sources (públicos) já estão no github.ajudar a comunidade é algo positivo.
+
+Alguém já colaborou com algum projeto opensource? 
+
+Em um mundo onde a agilidade e a capacidade de adaptação são cruciais, o TBD é um modelo que permite entregas rápidas e seguras.
+
+Uso de uma única branch principal (main ou trunk)
+Devs fazem commits frequentes (diários ou várias vezes ao dia)
+Integração Contínua (CI/CD) 
+
+Vantagem: velocidade, menos conflitos, ideal para DevOps
+Desvantagem: exige disciplina e mais testes
+Dica: Usar o Git no modelo Trunk-Based-Development (TBD)
+Servidores Web, Hospedagem e Deploy
+é uma prática de engenharia de software 
+equipes mesclam pequenas atualizações com frequência no "tronco" (ou branch principal) do código.
+Nao tenho branches de longa duração
+
+Reduz complexidade
+
+Servidores Web, Hospedagem e Deploy
+Hospedagem Servidor Dedicado ($$$$)
+A hospedagem com servidor dedicado em 2026 é a solução de maior performance para projetos que exigem exclusividade total de hardware (CPU, RAM e armazenamento). Não divide recursos com outros usuários, garantindo máxima estabilidade e segurança
+HostGator: Oferece servidores dedicados com opções de gerenciamento e suporte em português.
+Hostinger: Focada em performance, disponibiliza planos de servidores com armazenamento NVMe rápido.
+Locaweb: Uma das maiores no Brasil, indicada para aplicações corporativas como ERPs e CRMs que exigem controle total do ambiente.
+AWS (Amazon EC2 Dedicated Hosts): Exemplo de Host Dedicado em nuvem, permitindo que o cliente utilize suas próprias licenças de software (como Windows Server) em um servidor físico exclusivo da Amazon.
+HostDime: Conhecida por oferecer servidores dedicados para workloads exigentes com suporte 24x7 e data centers próprios.
+Bluehost: Tradicional para grandes sites WordPress que necessitam de recursos de hardware dedicados.
+
+
+Servidores Web, Hospedagem e Deploy
+Hospedagem VPS ($$$)
+
+Hostinger: Conhecida pelo excelente custo-benefício e painel intuitivo para iniciantes.
+Hosker: Frequentemente citada como uma das melhores opções de 2026 em termos de núcleos de vCPU e RAM por preço acessível.
+Locaweb: Uma das maiores do país, oferecendo suporte local e servidores em território nacional.
+KingHost: Oferece planos a partir de valores competitivos com foco em performance SSD e proteção WAF. 2. Gigantes Globais (Nuvem e Escalabilidade)
+Indicados para desenvolvedores e projetos que precisam de infraestrutura robusta:
+DigitalOcean: Famosa por seus "Droplets" e facilidade de escala; oferece créditos iniciais para novos usuários.
+Google Cloud Platform: Oferece instâncias altamente personalizáveis e integração com todo o ecossistema Google.
+Vultr: Uma alternativa popular à DigitalOcean com data centers em diversas partes do mundo. 
+Hospedagem Virtual Private Server funciona como um meio-termo entre a hospedagem compartilhada (barata, mas limitada) e o servidor dedicado (potente, mas caro). Nela, você recebe uma fatia isolada de um servidor físico com recursos garantidos de CPU e RAM. 
+
+Servidores Web, Hospedagem e Deploy
+Hospedagem Cloud Server ($$ or $)
+
+O conceito de hospedagem em servidor cloud (ou nuvem) refere-se ao uso de uma infraestrutura virtualizada onde os recursos (como CPU, RAM e armazenamento) não dependem de uma única máquina física
+Amazon Web Services (AWS): Líder global, oferece o Amazon EC2 para servidores virtuais e centenas de outros serviços.
+
+Microsoft Azure: Ideal para empresas que já utilizam o ecossistema Microsoft (Windows, SQL Server).
+
+Google Cloud Platform (GCP): Referência em análise de dados e inteligência artificial. 
+
+DigitalOcean: Famosa por seus "Droplets" (servidores virtuais), muito usada por startups e pequenos desenvolvedores.
+A diferença é que VPS utiliza recursos de um único servidor físico dividido, enquanto Cloud Server baseia-se em múltiplos servidores interconectados (cluster)
+
+Servidores Web, Hospedagem e Deploy
+Hospedagem Compartilhada ($ or no cost)
+
+HostGator Brasil: Uma das mais populares, destacando-se pelo custo-benefício e facilidade para iniciantes.
+Locaweb: Pioneira no mercado nacional, oferece suporte local e planos adaptados para e-commerce.
+Hostinger Brasil: Focada em alta velocidade com servidores LiteSpeed e ferramentas de IA.
+KingHost: Conhecida pelo suporte especializado e foco em projetos em crescimento.
+Bluehost: Frequentemente recomendada pelo WordPress.org por sua integração nativa e facilidade de uso.
+SiteGround: Reconhecida pela segurança avançada e suporte ao cliente de alta qualidade.
+GoDaddy: Um dos maiores registradores de domínios do mundo, com planos de hospedagem que incluem painéis intuitivos.
+DreamHost: Destaca-se por oferecer backups diários automáticos gratuitos e garantias de uptime elevadas. 
+O conceito de hospedagem compartilhada baseia-se na divisão de um único servidor físico entre diversos usuários e sites. É como morar em um prédio de apartamentos: cada morador (site) tem seu próprio espaço privado, mas todos compartilham as mesmas áreas comuns e infraestrutura (recursos do servidor)
+
+Arquitetura de Datacenter moderno
+
+Servidores Web, Hospedagem e Deploy
+
+O que é DevOps e DevSecOps?
+DevOps é a união de desenvolvimento (Dev) e operações (Ops) através de uma cultura, práticas e ferramentas que automatizam e integram os processos de desenvolvimento de software e operações de TI.
+
+DevSecOps é a integração proativa da segurança (Sec) em todas as fases do ciclo de vida de desenvolvimento de software (DevOps).
+Foco:
+DevOps prioriza velocidade e eficiência. 
+
+DevSecOps prioriza velocidade com segurança proativa.
+Segurança: 
+No DevOps, a segurança muitas vezes é uma etapa final (reativa). 
+
+No DevSecOps, é contínua e automatizada (proativa).
+Responsabilidade: 
+DevSecOps transforma a segurança em uma responsabilidade de todos, não apenas da equipe de segurança
+Servidores Web, Hospedagem e Deploy
+Algumas pessoas podem pensar que DevOps é um conjunto de software e ferramentas que podem melhorar o desenvolvimento e a implantação.DevOps é mais do que isso. DevOps é uma cultura, é mais sobre a Equipe e a Organização.
+
+O que é CI/CD
+(Integração Contínua e Entrega/Implantação Contínuas)
+É um conjunto de práticas de DevOps que automatiza o desenvolvimento, testes e lançamento de software, aumentando a agilidade e a confiabilidade
+
+Servidores Web, Hospedagem e Deploy
+CI: Objetivo: Garantir que o código de múltiplos desenvolvedores seja integrado no repositório principal de forma contínua e segura.Benefício: Identificação e correção de erros de integração o mais cedo possível.
+
+Entrega/Implantação Contínua (CD)
+Objetivo: Levar o código estável e testado para um ambiente de produção (ou pronto para ser) de forma automatizada e rápida.Implantação Contínua (CDeployment): Deploy para produção totalmente automatizado (sem intervenção humana).
+
+O que é CI/CD
+(Integração Contínua e Entrega/Implantação Contínuas)
+Servidores Web, Hospedagem e Deploy
+Existem inúmeras ferramentas, e seu papel não é dominar todas, mas compreender o propósito e a responsabilidade de cada etapa do processo de CI/CD.
+
+O que é CI/CD
+(Integração Contínua e Entrega/Implantação Contínuas)
+Servidores Web, Hospedagem e Deploy
+Existem inúmeras ferramentas, e seu papel não é dominar todas, mas compreender o propósito e a responsabilidade de cada etapa do processo de CI/CD.
+
+Por que usar CI/CD ?
+(Integração Contínua e Entrega/Implantação Contínuas)
+Redução drástica de erros humanos: A automação de testes e deploys elimina falhas manuais comuns e garante que o código em produção siga padrões rigorosos.
+
+Time-to-Market acelerado: Reduz o ciclo de entrega de semanas ou meses para apenas minutos
+
+Detecção precoce de bugs: Problemas são identificados e corrigidos assim que surgem, antes que se tornem complexos e caros de resolver.
+
+Feedback contínuo: Permite que desenvolvedores vejam o progresso em tempo real e recebam feedback rápido dos usuários finais por meio de lançamentos frequentes.
+
+Melhoria na colaboração: Facilita o trabalho de múltiplos desenvolvedores no mesmo projeto, resolvendo conflitos de integração automaticamente e aumentando a produtividade da equipe.
+
+Segurança integrada (DevSecOps): Pipelines modernos permitem incluir verificações de segurança automáticas em cada etapa, mitigando vulnerabilidades antes que o software seja publicado.
+Servidores Web, Hospedagem e Deploy
+CI: Objetivo: Garantir que o código de múltiplos desenvolvedores seja integrado no repositório principal de forma contínua e segura.Benefício: Identificação e correção de erros de integração o mais cedo possível.
+
+Entrega/Implantação Contínua (CD)
+Objetivo: Levar o código estável e testado para um ambiente de produção (ou pronto para ser) de forma automatizada e rápida.Implantação Contínua (CDeployment): Deploy para produção totalmente automatizado (sem intervenção humana).
+
+Pipeline de CI/CD
+(Integração Contínua e Entrega/Implantação Contínuas)
+Servidores Web, Hospedagem e Deploy
+Processo em Aula (simplificado)
+CI: Objetivo: Garantir que o código de múltiplos desenvolvedores seja integrado no repositório principal de forma contínua e segura.Benefício: Identificação e correção de erros de integração o mais cedo possível.
+
+Entrega/Implantação Contínua (CD)
+Objetivo: Levar o código estável e testado para um ambiente de produção (ou pronto para ser) de forma automatizada e rápida.Implantação Contínua (CDeployment): Deploy para produção totalmente automatizado (sem intervenção humana).
+
+Servidores Web, Hospedagem e Deploy
+Cloud que será usada em Aula
+Hospedagem Cloud Gratuíta
+
+https://render.com/
+Hospedagem Cloud Server
+Acesse o site https://render.com/ e crie uma conta
+Selecione a opção Static Site
+Conecte com o GitHub (Forneça acesso ao Render)
+Selecione o Repositório contendo o HTML previamente construído na aula.
+Após o deploy, acesse o link, garanta que está funcional.
+Envie para o link por e-mail para o professor:
+Assunto: [Nome] - My First Website
+Conteúdo: Insira o link gerado para o site
+Email: dtagliari@uricer.edu.br
+Hands-on
+Exercício - Subir o HTML
+
+Interfaces de Usuário (UI)
+Design de interface é a composição e organização da parte visual de sites e aplicativos, usando elementos como botões, cores e menus para tornar o sistema bonito e fácil de usar.
+Design de Interfaces e Usabilidade na Web
+
+Wireframe
+Rascunho inicial da interface.
+Estrutura simples -> caixas, textos, posicionamento.
+Objetivo: validar a estrutura, fluxo e hierarquia de informações.
+
+Mockup
+Versão estática e visual do design.
+Inclui cores, tipografia e estilo final.
+Objetivo: mostrar como a interface deve parecer.
+
+Protótipo
+Versão interativa do design.
+Simula navegação, cliques e transições.
+Objetivo: testar experiência do usuário antes do código.
+Wireframe & Mockup & Protótipo
+Design de Interfaces e Usabilidade na Web
+Comunicação entre dev e UI/UX
+
+Quando usar wireframes
+As equipes de UX costumam usar wireframes nos estágios iniciais de design. Depois que um wireframe se torna um mockup, não há motivo para voltar atrás — a menos que você esteja redesenhando o produto!
+
+Quando usar mockups
+Designers de UX criarão mockups a partir de wireframes em preparação para a prototipagem de alta fidelidade. As equipes de UX também usam mockups para apresentar designs a stakeholders ou clientes.
+
+Quando usar protótipos
+Você encontrará protótipos ao longo do processo de design, da concepção à entrega final. Sem protótipos, os testes de usabilidade não existiriam. As equipes de UX criam protótipos de baixa e alta fidelidade em todas as etapas para testar, obter feedback, fazer alterações e repetir.
+
+Protótipos de baixa fidelidade raramente saem do departamento de UX, enquanto as equipes usam regularmente protótipos de alta fidelidade para testes ou apresentações para clientes e stakeholders. 
+
+Experiência de Usuário (UX)
+A experiência do usuário é o planejamento de como as pessoas usam um site ou aplicativo, garantindo que a navegação seja simples, eficiente e agradável.
+UX/UI Design, Acessibilidade e Frameworks
+
+Design de Interfaces e Usabilidade na Web
+🧑‍💻 Ferramentas de design de interface grátis
+Figma – Ferramenta online gratuita para criar layouts, interfaces e protótipos, com colaboração em tempo real entre alunos.
+Uizard – Plataforma online simples para fazer wireframes, mockups e protótipos direto no navegador.
+Lunacy – Editor de design completo e 100% gratuito para criar interfaces e protótipos em computadores (Windows, Mac e Linux).
+Miro (plano gratuito) – Quadro colaborativo online que permite fazer esboços, fluxos e ideias de interface.
+Mobirise – Construtor visual de sites (planos grátis disponíveis) que exporta páginas completas com HTML, CSS e JS prontos para usar.
+Silex – Editor visual gratuito tipo “arrastar e soltar” que permite criar páginas e ver/baixar o HTML/CSS/JS gerado.
+🧩 Outras opções úteis (também com planos grátis)
+Canva – Ferramenta fácil para layouts e elementos visuais (útil para ideias e protótipos simples).
+InVision (plano básico) – Prototipagem e testes interativos básicos em versão gratuita.
+Marvel (plano gratuito) – Cria protótipos e wireframes simples sem custo inicial.
+💡 Dica para alunos: Comece por Figma ou Uizard porque eles são fáceis de usar e focados exatamente em design de interfaces, sem precisar pagar no começo.
+Ferramentas principais de design
+
+Diferenças entre UI/UX
+UI é o que você vê, UX é como você usa e sente.
+UX/UI Design, Acessibilidade e Frameworks
+
+UX/UI Design, Acessibilidade e Frameworks
+
+UX/UI Design, Acessibilidade e Frameworks
+
+Acessibilidade
+A experiência do usuário é o planejamento de como as pessoas usam um site ou aplicativo, garantindo que a navegação seja simples, eficiente e agradável.
+UX/UI Design, Acessibilidade e Frameworks
+https://guia-wcag.com/
+
+Acessibilidade
+UX/UI Design, Acessibilidade e Frameworks
+https://guia-wcag.com/
+
+Acessibilidade
+UX/UI Design, Acessibilidade e Frameworks
+
+Produzir boas interfaces e experiências: transformar código em algo agradável e fácil de usar.
+
+Falar a linguagem do design: melhorar a comunicação com designers e reduzir retrabalho.
+
+Interpretar design: traduzir requisitos visuais e de experiência em implementação funcional.
+
+Trabalhar com ferramentas de design: Entender protótipos e wireframes no Figma, Sketch, Adobe XD e outros.
+
+Um desenvolvedor que domina UI/UX não apenas escreve código, mas entrega valor ao usuário final.
+Por que o desenvolvedor precisa saber de UI e UX?
+UX/UI Design, Acessibilidade e Frameworks
+Fundamentos de design de interface do usuário:
+Contraste.
+Tipografia.
+Hierarquia visual.
+Escala.
+Alinhamento.
+Uso de espaços em branco.
+Teoria das cores.
+Uso de imagens.
+
+UX/UI Design, Acessibilidade e Frameworks
+
+UX/UI Design, Acessibilidade e Frameworks
+Hands-on
+Exercícios 1 - Acessibilidade
+Acesse o site https://www.accessibilitychecker.org/
+
+Realize validações de sites como:
+https://www.terra.com.br
+https://www.uol.com.br
+https://pt.wikipedia.org
+https://www.uricer.edu.br
+Escolher um dos sites abaixo:
+
+https://arngren.net/
+https://userinyerface.com/
+https://www.theroommovie.com/
+https://www.art.yale.edu/
+https://www.craigslist.org/about/sites
+https://blinkee.com/
+
+Compreender os pontos de melhoria nos quesitos de UI/UX e acessibilidade, enviar por e-mail para o professor, simulado que o mesmo é o responsável pelo site e lhe pediu para analisar e entender o que pode ser diferente para ampliar o público.
+
+Cliente: dtagliari@uricer.edu.br
+
+Identificar no mínimo 5 pontos de melhoria com soluções coerentes.
+For Funny:
+https://heeeeeeeey.com/
+https://pointerpointer.com/
+https://neal.fun/stimulation-clicker/
+Hands-on
+Exercícios 2 - UX e Acessibilidade
+
+Plus
+Gamefication https://kahoot.it/
+Teste de Conhecimento. Quem será o vencedor?
+https://play.kahoot.it/v2/*?quizId=2b983348-c267-4b8b-8c16-372ff03176f3
+
+Criado em 1996 por Håkon Wium Lie para separar conteúdo e apresentação.
+Separação de responsabilidades: o HTML mantém a estrutura e o CSS cuida da aparência;
+Reduzir a repetição dos códigos
+Consistência visual em todo o site, manutenção.
+Trabalha junto com o HTML: 
+HTML cuida da estrutura;
+CSS cuida da aparência, cores, fontes, bordas;
+Antes do CSS, todo estilo era feito no próprio HTML usando atributos (bgcolor, <font>, alinhamento) -> difícil de manter.
+Resumindo:
+Reuso do estilo em várias páginas.
+Alterações rápidas em todo o site.
+Melhoria significativa na acessibilidade.
+Todos os navegadores suportam, mas às vezes de forma diferente (Importância de testes).
+Por que usar Cascading Style Sheets (CSS)?
+CSS3: Estilização, Layout e Responsividade
+
+https://developer.chrome.com/blog/inside-browser-part1?hl=pt-br
+Para começar, o arquivo HTML que contém o conteúdo da página, define a estrutura e é analisado pelo navegador.
+O navegador converte em uma estrutura semelhante a uma árvore, chamada de Document Object Model (DOM).
+O DOM representa a estrutura do documento HTML na memória do computador.
+Carregamento com CSS
+Processo de Renderização visual
+
+CSS3: Estilização, Layout e Responsividade
+Quando o processo do renderizador recebe uma mensagem de confirmação para uma navegação e começa a receber dados HTML, a linha de execução principal começa a analisar a string de texto (HTML) e a transformar em um Documento Object Model (DOM).
+
+CSS não é uma linguagem de programação
+
+CSS é baseada em regras. 
+
+Você especifica grupos de estilos e estes devem ser aplicados em determinados elementos ou grupos da sua página web.
+
+O W3C (World Wide Web Consortium) é a principal organização responsável por desenvolver e promover padrões para a World Wide Web, incluindo o CSS (Cascading Style Sheets).
+
+https://www.w3schools.com/css/
+
+Sintaxe do CSS
+CSS3: Estilização, Layout e Responsividade
+“Fiz só uma alteração no CSS, testa como ficou”
+O site:
+O W3C é a principal organização responsável por desenvolver e promover padrões para a World Wide Web, incluindo o CSS (Cascading Style Sheets).
+
+Sistema de Cores:
+
+Palavras-chave: background-color: red 
+
+Hexadecimal: background-color: #FF0000
+
+RGB: background-color: rgb( 252, 186, 3)
+
+Valores e Unidades
+CSS3: Estilização, Layout e Responsividade
+É crucial escolher a unidade correta para cada situação, utilizando unidades relativas para designs responsivos que se adaptam a diferentes tamanhos de ecrã. 
+Unidades Absolutas: Medidas fixas, independentes de outros elementos da página: 
+px: (pixels): A unidade mais comum para telas, representando um ponto na tela. 
+cm: (centímetros), mm (milímetros), in (polegadas), pc (picas), pt (pontos): Usadas principalmente para impressão, garantindo que uma medida seja exatamente o que se pretende, sem depender do dispositivo. 
+Unidades Relativas: São medidas que variam em relação a um valor de referência. 
+%: (porcentagem): A medida é uma fração da dimensão do elemento pai, sendo útil para definir larguras e alturas relativas. 
+vw: (viewport width): 1% da largura da viewport (a área visível do navegador). 
+vh: (viewport height): 1% da altura da viewport. 
+vmin e vmax: 1% da menor (vmin) ou maior (vmax) dimensão da viewport. 
+em: Refere-se ao tamanho da fonte do elemento pai acima dele. O 1em é igual ao font-size desse elemento. 
+rem: É uma unidade de medida relativa que define o tamanho de um elemento com base no tamanho da fonte do elemento raiz (root) da página
+
+A propriedade CSS <font-family> especifica a fonte de um elemento.
+Aceita várias fontes, contem sistema como um “fallback”, se o navegador não suportar a primeira fonte, ele tentará a próxima.
+Como alternativas, use fontes seguras suportadas por navegadores.
+
+Use a propriedade abreviada de fonte para definir várias propriedades de fonte em uma declaração. 
+Ex.:  font: italic bold 16px Arial, sans-serif;
+
+É possível usar fontes externas, como a do google:
+https://fonts.google.com/
+O Google Fonts é gratuito e oferece mais de 1.000 fontes para você escolher
+
+
+
+
+
+
+
+ Para importar dentro do arquivo CSS use:
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+
+Webfonts
+CSS3: Estilização, Layout e Responsividade
+Use a propriedade abreviada de fonte para definir várias propriedades de fonte em uma declaração:  font: italic bold 16px Arial, sans-serif;
+
+Problema: Fontes fixas ficam pequenas em telas grandes e enormes em telas pequenas.
+Solução: Ajustar o tamanho da fonte automaticamente conforme a largura da tela.
+Como: Usar funções clamp(min, preferido, max) no CSS. 
+
+Tipografia Fluída
+CSS3: Estilização, Layout e Responsividade
+background-color: cor de fundo do elemento.
+background-image: url() e gradientes (linear-gradient, radial-gradient).
+background-repeat: repeat | no-repeat | repeat-x | repeat-y.
+background-position: center | top | left … ou valores (ex.: 20px 40px).
+background-size: cover | contain | <largura> <altura>.
+background-attachment: scroll | fixed (efeito “parallax-lite”).
+Múltiplos backgrounds: separar por vírgulas (camadas).
+Shorthand: background: color image position / size repeat attachment;
+border: border-width | style | color (ex.: 1px solid #ccc).
+border-radius: cantos arredondados e formas (círculos, pílulas).
+outline: contorno fora da caixa (não desloca layout).
+box-shadow: profundidade/elevação.
+background-clip: border-box | padding-box | content-box.
+Fundos (backgrounds) e Bordas
+https://codepen.io/dtagliari-uri/pen/ZYpzJBb
+https://codepen.io/dtagliari-uri/pen/dPpbzOZ
+O clamp() pode ser usado para definir margens, padding, larguras e alturas de caixas
+Use a propriedade abreviada de fonte para definir várias propriedades de fonte em uma declaração:  font: italic bold 16px Arial, sans-serif;
+
+Padrão usado para identificar e aplicar estilos a elementos específicos de uma página web.
+
+Se existirem mais de um item que utiliza o mesmo CSS, os seletores individuais podem ser combinados em uma lista de seletores para que a regra seja aplicada a todos os seletores individuais.
+<p id=”pgf” class=”pgf”>Parágrafo</p> 
+
+/* Aplica cor azul no texto de todos parágrafos*/
+p {
+  color: blue;
+}
+
+/* Seleciona o elemento com id="paragrafo" */
+#pgf {
+  background-color: #f0f0f0; 
+}
+
+ /* Aplica negrito nos elementos com a classe "paragrafo" */
+.pgf {
+  font-weight: bold;
+}
+Seletores CSS
+CSS3: Estilização, Layout e Responsividade
+Por exemplo, se eu tiver o mesmo CSS para um h1 e também para uma classe de .special, poderia escrever isso como duas regras separadas.
+
+Permitem combinar seletores para especificar relações entre elementos.
+Descendente (espaço) → div p { …. } 
+Todos <p> dentro de <div>
+Filho direto (>) → div > p { .... } 
+Apenas filhos imediatos.
+Irmão adjacente (+) → h1 + p { .... } 
+Primeiro <p> logo após <h1>
+Irmãos gerais (~) → h1 ~ p { …. } 
+Todos os <p> irmãos após <h1>
+Seletores Combinados
+CSS3: Estilização, Layout e Responsividade
+/* 2 - Ajuste de fonte proporcional */
+div p {	text-align: center;
+	color: blue;
+}
+
+/* 3 - Filho direto */
+div > p {
+	background-color: lightgray;
+}
+
+/* 4 - Primeiro parágrafo após h1 */
+h1 + p {
+	color: red;
+	font-weight: bold;
+}
+
+/* 5 - Todos os irmãos após h1 */
+h1 ~ p {
+	border: 1px solid black;
+	margin: 5px auto;
+}
+/* 1 - Centralizar a div com largura dinâmica */
+div {
+	margin: 20px auto;
+	padding: 10px;
+	border: 2px solid black;
+}
+
+CSS Calc
+Função que permite calcular valores diretamente no CSS;
+Aceita operações matemáticas: +, -, *, /;
+Útil para criar layouts responsivos e precisos;
+Pode misturar unidades diferentes: %, px, em, rem, vh, etc;
+Espaços entre operadores são obrigatórios (calc(100% - 50px)).
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/calc
+CSS3: Estilização, Layout e Responsividade
+/* Cresce conforme a tela */
+div {
+	width: calc(100% - 40px); 
+}
+
+/* Cresce conforme a tela */
+div p {
+	font-size: calc(10px + 0.5vw); 
+}
+
+/* Mistura altura da tela com pixels */
+div > p {
+	padding: calc(5px + 1vh); 
+}
+
+/* Exemplos simples de subtração */
+h1 + p {
+	margin-top: calc(20px - 5px); 
+}
+h1 ~ p {
+	width: calc(50% - 10px); 
+}
+
+Uma pseudo-classe CSS é uma palavra-chave adicionada a seletores que especifica um estado especial do elemento.
+
+.paragrafo:hover { color: red; }  /* passar o mouse */
+
+.lista li:first-child { color: green; }   /* primeiro item da lista */
+.lista li:last-child { color: blue; }   /* último item da lista */
+.lista li:nth-child(2) { background: yellow; }    /* segundo item */
+.lista li:nth-child(odd) { background: #ddd; }   /* itens ímpares  */
+.lista li:nth-child(even) { background: #bbb; }   /* itens pares */
+
+input:focus { border: 2px solid red; }   /* input está selecionado */
+input:checked + label { color: green; }   /* label ao lado de checkbox */
+input:disabled { background: #ccc; }   /* input desabilitado */
+p:not(.paragrafo) { color: gray; }   /* todos que NÃO têm classe */
+
+a:link { color: blue; }   /* link ainda não visitado */
+a:visited { color: purple; }   /* link já visitado */
+a:hover { color: orange; }   /* quando passa o mouse no link */
+
+
+Seletores Pseudo-Classes
+CSS3: Estilização, Layout e Responsividade
+<p class="paragrafo">Parágrafo 1</p>
+<p class="paragrafo">Parágrafo 2</p>
+<p>Parágrafo sem classe</p>
+
+<h3>Lista</h3>
+<ul class="lista">
+	<li>Item 1</li>
+	<li>Item 2</li>
+	<li>Item 3</li>
+	<li>Item 4</li>
+</ul>
+
+<h3>Inputs</h3>
+<input type="text" placeholder="Clique aqui">
+
+<input type="checkbox" id="check1">
+<label for="check1">Marcar opção</label>
+<br><br>
+
+<input type="text" value="Desabilitado" disabled>
+<h3>Links</h3>
+<a href="#">Link de exemplo</a>
+https://html.spec.whatwg.org/multipage/semantics-other.html#pseudo-classes
+exemplo, :hover pode ser usado para alterar a cor de um botão quando o usuário passar o cursor sobre ele.
+
+Seletores Por Atributo
+Os seletores de atributo no CSS permitem estilizar elementos HTML com base nos atributos e seus valores que eles possuem, utilizando uma sintaxe de colchetes [ ]
+
+img[alt] { border: 2px solid green; } 
+/* imagens que possuem atributo alt */
+
+a[href="#"] { color: red; } 
+/* links que apontam exatamente para "#" */
+
+a[href^="https"] { color: blue; } 
+/* links que começam com "https" */
+
+div[id*="teste"] { background: yellow; } 
+/* divs cujo id contém a palavra "teste" */
+
+[data-tags~="internacional"] { border: 2px solid purple; } 
+/* elementos com "internacional" dentro de uma lista de valores */
+
+
+CSS3: Estilização, Layout e Responsividade
+<h2>Imagens</h2>
+<img src="uri.jpg" alt="Descrição da imagem">
+<img src="uri.png">
+
+<h2>Links</h2>
+<a href="#">Link com #</a><br>
+<a href="https://google.com">Link HTTPS</a><br>
+<a href="http://site.com">Link HTTP</a>
+
+<h2>Divs</h2>
+<div id="teste1">Div com teste</div>
+<div id="meuteste123">Outra div com teste</div>
+<div id="exemplo">Div normal</div>
+
+<h2>Data Tags</h2>
+<p data-tags="nacional internacional">Notícia internacional</p>
+<p data-tags="esporte local">Notícia local</p>
+exemplo, :hover pode ser usado para alterar a cor de um botão quando o usuário passar o cursor sobre ele.
+
+CSS Overflow
+A propriedade CSS overflow controla como o conteúdo excessivo de um elemento é tratado.
+CSS3: Estilização, Layout e Responsividade
+Inline: no próprio elemento (style=“color:red").
+Interno: dentro do elemento <style> no HTML.
+Externo: em arquivo .css linkado no <head> → mais usado.<link rel="stylesheet" href="styles/style.css" />
+Analisar o código e validar no W3C (https://jigsaw.w3.org/css-validator/)
+
+Se os recursos de CSS externos forem pequenos, é possível inseri-los diretamente no documento HTML, um processo denominado inserção in-line. A inserção in-line de pequenos CSS permite ao navegador prosseguir com a renderização da página.
+Adicionando CSS na página
+Sempre prefira overflow: auto; em áreas de conteúdo dinâmico (ex.: comentários, feeds, cards).
+👉 Assim, o navegador só adiciona scrollbars quando realmente necessário, evitando poluição visual e mantendo o layout mais limpo.
+
+As media queries são o principal pilar do design responsivo, garantindo que o conteúdo seja legível e utilizável em qualquer dispositivo
+
+Recurso do CSS que permite aplicar estilos diferentes a uma página da web com base nas características do dispositivo de exibição, adaptando conteúdo a computadores, tablets e smartphones. 
+
+https://developer.mozilla.org/pt-BR/docs/Web/CSS/Guides/Media_queries/Using
+CSS Media Query
+CSS3: Estilização, Layout e Responsividade
+Design Responsivo:
+As media queries são o principal pilar do design responsivo, garantindo que o conteúdo seja legível e utilizável em qualquer dispositivoManutenção Simplificada: Em vez de criar versões separadas css, mantém um único código CSS adaptável, facilitando desenvolvimento. 
+Experiência do Usuário
+
+DevTools é essencial para qualquer desenvolvedor, seja de front-end ou back-end, é como ter um raio-x do código, permitindo entender o que o navegador realmente interpreta.
+Por que é importante dominar?
+
+Diagnosticar problemas rápidamente (cascata, herança, especificidade).
+Visualizar regras aplicadas e sobrescritas sem adivinhar no código.
+Testar mudanças ao vivo antes de salvar o arquivo.
+Analisar responsividade (simulação de diferentes telas e devices).
+Monitorar performance
+Trabalhar em conjunto com o time de UI/UX → comunicação direta e clara.
+CSS Debugging com DevTools
+CSS3: Estilização, Layout e Responsividade
+dominar o DevTools é essencial na vida do dev front-end → é como ter um raio-x do código, permitindo entender o que o navegador realmente interpreta.
+
+	•	Diagnosticar problemas rapidamente (cascata, herança, especificidade).
+	•	Visualizar regras aplicadas e sobrescritas sem adivinhar no código.
+	•	Testar mudanças ao vivo antes de salvar o arquivo.
+	•	Analisar responsividade (simulação de diferentes telas e devices).
+	•	Monitorar performance (render, repaint, animações).
+
+Tudo em CSS tem uma caixa ao redor, as 4 principais partes do modelo de caixa são:
+
+Conteúdo (Content): É a área central da caixa, onde o texto, imagens ou outros elementos visíveis são exibidos. As propriedades width e height controlam as dimensões desta área.
+
+Preenchimento (Padding): O espaço que fica entre o conteúdo e a borda da caixa, criando um afastamento interno. É controlado pela propriedade padding.
+
+Borda (Border): Uma linha que circunda a área de conteúdo e o preenchimento, delimitando a caixa. Controlada pelas propriedades border.
+
+Margem (Margin): A área mais externa da caixa, que define o espaço entre a caixa do elemento e os outros elementos na página. É controlada pela propriedade margin.
+Modelo de Caixa (BoxModel) + Grid
+CSS3: Estilização, Layout e Responsividade
+
+Modelo de Caixa (BoxModel) + Grid
+CSS3: Estilização, Layout e Responsividade
+Exemplos de disposição de GRID
+https://gridbyexample.com/examples/
+<div class="wrapper">
+<div class="box a">A</div>
+<div class="box b">B</div>
+<div class="box c">C</div>
+<div class="box d">D</div>
+<div class="box e">E</div>
+<div class="box f">F</div>
+</div>
+body {
+  margin: 40px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-gap: 10px;
+  background-color: #fff;
+  color: #444;
+}
+.box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
+
+Modelo de Caixa (BoxModel) + Grid
+CSS3: Estilização, Layout e Responsividade
+Montar o layout abaixo utilizando Grid e transformá-lo em um formato Responsivo.
+
+Enviar o arquivo html + css para dtagliari@uricer.edu.br
+body {
+   margin: 10%;
+}
+
+.wrapper {
+   display: grid;
+   grid-template-columns: 10% 10% 10% 10% 10%;
+   grid-gap: 10vw;
+   background-color: gray;
+   color: black;
+}
+
+.box {
+   margin: 10%;
+   background-color: white;
+   border-radius: 5px;
+   padding: 10%;
+   color: black;
+   font-size: 150%;
+}
+
+
+<div class="wrapper">
+<div class="box a">A</div>
+<div class="box b">B</div>
+<div class="box c">C</div>
+<div class="box d">D</div>
+<div class="box e">E</div>
+<div class="box f">F</div>
+<div class="box f">G</div>
+<div class="box f">I</div>
+<div class="box f">H</div>
+<div class="box f">J</div>
+</div>
+
+
+É ideal para criar layouts responsivos e flexíveis, ajustando os itens conforme a tela ou o container se redimensiona.
+
+O Flexbox consiste em um contêiner flexível e itens flexíveis;
+
+Um contêiner flexível é um elemento que envolve os itens flexíveis;
+
+Os itens flexíveis são seus filhos e podem se alinhar em uma linha ou coluna;
+
+O Flexbox é um módulo do CSS que facilita o layout de elementos em uma página web;
+
+Permite que você alinhe e distribua espaço entre itens em um container, ajustando automaticamente seu tamanho e posição para se adequar ao espaço disponível;
+Flexbox no CSS
+https://flexboxfroggy.com/
+Concluir as 24 fases do Jogo
+Atividade:
+CSS3: Estilização, Layout e Responsividade
+
+É um programa que permite você gerar CSS a partir de uma sintaxe única desse pré-processador, e ao final para o navegador geram CSS puro.
+
+Por que usar?
+Sintaxe mais poderosa (aninhamento, variáveis, herança).
+Mixins: blocos de código reutilizáveis.
+Organização: código mais legível e fácil de manter.
+
+Como usar?
+Precisa de um compilador no ambiente de desenvolvimento.
+Gera um arquivo CSS pronto para o navegador.
+Pré-processadores CSS
+SASS e SCSS
+SASS - Syntactically Awesome Stylesheets
+Criado em 2006, Introduz funcionalidades avançadas, como variáveis, aninhamento, mixins e herança, facilitando a escrita de código mais modular e reutilizável.
+SCSS - Sassy Cascading Style Sheets
+Criado em 2010.Usa mesma lógica do SASS, mas com sintaxe igual ao CSS tradicional (com chaves {} e ;).Totalmente compatível com arquivos .css (pode colar CSS direto e funciona).
+CSS3: Estilização, Layout e Responsividade
+
+Canal Net Ninja
+https://youtu.be/_kqN4hl9bGc
+SASS Tutorial
+Para resolver problemas em:
+Projetos grandes que ficam cheios de valores repetidos (cores, fontes, espaçamentos).
+Alterar uma cor/tamanho exige mudar em vários lugares.
+Difícil manter consistência visual.
+Tornar o CSS mais organizado e limpo.
+Tema de Casa
+Assistir aos vídeos para compreender as regras e funcionamento do SASS
+https://codepen.io/dtagliari-uri/pen/yyaLoqy
+CSS3: Estilização, Layout e Responsividade
+SASS Syntactically Awesome Stylesheets (ou Folhas de estilo sintaticamente incríveis, em português)Sass foi criado para adicionar recursos de linguagens de programação ao CSS, como variáveis, funções e aninhamento. O objetivo era simplificar e otimizar o processo de estilização de páginas web. 2010, os criadores de Sass perceberam que a sintaxe indentada poderia ser menos amigável para quem é acostumado com CSS. Por isso, desenvolveram a sintaxe SCSS, parecida com o CSS, sendo um "superconjunto" do mesmo, o que significa que todo código CSS válido é também SCSS válido. 
+Independentemente da sintaxe escolhida, ambas as opções oferecem as mesmas funcionalidades de pré-processamento, como variáveis, mixins e aninhamento de seletores. A escolha entre Sass e SCSS é, portanto, uma questão de preferência pessoal. 
+
+É possível usar para definir variáveis globais, acessíveis em qualquer parte do documento;
+Criar Custom Properties (--nome) para centralizar valores.
+Reutilizar com var(--nome) em qualquer lugar do CSS.
+Elas são declaradas com -- no início do nome, geralmente no pseudo-classe :root para serem globais
+CSS vs SASS
+Variáveis no CSS
+(Custom Properties)
+CSS3: Estilização, Layout e Responsividade
+Elas são declaradas com -- no início do nome, geralmente no pseudo-classe :root para serem globais
+Desafios
+	•	Nem todos os times têm disciplina para manter a organização.
+	•	Pode gerar excesso de variáveis mal nomeadas.
+	•	Requer prática para definir uma boa estrutura de design tokens.
+
+CSS3: Estilização, Layout e Responsividade
+Ajustar a sua página publicada para ser responsiva
+
+Mude as cores da página
+Utilize Seletores por Pseudo-Classes e Combinados
+Tamanhos dos campos.
+Inclua estilização de :hover no menu
+Inclua estilização de :focus no formulário 
+Ajuste as disposições dos elementos.
+
+Enviar um print dos 3 tipos de páginas para dtagliari@uricer.edu.br
+
+https://www.w3schools.com/css/css_rwd_intro.asp
+Hands-on
+Media Query
+/* Celular */
+@media screen and (max-width: 767px) {
+	body {
+		background-color: green;
+	}
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+	body {
+		background-color: yellow;
+	}
+}
+
+/* Desktop */
+@media screen and (min-width: 1024px) {
+	body {
+		background-color: red;
+	}
+}
+Design Responsivo:
+As media queries são o principal pilar do design responsivo, garantindo que o conteúdo seja legível e utilizável em qualquer dispositivoManutenção Simplificada: Em vez de criar versões separadas css, mantém um único código CSS adaptável, facilitando desenvolvimento. 
+Experiência do Usuário
+
+Abra o DevTools (F12 ou botão direito - Inspecionar);
+
+Base de Consulta: https://www.w3schools.com/css/
+
+Galeria de Artes: 
+https://netizen.org/classes/netart1/css-art-gallery/index.html
+
+Site de Batalhas CSS: 
+https://cssbattle.dev/
+Exercícios - CSS
+CSS3: Estilização, Layout e Responsividade
+Criar página de produto (contexto de e-commerce)
+Definir nome, descrição e botão de compra
+Inserir galeria com mínimo de 4 imagens (grid + hover)
+Criar lista de características (usar :nth-child)
+Adicionar descrição com overflow
+Construir tabela de especificações (usar calc())
+Inserir ícones de redes sociais (com :hover)
+Aplicar seletores: p, .classe, #id
+Utilizar pseudo-classes (:hover, :nth-child)
+Utilizar pseudo-elementos (::before, ::after)
+Alterar cores dos elementos
+Alterar fonte (família tipográfica)
+Alterar tamanho do texto
+Centralizar conteúdo da página
+Criar estrutura visual coerente (layout organizado)
+Manter consistência entre imagens, textos e dados
+Evitar informações irreais ou misturadas
+Organizar o CSS (legibilidade e separação lógica)
+Melhorar responsividade com CSS
+(Extra) Adicionar efeitos visuais (transições e animações simples)
+(Extra) Deixar a página com aparência de loja real
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Produto - Smartwatch X</title>
+
+  <style>
+    /* Seletor de elemento */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    /* Seletor por classe */
+    .container {
+      width: 80%;
+      margin: auto;
+    }
+
+    /* Seletor por ID */
+    #titulo {
+      color: #333;
+      font-size: 32px;
+    }
+
+    /* Pseudo-classe */
+    button:hover {
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* nth-child */
+    li:nth-child(odd) {
+      background-color: #ddd;
+    }
+
+    /* Pseudo-elemento */
+    h2::before {
+      content: "🔥 ";
+    }
+
+    h2::after {
+      content: " 🔥";
+    }
+
+    /* Texto */
+    p {
+      font-size: 18px;
+      color: #555;
+    }
+
+    /* Overflow */
+    .descricao {
+      height: 80px;
+      overflow: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color: white;
+    }
+
+    /* Tabela */
+    table {
+      width: calc(100% - 40px); /* classe calculada */
+      margin: auto;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    th {
+      background-color: #333;
+      color: white;
+    }
+
+    /* Redes sociais */
+    .social i {
+      font-size: 24px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .social i:hover {
+      color: blue;
+    }
+
+  </style>
+
+  <!-- Ícones -->
+  <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1 id="titulo">Smartwatch X</h1>
+
+    <p>O melhor smartwatch para acompanhar sua rotina!</p>
+
+    <button>Comprar Agora</button>
+
+    <h2>Características</h2>
+
+    <ul>
+      <li>Tela AMOLED</li>
+      <li>Monitor cardíaco</li>
+      <li>Bateria de longa duração</li>
+      <li>Resistente à água</li>
+    </ul>
+
+    <h2>Descrição</h2>
+
+    <div class="descricao">
+      Este smartwatch possui diversas funcionalidades incríveis para o seu dia a dia.
+      Com design moderno e leve, ele acompanha suas atividades físicas e notificações
+      em tempo real. Ideal para quem busca praticidade e tecnologia.
+    </div>
+
+    <h2>Especificações</h2>
+
+    <table>
+      <tr>
+        <th>Item</th>
+        <th>Detalhe</th>
+      </tr>
+      <tr>
+        <td>Tela</td>
+        <td>1.5 Polegadas</td>
+      </tr>
+      <tr>
+        <td>Bateria</td>
+        <td>7 dias</td>
+      </tr>
+      <tr>
+        <td>Conectividade</td>
+        <td>Bluetooth</td>
+      </tr>
+    </table>
+
+    <h2>Redes Sociais</h2>
+
+    <div class="social">
+      <i>📘</i>
+      <i>📸</i>
+      <i>🐦</i>
+    </div>
+
+  </div>
+
+</body>
+</html>
+
+
+Programação WEB
+Estruturação de Aplicações WEB
+
+JavaScript: Sintaxe Básica e Manipulação do DOM
+Javascript
+
+História do Javascript
+JavaScript: Sintaxe Básica e Manipulação do DOM
+https://www.youtube.com/watch?v=QM83eQ7Kpbg
+Resumo: o problema era a falta de uma camada de programação leve e acessível no navegador, para complementar o HTML e CSS, sem exigir que todo mundo fosse programador Java ou C++.nos 90, o Java foi pensado para rodar dentro das páginas HTML por meio dos Java Applets.escrevia um programa em Java.
+	•	Compilava para bytecode (.class).
+	•	No HTML, usava-se a tag <applet>
+	Compatibilidade: dependia de plugins e versões diferentes da JVM.
+
+Desde seus primeiros dias, o JavaScript foi alvo de críticas intensas. Parte direcionada a decisões de design fundamentais, como o uso de tipagem dinâmica, discordâncias fundamentais sobre sua integração com HTML ou preocupações com suas vulnerabilidades de segurança do navegador.
+Robert Cailliau [Wikinews 2007] called JavaScript “the most horrible kluge in the history of computing” and said, “I know only one programming language worse than C and that is Javascript [sic].” 
+Bret Bos [2005], at a W3C workshop, characterized JavaScript as “the worst invention ever.”
+
+
+
+
+Críticas ao Javascript
+The history of JavaScript:https://www.amazon.com/History-JavaScript-Gunner-Technology/dp/1694837351
+JavaScript: Sintaxe Básica e Manipulação do DOM
+kluge = gambiarra"a gambiarra mais horrível da história da computação""a única linguagem de programação pior que C”
+W3C: "a pior invenção de todos os tempos”
+
+Após 1990 com os protocolos web, HTML, CSS, o HTML estático, servia só para estruturar conteúdo.
+
+Java era visto como a “linguagem séria” da web, mas difícil de aprender, ciclo de desenvolvimento pesado e não era ideal para pequenas interações.
+Faltava uma linguagem simples, embutida no navegador, que permitisse coisas como:
+Validar formulários no Client antes de enviar para o Server.
+Criar pequenas animações ou mensagens interativas.
+Manipular elementos da página sem recarregar tudo.
+
+A Netscape em 1995 buscaram resolver outra situação: Criar web interativa e dinâmica, sem depender de Java (que era pesado e complexo). Brendan Eich, engenheiro da Netscape, recebeu o desafio:
+Criar uma linguagem de script para o navegador Netscape Navigator.
+Aplicações pequenas, voltado a validar formulários, criar pequenas interações e dinamizar páginas;
+10 dias para criar a primeira versão;
+Mocha → LiveScript → JavaScript
+
+Resumo: o problema era a falta de uma camada de programação leve e acessível no navegador, para complementar o HTML e CSS, sem exigir que todo mundo fosse programador Java ou C++.
+
+História do Javascript
+JavaScript: Sintaxe Básica e Manipulação do DOM
+Resumo: o problema era a falta de uma camada de programação leve e acessível no navegador, para complementar o HTML e CSS, sem exigir que todo mundo fosse programador Java ou C++.nos 90, o Java foi pensado para rodar dentro das páginas HTML por meio dos Java Applets.escrevia um programa em Java.
+	•	Compilava para bytecode (.class).
+	•	No HTML, usava-se a tag <applet>
+	Compatibilidade: dependia de plugins e versões diferentes da JVM.
+
+….
+
+1996 - JScript - Microsoft
+A Microsoft cria o JScript, uma implementação própria do JavaScript para o Internet Explorer 3. 
+Isso deu início à guerra dos navegadores, resultando em problemas de compatibilidade.
+
+1997 - Javascript parte do ECMA
+O problema?Cada um fazia do seu jeito, ou seja, o mesmo código rodava de um jeito na Netscape e quebrava no IE.
+Nesse ano netscape decidiu levar a linguagem para a ECMA (European Computer Manufacturers Association), espécie de “cartório internacional de tecnologia”, para registrar oficialmente o padrão.
+Nasceu o ECMAScript 1 (ES1), a primeira versão padronizada do JavaScript.
+
+1999 - ECMAScript 3
+Primeira versão realmente usada em massa. Trouxe expressões regulares, try/catch para erros, manipulação de strings melhorada. Foi a base do JS por quase 10 anos!
+História do Javascript
+2000–2005 – A treta
+Tentaram lançar o ES4, que seria gigante (classes, módulos, generics,…).
+Microsoft e Netscape/Adobe discordaram e ES4 foi cancelado;
+Resultado: a comunidade ficou anos só com o ES3.
+
+2005 - AJAX e Javascript
+O JavaScript ganha popularidade com o uso do AJAX(Asynchronous JavaScript e XML) em aplicações como Gmail e Google Maps. 
+Isso marca a transição para uma web mais dinâmica e interativa.	
+O JS passa de “linguagem de brinquedo” para motor da web moderna.
+
+2009 - ECMAScript 5
+Surge com JSON nativo, strict mode, novos métodos de array. Deu estabilidade e virou referência até a chegada do ES6.
+JavaScript: Sintaxe Básica e Manipulação do DOM
+
+2010 - AngularJS
+À medida que o JavaScript evolui e os desenvolvedores buscam maneiras mais novas, rápidas e fáceis de construir servidores e aplicações mais complexas, dois frameworks full stack são lançados: AngularJS e Backbone. 
+
+Eles se tornam populares por diferentes razões: o Angular era declarativo e opinativo; enquanto o Backbone era imperativo e minimalista. Isso também marca vagamente o início do moderno Single Page Application ("SPA").
+
+2012 - Webpack
+O Webpack permitiu que os desenvolvedores importassem qualquer coisa para o lado do cliente e, eventualmente, se tornou o principal sistema de construção por trás do React, Angular, Vue e outros.
+
+
+
+História do Javascript
+2013 - React
+O React, criado pelo Facebook, foi introduzido pela primeira vez no feed de notícias do Facebook em 2011 e disponibilizado ao público em maio de 2013 na JSConf US. 
+A abordagem baseada em componentes do React para a construção de interfaces consolidou os padrões de IU declarativos usados em aplicativos hoje.
+
+2015 – ECMAScript 6 (ES2015)
+O grande divisor de águas;
+Introduziu let, const, arrow functions, classes, módulos, promises, template strings; É o JavaScript “moderno” que usamos hoje.
+
+2016 - Next.js
+Next.js começou como um pequeno framework para aplicações web JavaScript universais renderizadas em servidor, desenvolvido em React, Webpack e Babel. 
+O Next.js abriu caminho para aplicações React full-stack, simplificando a renderização do lado do servidor com React.
+JavaScript: Sintaxe Básica e Manipulação do DOM
+
+O que dá para fazer com Javascript
+JavaScript: Sintaxe Básica e Manipulação do DOM
+Manipular o DOM (Document Object Model) - 
+Criar, alterar ou remover elementos.
+Responder a eventos como:
+Clique, teclado, mouse, etc.
+Executar lógicas como: 
+Cálculos, condições, loops.
+Comunicar com servidores através de AJAX/Fetch
+Buscar Dados
+Submeter formulários
+Rodar em diversos lugares
+Em servidores (back) através de NodeJS
+Em navegadores (front)
+Resumo: o problema era a falta de uma camada de programação leve e acessível no navegador, para complementar o HTML e CSS, sem exigir que todo mundo fosse programador Java ou C++.nos 90, o Java foi pensado para rodar dentro das páginas HTML por meio dos Java Applets.escrevia um programa em Java.
+	•	Compilava para bytecode (.class).
+	•	No HTML, usava-se a tag <applet>
+	Compatibilidade: dependia de plugins e versões diferentes da JVM.
+
+A famosa interface touchscreen da SpaceX Dragon roda em Chromium e é totalmente escrita em JavaScript.
+
+Em uma sessão de perguntas e respostas com os engenheiros de software da SpaceX , eles citaram que a escolha do Chromium deu à SpaceX acesso a muitos programadores com conhecimento da tecnologia
+Javascript chega ao espaço com SpaceX
+JavaScript: Sintaxe Básica e Manipulação do DOM
+Em uma sessão de perguntas e respostas com os engenheiros de software da SpaceX , eles citaram que a escolha do Chromium deu à SpaceX acesso a muitos programadores com conhecimento da tecnologia
+
+Don’t Break The WEB!!
+O que significa?
+
+Todo novo recurso do JavaScript deve ser compatível com o passado.
+
+Código antigo de 1995 ainda roda em navegadores de hoje.
+
+Isso evita “quebrar a internet”.
+JavaScript: Sintaxe Básica e Manipulação do DOM
+O JavaScript carrega suas “malas antigas” para garantir que a internet não quebre.Em resumo, a Teoria dos Jogos do Navegador e o lema "Não Quebre a Web!" não só direcionaram a evolução técnica do JavaScript, mas também moldaram a estratégia de colaboração e competição entre os fornecedores de navegadores e os organismos de padronização.
+
+Você não instala “JavaScript 5” ou “JavaScript 7”
+
+Não se falam de versões e sim de compatibilidades com ECMAScript (ES), publicadas em https://compat-table.github.io/compat-table/es2016plus/
+
+Compatibilidade de recursos Javascript/CSS: https://caniuse.com/
+JavaScript: Sintaxe Básica e Manipulação do DOM
+Javascript não tem “versão” própria
+Exemplo, Chrome 128 pode suportar Array.prototype.findLast (ES2023), mas talvez ainda não suporte outra feature.Fluxo de versões:
+1 - O comitê TC39 discute propostas de novas funcionalidades.
+2 - Cada proposta passa por 4 estágios de aprovação.
+3 - Uma vez aprovada, a feature entra na próxima versão do ECMAScript.
+4 - Fabricantes de navegadores (Chrome/V8, Firefox/SpiderMonkey, Safari/JavaScriptCore, Edge/Chakra → hoje Chromium) implementam as mudanças.
+
+O JavaScript é uma linguagem interpretada, o que significa que não precisa de um compilador para ser traduzido antes da execução.
+
+O local de processamento depende do tipo de aplicação e pode ser:
+No navegador (Client)
+Manipulação dinâmica da página (DOM).
+Validação de formulários.
+Animações e interações. 
+
+No servidor (Server)
+O Node.js utiliza o motor V8 do Chrome para processar o código JavaScript.
+Construção de APIs e serviços web.
+Acesso a bancos de dados e sistemas de arquivos no servidor.
+Manipulação de dados e lógica complexa. 
+
+Outros ambientes (IoT, jogos, app mobile)
+
+
+
+
+
+
+Ambiente de Execução Javascript
+1 - Através de HTML, Execução Direta
+
+<html>
+  <body>
+    <h1> My Website </h1>
+    <script> window.alert('Hello World'); </script>
+  </body>
+</html>
+
+2 - Através do Console F12
+
+function myFirstFunction(){
+    console.log("My First Function")
+    var a = 1;
+    var b = 2;
+    var c = a+b
+    alert (c);
+}
+JavaScript: Sintaxe Básica e Manipulação do DOM
+Não confunda mecanismos JavaScript com mecanismos de renderização , que também são partes cruciais dos navegadores.
+Os motores são como o “coração do JavaScript” → eles transformam o código que você escreve em algo que o computador entende e executa rapidamente.
+
+Padrão (sem atributo)
+Executa imediatamente na ordem em que aparece no documento.
+Bloqueia o HTML até carregar/executar.
+
+defer
+Baixa em paralelo com HTML, executa apenas quando o HTML já terminou de ser lido (antes do evento DOMContentLoaded).
+Mantém a ordem dos scripts, mesmo que vários tenham defer.
+Ideal para scripts que manipulam o DOM.
+
+async
+Baixa em paralelo, executa assim que terminar o download, mesmo que o HTML ainda esteja sendo lido.
+Não garante ordem entre múltiplos scripts.
+Bom para scripts externos independentes, como analytics, ads, trackers.
+Estratégias de Carregamento Javascript
+JavaScript: Sintaxe Básica e Manipulação do DOM
+Quando o navegador encontra um bloco de código JavaScript, ele geralmente executa na ordem de cima para baixo. 
+
+Isso significa que você precisa ter cuidado com a ordem na qual você coloca as coisas.
+
+Esse é um erro muito comum e é necessário verificar os objetos antes de incluir novas instruções no código
+
+O CSS-OM (CSS Object Model) é uma API baseada em árvore que mapeia seletores e propriedades CSS para elementos HTML, permitindo que navegadores leiam, manipulem estilos dinamicamente e construam a árvore de renderização. 
+
+Manipulação via JavaScript: Permite a leitura e modificação de estilos CSS em tempo de execução usando JavaScript.
+
+Parte da Renderização: É combinado com o DOM para criar a "render tree" (árvore de renderização).
+Herdado: Trata de regras CSS herdadas de elementos pai para filho.
+
+CSSOM View Module: Oferece APIs adicionais para manipulação de visualização, como obter dimensões de elementos, posição do viewport e rolagem. 
+
+
+Manipular CSS através do Javascript
+Exemplos de uso (JavaScript): Abrir www.baitabusca.com
+Pressionar (F12), ir no console:
+
+const element = document.querySelector('h2');
+const computedStyle = window.getComputedStyle(element);
+console.log(computedStyle.width); // Retorna a largura do componente
+
+// Modificando estilos
+element.style.backgroundColor = 'blue';
+JavaScript: Sintaxe Básica e Manipulação do DOM
+Assim como no HTML, o navegador precisa converter as regras CSS recebidas em algo com o qual possa trabalhar. Processo conhecido como PARSE.É uma representação em árvore (tree-like structure) de todos os estilos CSS aplicados a uma página;
+Funciona em conjunto com o DOM → enquanto o DOM descreve a estrutura e conteúdo, o CSSOM descreve a aparência e estilos
+
+A construção do CSSOM é muito, muito rápida, por isso informações sobre construção não são exibidas nas ferramentas do desenvolvedor.É preciso entender essa dependência com o browser.
+
+Declaração de variáveis, são feitas através de var, let ou const, cada uma possui características específicas que afetam como as variáveis se comportam em relação ao escopo, à mutabilidade e ao hoisting.
+Variáveis
+JavaScript: Sintaxe Básica e Manipulação do DOM
+CONST
+LET
+VAR
+Escopo Global
+NÃO
+NÃO
+SIM
+Escopo de Função
+SIM
+SIM
+SIM
+Escopo de Bloco
+SIM
+SIM
+NÃO
+Pode ser Reatribuído?
+NÃO
+SIM
+SIM
+variáveis guardam dados que podem ser usados e manipulados no programa. var não é recomendado porque tem comportamentos confusos em relação a escopo e hoisting.Evite var. Prefira let e const, pois são mais previsíveis, seguros e facilitam o entendimento do código.if (true) {
+  var x = 313;
+}
+console.log(x);isso passa, não deveria. Com let ele não considera.
+
+
+Tipos de Dados 
+JavaScript: Sintaxe Básica e Manipulação do DOM
+JavaScript possui oito tipos de dados básicos, divididos entre primitivos e estruturais. Os sete tipos primitivos são: string, number, bigint, boolean, undefined, null e symbol. O oitavo tipo é o Object (Objeto), que inclui estruturas como arrays, funções e objetos literais. 
+
+Press F12
+variáveis guardam dados que podem ser usados e manipulados no programa. var não é recomendado porque tem comportamentos confusos em relação a escopo e hoisting.Evite var. Prefira let e const, pois são mais previsíveis, seguros e facilitam o entendimento do código.if (true) {
+  var x = 313;
+}
+console.log(x);isso passa, não deveria. Com let ele não considera.
+
+
+O JavaScript é fracamente tipado e dinâmico, o que traz flexibilidade mas exige atenção e boas práticas.
+O tipo da variável não é fixo.
+Uma mesma variável pode receber valores de tipos diferentes ao longo da execução.
+O interpretador decide o tipo em tempo de execução.
+ let idade = 30; // idade é um número
+ idade = "trinta"; // agora idade é uma string
+Tipagem Dinâmica
+Na maioria das vezes, operadores e funções convertem automaticamente as variáveis fornecidas para o tipo esperado. Em poucos casos, as variáveis precisam ser convertidas explicitamente para o tipo esperado;
+Sempre que o JavaScript tenta operar em um tipo de dado que não é suportado para uma determinada operação, ele tentará converter o valor para um tipo de dado que seja compatível.
+JavaScript: Sintaxe Básica e Manipulação do DOM
+Press F12
+O JavaScript é fracamente tipado e dinâmico, o que traz flexibilidade mas exige atenção e boas práticas.
+
+🔹 Vantagens
+	•	Flexibilidade e rapidez ao programar.
+	•	Menos código para declarar tipos.
+
+🔹 Desvantagens
+	•	Pode gerar erros inesperados.
+	•	Dificulta depuração em projetos grandes.
+
+// 1. Variável muda de tipo
+let dado = 10;        // number
+console.log(typeof dado); // "number"
+
+dado = "dez";         // string
+console.log(typeof dado); // "string"
+
+dado = true;          // boolean
+console.log(typeof dado); // "boolean"
+
+// 2. Operações que misturam tipos
+let resultado = 5 + "5";  
+console.log(resultado);     // "55" (string, concatenação)
+
+let soma = "10" - 2;        
+console.log(soma);          // 8 (number, coerção automática)
+
+// 3. Comparação "estranha"
+console.log(1 == "1");   // true  (conversão implícita)
+console.log(1 === "1");  // false (sem conversão)
+Tipagem Dinâmica
+JavaScript: Sintaxe Básica e Manipulação do DOM
+Press F12
+	•	No JavaScript, o tipo de uma variável pode mudar a qualquer momento.
+	•	A linguagem faz conversões automáticas (type coercion), o que pode gerar resultados inesperados.
+
+let h = 4 + undefined;
+console.log(h);
+
+let i = 3 + true;
+console.log(i);
+
+É o comportamento do JavaScript de mover declarações para o topo do escopo (função ou script) antes da execução.
+
+https://developer.mozilla.org/pt-BR/docs/Glossary/Hoisting
+
+//Exemplo 1 - Não eleva (hoist)
+var x = 1; // Inicializa x
+console.log(x + " " + y); // '1 undefined'
+var y = 2; // Initialize y
+//Isso não funcionará! o JavaScript apenas eleva declarações
+
+//Example 2 - Hoists
+var a= 1; //Declara e inicializa a
+b= 10; //Inicializa b
+console.log(a + " " + b); //'3 4'
+var b; //Declara b hoisting
+
+O que significa Hoisted? (içamento)
+JavaScript: Sintaxe Básica e Manipulação do DOM
+//Example 3 - Hoists
+a = "Cran"; //Inicializa a
+b = "berry"; //Inicializa b
+console.log(a + "" + b); // 'Cranberry'
+var a, b; //Declara ambos a & b para hoisting
+Press F12
+Isso faz parte da história do JS, era para ser fácil, flexível, Por isso, o motor JS “içava” (hoisting) as declarações de variáveis e funções para o topo automaticamente.
+Assim, o código rodava sem dar erro logo de cara, mesmo que o dev tivesse escrito console.log(x) antes de var x = 5;.
+
+Hoisting (içamento, em português) é um termo que você não encontrará usado em nenhuma prosa de especificação normativa antes da especificação de idioma do ECMAScript® 2015.
+
+É a forma mais antiga de declarar variáveis em JavaScript;
+Têm escopo de função, ou seja, só estão acessíveis dentro da função onde foram definidas;
+Se declaradas fora de uma função, tornam-se globais;
+Ignora o escopo de blocos (como if, for, etc.) e é "elevada" ao escopo da função ou global;
+São "elevadas" para o topo do seu escopo (função ou global);
+É possível usar uma variável antes mesmo de declará-la, mas ela será inicializada como undefined;
+Redefinir variáveis declaradas com var sem problemas.
+function test(){
+  if (true) {
+     var x = 5;
+  }
+  console.log(x); // 5 (a variável permanece    acessível fora do bloco)
+}	
+Javascript - var
+console.log(a); // undefined (esta declarada, mas não inicializada)
+var a = 5;
+var a = 5;
+var a = 10; //  redefinição permitida
+console.log(a); // 10
+JavaScript: Sintaxe Básica e Manipulação do DOM
+Press F12
+
+Introduzido no ECMAScript 6 (ES6), o let é uma alternativa moderna ao var e resolve alguns problemas;
+Possui escopo de bloco, ou seja, só estão acessíveis dentro do bloco em que foram definidas.
+Sofre hoisting, mas não permite o uso da variável antes de sua declaração no código. Isso cria o chamado "Temporal Dead Zone" (Zona Morta Temporal);
+Você pode reatribuir uma variável declarada com let, mas não pode redefini-la no mesmo escopo.
+Javascript - let
+
+if (true) {
+   let x = 15;
+}
+
+console.log(x); // ReferenceError: x is not defined
+
+let d = 15;
+d = 20; // reatribuição permitida
+let d = 25; // SyntaxError: Identifier 'd' has already been declared
+
+
+console.log(c); // ReferenceError: Cannot access 'b' before initialization
+let c = 10;
+
+JavaScript: Sintaxe Básica e Manipulação do DOM
+Press F12
+
+Introduzido no ES6, é usado para declarar constantes, ou seja, variáveis cujo valor não pode ser reatribuído;
+Assim como let, variáveis const possuem escopo de bloco e só estão acessíveis dentro do bloco em que foram definidas.
+Após inicialização, o valor de uma variável const não pode ser alterado;
+Você deve atribuir um valor à variável const no momento da declaração;
+Apesar de não permitir retribuição, const não torna objetos ou arrays verdadeiramente imutáveis. Você pode modificar suas propriedades ou elementos.
+Javascript - const
+
+if (true) {
+    const b = 50;
+}
+
+console.log(b); // ReferenceError: b is not defined
+
+const d = 100;
+d = 200; // TypeError: Assignment to constant variable
+
+const e; // SyntaxError: Missing initializer in const declaration
+
+const obj = { name: "John" };
+obj.name = "Snow"; // Modificação permitida
+console.log(obj); // { name: "Snow" }
+JavaScript: Sintaxe Básica e Manipulação do DOM
+Press F12
+
+Operadores permitem que o JavaScript tome decisões e processe dados.
+São a base para condições, cálculos e lógica no código.
+
+Permitem realizar cálculos, comparações e operações lógicas com valores e variáveis.
+Aritméticos - usados para cálculos matemáticos (+, -, *, /, %, **).
+Comparação - comparam valores e retornam verdadeiro/falso (==, ===, !=, <, >, <=, >=).
+Lógicos - combinam condições booleanas (&& → e, || → ou, ! → não).
+Atribuição - atribuem ou atualizam valores de variáveis (=, +=, -=, *=, /=).
+Operadores
+<p id="demo"></p>
+<script>
+let x = 5;
+let y = 2;
+let z = x * y;
+document.getElementById("demo").innerHTML = z;
+</script>
+JavaScript: Sintaxe Básica e Manipulação do DOM
+Os operadores em JavaScript são muito
+semelhantes aos operadores nas
+linguagens Java ou C;
+
+Eventos conectam o usuário ao código JavaScript, tornando a página interativa.
+
+Eventos são ações ou ocorrências que acontecem na página.
+O JavaScript pode “ouvir” esses eventos e responder a eles.
+Exemplos comuns:
+Clique de mouse - onclick
+Teclado - onkeydown, onkeyup
+Formulários - onsubmit, onchange
+Carregamento - onload, DOMContentLoaded
+https://www.w3schools.com/js/js_events.asp
+Eventos
+
+Funções
+
+Uma função é um bloco de código reutilizável que executa uma tarefa específica.
+Permite organizar o programa, evitar repetição e tornar o código mais legível.
+
+Funções são como “receitas de bolo” → você define os passos uma vez e pode executar sempre que precisar.
+
+JavaScript: Sintaxe Básica e Manipulação do DOM
+<button onclick="document.getElementById('demo').innerHTML = Date()">Que horas são?</button>
+Faça funcionar este botão:
+Eventos conectam o usuário ao código JavaScript, tornando a página interativa.
+
+Crie botões com outras operações:
+Subtração (-)
+Multiplicação (*)
+Divisão (/)
+https://codepen.io/dtagliari-uri/pen/MYjbjjw
+JavaScript: Sintaxe Básica e Manipulação do DOM
+Hands-on
+Exercícios 1 - Javascript
+Exercícios 2 - Javascript
+Criar um javascript em sua página para exibir a data de hoje no Footer
+<script>{seu script aqui}</script>
+Inserir um javascript externo que forneça uma função para exibir as horas em uma DIV através de um botão
+<script src=“script.js"></script>
+Exercícios 3 - Javascript
+Inserir uma mensagem de boas vindas na página utilizando o formato Inline ao clicar em um botão
+Exercícios 4 - Javascript
+Fortaleça o entendimento sobre tipo de dados, criando uma função que exiba de forma dinâmica e por parâmetro qual é o tipo de dado que está sendo passado
+Number: Representa números, incluindo inteiros e de ponto flutuante.
+BigInt: Representa números inteiros de comprimento arbitrário, úteis para números muito grandes. 
+String: Uma sequência de caracteres que representa texto, assim como java, valores são cercados por aspas,
+Boolean: Representa um valor verdadeiro (true) ou falso (false). 
+Undefined: Indica que um valor não foi atribuído a uma variável. 
+Null: Uma palavra-chave especial que representa a ausência intencional de um valor. Diferente de Java, em JavaScript, null não representa uma referência nula a um objeto de um tipo específico. 
+Symbol: Um tipo de dado cujas instâncias são únicas e imutáveis. 
+Object: Um tipo de dados que pode armazenar coleções de dados e entidades mais complexas. 
+Exercícios 5 - Javascript
+<button onclick="alert('Olá!')">Clique aqui</button>
+
+JavaScript: Sintaxe Básica e Manipulação do DOM
+Hands-on
+
+A👤 Criar função que retorna nome completo
+Crie uma função que receba nome e sobrenome e retorne o nome completo.
+Exemplo esperado:
+nomeCompleto("João", "Silva"). //Retornar"João Silva"
+
+B🎂 Criar função que retorna idade
+Crie uma função que receba o ano de nascimento e retorne a idade atual.
+Exemplo esperado:
+calcularIdade(2005)  //Retornar 21 (dependendo do ano atual)
+
+C📅 Função que verifica se já fez aniversário no ano
+Crie uma função que receba dia e mês de nascimento e diga se a pessoa já fez aniversário este ano.
+Exemplo esperado: 
+jaFezAniversario(10, 3) //Retornar true ou false
+D🎉 Função que mostra quantos dias faltam para o aniversário
+Crie uma função que receba dia e mês e retorne quantos dias faltam para o próximo aniversário.
+Exemplo esperado:
+diasParaAniversario(25, 12) //Retornar número de dias
+
+E🧾 Função que retorna uma mensagem personalizada
+Crie uma função que receba nome e anoNascimento e retorne uma frase:
+Exemplo esperado:
+mensagem("Ana", 2000) //Retornar "Olá Ana, você tem 26 anos."
+
+F🕒 Calcular quantos anos faltam para 100 anos
+Crie uma função que receba nome e anoNascimento e retorne uma frase dizendo quantos anos faltam para a pessoa completar 100 anos.
+Incluir todos os métodos em um único arquivo .js e enviar por e-mail para dtagliari@uricer.edu.br
+✅ 1. Nome completo
+function nomeCompleto(nome, sobrenome) {
+ return nome + " " + sobrenome;
+}
+
+// teste
+console.log(nomeCompleto("João", "Silva"));
+
+✅ 2. Calcular idade
+function calcularIdade(anoNascimento) {
+ const anoAtual = new Date().getFullYear();
+ return anoAtual - anoNascimento;
+}
+
+// teste
+console.log(calcularIdade(2005));
+
+✅ 3. Já fez aniversário?
+function jaFezAniversario(dia, mes) {
+ const hoje = new Date();
+ const diaAtual = hoje.getDate();
+ const mesAtual = hoje.getMonth() + 1; // meses começam em 0
+
+ if (mesAtual > mes) {
+   return true;
+ } else if (mesAtual === mes && diaAtual >= dia) {
+   return true;
+ } else {
+   return false;
+ }
+}
+
+// teste
+console.log(jaFezAniversario(10, 3));
+
+✅ 4. Dias para o aniversário
+function diasParaAniversario(dia, mes) {
+ const hoje = new Date();
+ const anoAtual = hoje.getFullYear();
+
+ let proximoAniversario = new Date(anoAtual, mes - 1, dia);
+
+ // se já passou, vai para o próximo ano
+ if (proximoAniversario < hoje) {
+   proximoAniversario = new Date(anoAtual + 1, mes - 1, dia);
+ }
+
+ const diff = proximoAniversario - hoje;
+ const dias = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+ return dias;
+}
+
+// teste
+console.log(diasParaAniversario(25, 12));
+
+✅ 5. Mensagem personalizada
+function calcularIdade(anoNascimento) {
+ const anoAtual = new Date().getFullYear();
+ return anoAtual - anoNascimento;
+}
+
+function mensagem(nome, anoNascimento) {
+ const idade = calcularIdade(anoNascimento);
+ return "Olá " + nome + ", você tem " + idade + " anos.";
+}
+
+// teste
+console.log(mensagem("Ana", 2000));
+
+
+function calcularIdade(anoNascimento) {
+const anoAtual = new Date().getFullYear();
+return anoAtual - anoNascimento;
+}
+
+✅ 6. Anos que faltam
+function anosParaCem(nome, anoNascimento) {
+const idade = calcularIdade(anoNascimento);
+const falta = 100 - idade;
+
+if (falta > 0) {
+return nome + ", faltam " + falta + " anos para você completar 100 anos.";
+} else if (falta === 0) {
+return nome + ", você completou 100 anos este ano!";
+} else {
+return nome + ", você já passou dos 100 anos!";
+}
+}
+
+// teste
+console.log(anosParaCem("Carlos", 1980));
+
+
+Object
+Estrutura para representar entidades.
+
+let aluno = {
+  nome: "João",
+  idade: 20,
+  curso: "Informática"
+};
+console.log(aluno.nome);
+Objetos, Arrays e Manipulação de Coleções
+
+Array
+Lista ordenada de valores (números, strings, objetos…).
+
+let frutas = ["Maçã", "Banana"];
+
+let alunos = [
+{ nome: "Ana", nota: 8 },
+{ nome: "Carlos", nota: 5 },
+{ nome: "Beatriz", nota: 9 }];
+forEach
+Percorre uma coleção
+
+alunos.forEach(function(aluno) {
+console.log(aluno.nome);
+});
+console.log(frutas[0]);
+Press F12
+JavaScript: Sintaxe Básica e Manipulação do DOM
+
+Objetos, Arrays e Manipulação de Coleções
+
+map
+Transforma cada item e retorna novo array.
+
+let nomes = alunos.map(function(aluno) {
+return aluno.nome;
+});
+console.log(nomes);
+
+find
+Retorna o primeiro item que satisfaz a condição.
+
+let aluno = alunos.find(function(aluno) {
+return aluno.nome === "Carlos";
+});
+console.log(aluno);
+filter
+seleciona itens que atendem a uma condição.
+
+let aprovados = alunos.filter(function(aluno) {
+return aluno.nota >= 7;
+});
+console.log(aprovados);
+reduce
+Agrega todos os itens em um único valor.
+
+let media = alunos.reduce(function(total, aluno) {
+return total + aluno.nota;
+}, 0) / alunos.length;
+console.log(media);
+Press F12
+JavaScript: Sintaxe Básica e Manipulação do DOM
+
+Hands-on
+Objetos, Arrays e Manipulação de Coleções
+
+Crie no seu arquivo Javascript, a seguinte variável e funções:
+let products = [
+{ id: "111111", name: "Notebook", price: 3500, brand: "Dell", color: "gray", size: 15.6 },
+{ id: "222222", name: "Mouse", price: 150, brand: "Logitech", color: "black", size: null },
+{ id: "333333", name: "Teclado", price: 200, brand: "Logitech", color: "black", size: null },
+{ id: "444444", name: "Monitor", price: 900, brand: "LG", color: "gray", size: 32 }];
+🥇 1 - Função com forEach
+👉 Exiba no console uma frase para cada produto no formato:
+Produto: Notebook | Preço: R$3500
+🚀 5 - Função com reduce
+👉 Calcule o valor total apenas dos produtos com preço acima de 200
+👉 retorne um totalFiltered
+🥈 2 - Função com filter
+👉 Crie um array com produtos que custam mais de 500 e são da cor "gray"
+👉 Retorne um filteredList
+🥉 3 - Função com map
+👉 A partir de filteredList, crie um novo array com objetos no formato:
+{ produto: "Notebook", precoComDesconto: 3150 }
+📍 Regra: aplicar 10% de desconto
+👉 retorne um withDiscount
+🎯 4 - Função com find
+👉 Encontre o primeiro produto da marca Logitech com preço maior que 100
+👉 retorne um mySelectedBrand
+Press F12 ou
+JavaScript: Sintaxe Básica e Manipulação do DOM
+VS Code
+// 1
+products.forEach(p => {
+  console.log(`Produto: ${p.name} | Preço: R$${p.price}`);
+});
+
+// 2
+let filteredList = products.filter(p => p.price > 500 && p.color === "gray");console.log(filteredList)
+
+// 3
+let withDiscount = filteredList.map(p => ({
+  produto: p.name,
+  precoComDesconto: p.price * 0.9
+}));console.log(withDiscount )
+
+
+// 4
+let selectedBrand = products.find(
+  p => p.brand === "Logitech" && p.price > 100
+);console.log(selectedBrand)
+
+// 5
+let totalFiltered = products
+  .filter(p => p.price > 200)
+  .reduce((acc, p) => acc + p.price, 0);console.log(totalFiltered)
+
+
+APIs do NavegadorArmazenamento no Navegador
+📦 Web Storage (localStorage / sessionStorage)
+
+👉 Guarda dados simples no navegador (chave–valor)
+localStorage → permanece mesmo após fechar o navegador
+sessionStorage → dura apenas enquanto a aba estiver aberta
+💻 Exemplo:
+localStorage.setItem("tema", "dark");
+let tema = localStorage.getItem("tema");
+
+💡 Uso comum:
+tema (dark/light)
+carrinho de compras
+nome do usuário
+
+Press F12
+🗄️ IndexedDB
+
+👉 Banco de dados local mais completo
+suporta grandes volumes
+funciona offline
+mais complexo que localStorage
+💡 Uso comum:
+apps offline
+armazenamento de listas grandes
+sincronização de dados
+
+👉 funciona em 4 passos:
+abrir banco
+criar estrutura (tabela)
+abrir transação
+salvar ou ler dados
+JavaScript: Sintaxe Básica e Manipulação do DOM
+👉 “O IndexedDB é um banco de dados local, ou seja: cada usuário tem o seu próprio banco dentro do navegador.”
+📦 O que isso significa na prática?
+Cada pessoa tem seus próprios dados
+Não é compartilhado com outros usuários
+Não vai para um servidor automaticamente
+💡 Exemplo claro (pra falar em aula)
+👉 “Se 2 alunos abrirem o mesmo site:”
+Aluno A salva um produto → fica só no navegador dele
+Aluno B não vê esse produto
+
+APIs do Navegador Interação com o Usuário
+
+📍 Geolocation API
+
+👉 Permite obter a localização do usuário (com permissão)
+retorna latitude e longitude
+precisa de autorização do usuário
+💻 Exemplo:
+navigator.geolocation.getCurrentPosition(pos => {
+ console.log(pos.coords.latitude, pos.coords.longitude);
+});
+
+💡 Uso comum:
+apps de mapa
+delivery
+localização de lojas próximas
+Press F12
+🔔 Notifications API
+
+👉 Permite enviar notificações no navegador
+precisa de permissão
+funciona mesmo fora da aba (em alguns casos)
+💻 Exemplo:
+Notification.requestPermission().then(() => {
+ new Notification("Olá! Você tem uma nova mensagem");
+});
+
+💡 Uso comum:
+mensagens (tipo WhatsApp Web)
+alertas
+promoções
+
+JavaScript: Sintaxe Básica e Manipulação do DOM
+👉 “O IndexedDB é um banco de dados local, ou seja: cada usuário tem o seu próprio banco dentro do navegador.”
+📦 O que isso significa na prática?
+Cada pessoa tem seus próprios dados
+Não é compartilhado com outros usuários
+Não vai para um servidor automaticamente
+💡 Exemplo claro (pra falar em aula)
+👉 “Se 2 alunos abrirem o mesmo site:”
+Aluno A salva um produto → fica só no navegador dele
+Aluno B não vê esse produto
+
+APIs do Navegador Interação e Experiência
+
+📋 Clipboard API
+
+👉 Permite copiar e colar dados com JavaScript
+copiar texto para área de transferência
+pode exigir permissão em alguns casos
+💻 Exemplo:
+navigator.clipboard.writeText("Texto copiado!");
+
+💡 Uso comum:
+botão “copiar código”
+copiar chave PIX
+copiar link
+
+Press F12
+🖥️ Fullscreen API
+
+👉 Permite colocar elementos em tela cheia
+melhora a experiência do usuário
+comum em vídeos e apresentações
+💻 Exemplo:
+document.documentElement.requestFullscreen();
+
+💡 Uso comum:
+vídeos (tipo YouTube)
+jogos no navegador
+Apresentações
+
+JavaScript: Sintaxe Básica e Manipulação do DOM
+👉 “O IndexedDB é um banco de dados local, ou seja: cada usuário tem o seu próprio banco dentro do navegador.”
+📦 O que isso significa na prática?
+Cada pessoa tem seus próprios dados
+Não é compartilhado com outros usuários
+Não vai para um servidor automaticamente
+💡 Exemplo claro (pra falar em aula)
+👉 “Se 2 alunos abrirem o mesmo site:”
+Aluno A salva um produto → fica só no navegador dele
+Aluno B não vê esse produto
+
+APIs do Navegador Navegação e Dispositivo
+🔁 History API
+
+👉 Permite controlar a navegação sem recarregar a página
+altera a URL sem reload
+muito usada em SPAs (React, Vue, etc.)
+💻 Exemplo:
+history.pushState({}, "", "/pagina2");
+
+💡 Uso comum:
+mudar páginas sem atualizar
+criar navegação dinâmica
+
+Press F12
+📱 Device APIs
+
+👉 Permitem acessar recursos do dispositivo (com permissão)
+câmera 📷
+microfone 🎤
+vibração 📳
+bateria 🔋
+💻 Exemplo:
+navigator.vibrate(200); // Faz o dispositivo vibrar por 200 milissegundos (0,2 segundos)
+
+💡 Uso comum:
+apps de vídeo/chamada
+leitura de QR Code
+feedback por vibração
+JavaScript: Sintaxe Básica e Manipulação do DOM
+https://developer.mozilla.org/en-US/docs/Web/API/Navigator
+👉 “O IndexedDB é um banco de dados local, ou seja: cada usuário tem o seu próprio banco dentro do navegador.”
+📦 O que isso significa na prática?
+Cada pessoa tem seus próprios dados
+Não é compartilhado com outros usuários
+Não vai para um servidor automaticamente
+💡 Exemplo claro (pra falar em aula)
+👉 “Se 2 alunos abrirem o mesmo site:”
+Aluno A salva um produto → fica só no navegador dele
+Aluno B não vê esse produto
+
+👉 Regex é um padrão de busca em texto Usado para:
+validar dados (email, senha, CPF)
+encontrar palavras
+substituir partes de texto
+
+🧩 Estrutura básica
+/padrao/
+
+Exemplos:
+/a/ → encontra a letra "a"
+/abc/ → encontra "abc"
+/[0-9]/ → números
+/[a-z]/ → letras minúsculas
+
+⚙️ Métodos principais
+.test()     // retorna true ou false
+.match()    // retorna o que encontrou
+.replace()  // substitui texto
+Expressões Regulares em Javascript
+1. Verificar se tem número ( Esperado: true)
+let texto = "Produto 123";
+let regex = /\d/;
+regex.test(texto);
+
+2. Encontrar todas as letras (Esperado: ["A", "B", "C"])
+let texto = "ABC123";
+texto.match(/[A-Z]/g);
+
+3. Validar email simples (Esperado: true)
+let email = "teste@email.com";
+let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+regex.test(email);
+
+4. Substituir números (Resultado: "Preço: XXX reais" )
+let texto = "Preço: 123 reais";
+texto.replace(/\d+/g, "XXX");
+https://regex101.com/
+JavaScript: Sintaxe Básica e Manipulação do DOM
+Press F12
+
+👉 Forma moderna de criar objetos em JavaScript
+define propriedades e métodos
+usa constructor para inicializar dados
+
+class Pessoa {
+  constructor(nome, idade) {
+    this.nome = nome;
+    this.idade = idade;
+  }
+
+  apresentar() {
+    return `Olá, meu nome é ${this.nome}`;
+  }
+}
+
+let p1 = new Pessoa("João", 20);
+console.log(p1.apresentar());
+
+Class & Inherit (ES6)
+class Aluno extends Pessoa {
+  constructor(nome, idade, curso) {
+    super(nome, idade); // chama a classe pai
+    this.curso = curso;
+  }
+
+  estudar() {
+    return `${this.nome} está estudando ${this.curso}`;
+  }
+}
+
+let a1 = new Aluno("Ana", 22, "TI");
+console.log(a1.estudar());
+👉 Permite criar uma classe baseada em outra
+usa extends
+reutiliza código
+pode adicionar ou sobrescrever métodos
+
+JavaScript: Sintaxe Básica e Manipulação do DOM
+
+try - bloco onde colocamos código que pode gerar erro.
+catch - captura o erro e permite tratá-lo sem quebrar a aplicação.
+throw - lança um erro (nativo ou personalizado).
+finally - executa sempre, com ou sem erro.
+try {
+   let x = y + 1; // y não existe → ReferenceError
+} catch (err) {
+   console.log("Ocorreu um erro:", err.message);
+} finally {
+    console.log("Sempre executa, com ou sem erro.");
+}
+https://www.w3schools.com/jsref/jsref_obj_error.asp
+https://www.w3schools.com/jsref/jsref_try_catch.asp
+Tratamento de Erros Try/Catch
+JavaScript: Sintaxe Básica e Manipulação do DOM
+	•	try protege o código.
+	•	catch lida com erros.
+	•	throw cria seus próprios erros.
+	•	finally roda sempre, garantindo limpeza e previsibilidade.
