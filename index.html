@@ -14,2197 +14,7 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap"
     rel="stylesheet">
 
-  <!-- ═══════════════════════════════════════════════════════
-       INTERNAL CSS — ALL STYLES IN ONE FILE
-  ═══════════════════════════════════════════════════════ -->
-  <style>
-    /* ── 1. CSS VARIABLES (DESIGN TOKENS) ─────────── */
-    :root {
-      --bg: #070b14;
-      --bg2: #0e1524;
-      --bg3: #151f35;
-      --surface: rgba(255, 255, 255, 0.04);
-      --border: rgba(255, 255, 255, 0.09);
-
-      --blue: #4f8ef7;
-      --purple: #a855f7;
-      --cyan: #22d3ee;
-      --green: #34d399;
-      --yellow: #fcd34d;
-      --red: #f87171;
-      --pink: #f472b6;
-
-      --txt: #e8edf5;
-      --txt2: #8896b0;
-      --txt3: #4a5568;
-
-      --radius: 14px;
-      --rad-sm: 8px;
-
-      /* Dark / Light mode swap */
-      --mode-bg: var(--bg);
-      --mode-bg2: var(--bg2);
-      --mode-txt: var(--txt);
-      --mode-txt2: var(--txt2);
-      --mode-border: var(--border);
-      --mode-surface: var(--surface);
-    }
-
-    /* Light mode overrides */
-    body.light {
-      --mode-bg: #f0f4f8;
-      --mode-bg2: #ffffff;
-      --mode-txt: #1a202c;
-      --mode-txt2: #4a5568;
-      --mode-border: rgba(0, 0, 0, 0.1);
-      --mode-surface: rgba(0, 0, 0, 0.03);
-    }
-
-    /* ── 2. RESET ─────────────────────────────────── */
-    *,
-    *::before,
-    *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--mode-bg);
-      color: var(--mode-txt);
-      min-height: 100vh;
-      overflow-x: hidden;
-      transition: background 0.4s, color 0.4s;
-    }
-
-    /* ── 3. SCROLL PROGRESS BAR ───────────────────── */
-    #scroll-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      width: 0%;
-      background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
-      z-index: 9999;
-      transition: width 0.08s linear;
-      border-radius: 0 100px 100px 0;
-    }
-
-    /* ── 4. STICKY NAVBAR ─────────────────────────── */
-    #navbar {
-      position: sticky;
-      top: 0;
-      z-index: 800;
-      background: rgba(7, 11, 20, 0.82);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      height: 62px;
-      display: flex;
-      align-items: center;
-      padding: 0 1.5rem;
-      gap: 1.5rem;
-    }
-
-    body.light #navbar {
-      background: rgba(240, 244, 248, 0.88);
-    }
-
-    .navbar-brand {
-      font-weight: 900;
-      font-size: 1rem;
-      background: linear-gradient(90deg, var(--blue), var(--purple));
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      white-space: nowrap;
-      text-decoration: none;
-      flex-shrink: 0;
-    }
-
-    .navbar-nav {
-      display: flex;
-      list-style: none;
-      gap: 0;
-      flex: 1;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .navbar-nav::-webkit-scrollbar {
-      display: none;
-    }
-
-    .navbar-nav a {
-      display: block;
-      padding: 0.4rem 0.75rem;
-      color: var(--mode-txt2);
-      text-decoration: none;
-      font-size: 0.78rem;
-      font-weight: 500;
-      border-radius: 8px;
-      white-space: nowrap;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .navbar-nav a:hover,
-    .navbar-nav a.active {
-      background: var(--mode-surface);
-      color: var(--mode-txt);
-    }
-
-    .navbar-actions {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-      flex-shrink: 0;
-    }
-
-    /* Dark/Light toggle button */
-    #mode-toggle {
-      width: 40px;
-      height: 40px;
-      border-radius: var(--rad-sm);
-      background: var(--mode-surface);
-      border: 1px solid var(--mode-border);
-      color: var(--mode-txt);
-      cursor: pointer;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-    }
-
-    #mode-toggle:hover {
-      background: rgba(79, 142, 247, 0.15);
-      border-color: var(--blue);
-    }
-
-    .nav-back-link {
-      text-decoration: none;
-      color: var(--mode-txt2);
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 0.4rem 0.85rem;
-      border: 1px solid var(--mode-border);
-      border-radius: 8px;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-
-    .nav-back-link:hover {
-      color: var(--mode-txt);
-      border-color: var(--blue);
-      background: rgba(79, 142, 247, 0.08);
-    }
-
-    /* Mobile hamburger */
-    #hamburger {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--mode-txt);
-      font-size: 1.3rem;
-      cursor: pointer;
-      padding: 0.4rem;
-    }
-
-    /* ── 5. HERO SECTION ──────────────────────────── */
-    #hero {
-      min-height: 92vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 4rem 1.5rem;
-      background:
-        radial-gradient(ellipse 80% 40% at 20% 0%, rgba(79, 142, 247, 0.15) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 30% at 80% 100%, rgba(168, 85, 247, 0.12) 0%, transparent 60%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Animated grid background */
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(79, 142, 247, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(79, 142, 247, 0.05) 1px, transparent 1px);
-      background-size: 50px 50px;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%);
-      z-index: 0;
-    }
-
-    #hero>* {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(79, 142, 247, 0.1);
-      border: 1px solid rgba(79, 142, 247, 0.3);
-      border-radius: 100px;
-      padding: 0.35rem 1.2rem;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--blue);
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      margin-bottom: 2rem;
-      animation: fadeUp 0.6s ease both;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.2rem, 6vw, 4.5rem);
-      font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-      animation: fadeUp 0.7s ease both 0.1s;
-    }
-
-    .hero h1 .grad {
-      background: linear-gradient(120deg, var(--blue), var(--purple), var(--pink));
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-sub {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--mode-txt2);
-      max-width: 600px;
-      line-height: 1.75;
-      margin-bottom: 2.5rem;
-      animation: fadeUp 0.7s ease both 0.2s;
-    }
-
-    .hero-pills {
-      display: flex;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 2.5rem;
-      animation: fadeUp 0.7s ease both 0.3s;
-    }
-
-    .hero-pill {
-      background: var(--mode-surface);
-      border: 1px solid var(--mode-border);
-      border-radius: 100px;
-      padding: 0.3rem 0.9rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--mode-txt2);
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeUp 0.7s ease both 0.4s;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.7rem 1.6rem;
-      border-radius: var(--radius);
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-      font-family: inherit;
-      transition: all 0.2s;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      color: #fff;
-      box-shadow: 0 4px 20px rgba(79, 142, 247, 0.35);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(79, 142, 247, 0.45);
-    }
-
-    .btn-outline {
-      background: var(--mode-surface);
-      color: var(--mode-txt);
-      border: 1px solid var(--mode-border);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--blue);
-      background: rgba(79, 142, 247, 0.08);
-    }
-
-    /* Animations */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0.5;
-      }
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateX(-10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-    /* ── 6. SECTION LAYOUT ────────────────────────── */
-    .showcase-section {
-      padding: 5rem 1.5rem;
-      border-bottom: 1px solid var(--mode-border);
-      scroll-margin-top: 70px;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .showcase-section.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    .section-inner {
-      max-width: 1040px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      display: inline-block;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--blue);
-      background: rgba(79, 142, 247, 0.1);
-      padding: 0.2rem 0.8rem;
-      border-radius: 100px;
-      margin-bottom: 0.8rem;
-    }
-
-    .section-title {
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
-      font-weight: 800;
-      margin-bottom: 0.75rem;
-      color: var(--mode-txt);
-    }
-
-    .section-desc {
-      color: var(--mode-txt2);
-      font-size: 1rem;
-      line-height: 1.7;
-      max-width: 660px;
-      margin-bottom: 3rem;
-    }
-
-    /* ── 7. CARDS & GRIDS ─────────────────────────── */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1.25rem;
-    }
-
-    .card {
-      background: var(--mode-surface);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(79, 142, 247, 0.35);
-      box-shadow: 0 10px 30px rgba(79, 142, 247, 0.12);
-    }
-
-    .card-icon {
-      font-size: 1.8rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .card h3 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-      color: var(--mode-txt);
-    }
-
-    .card p {
-      font-size: 0.83rem;
-      color: var(--mode-txt2);
-      line-height: 1.6;
-    }
-
-    /* ── 8. CODE BLOCK ────────────────────────────── */
-    .code-block {
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: var(--rad-sm);
-      padding: 1.1rem 1.25rem;
-      font-family: 'Fira Code', monospace;
-      font-size: 0.82rem;
-      color: #a5d6ff;
-      overflow-x: auto;
-      white-space: pre;
-      line-height: 1.65;
-    }
-
-    body.light .code-block {
-      background: #1e293b;
-      border-color: rgba(0, 0, 0, 0.15);
-    }
-
-    .code-block .kw {
-      color: #ff7b72;
-    }
-
-    .code-block .fn {
-      color: #d2a8ff;
-    }
-
-    .code-block .st {
-      color: #79c0ff;
-    }
-
-    .code-block .cm {
-      color: #6e7d91;
-      font-style: italic;
-    }
-
-    .code-block .vl {
-      color: #ffa657;
-    }
-
-    /* ── 9. DEMO PANEL ────────────────────────────── */
-    .demo-panel {
-      background: var(--mode-surface);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--radius);
-      padding: 1.75rem;
-    }
-
-    .demo-panel h3 {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--blue);
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      margin-bottom: 1.25rem;
-    }
-
-    /* ── 10. FORM INPUT STYLES ────────────────────── */
-    .form-group {
-      margin-bottom: 1.1rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--mode-txt2);
-      margin-bottom: 0.35rem;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 0.65rem 0.9rem;
-      background: var(--mode-bg2);
-      border: 1.5px solid var(--mode-border);
-      border-radius: var(--rad-sm);
-      color: var(--mode-txt);
-      font-family: inherit;
-      font-size: 0.875rem;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(79, 142, 247, 0.15);
-    }
-
-    .form-group input.valid {
-      border-color: var(--green);
-    }
-
-    .form-group input.invalid {
-      border-color: var(--red);
-    }
-
-    .field-msg {
-      font-size: 0.75rem;
-      margin-top: 0.3rem;
-      min-height: 1rem;
-    }
-
-    .field-msg.ok {
-      color: var(--green);
-    }
-
-    .field-msg.err {
-      color: var(--red);
-    }
-
-    /* Radio & Checkbox */
-    .radio-group,
-    .check-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .radio-group.horizontal,
-    .check-group.horizontal {
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-    }
-
-    .radio-group label,
-    .check-group label {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-      font-size: 0.875rem;
-      color: var(--mode-txt);
-      font-weight: 400;
-    }
-
-    /* ── 11. TIMELINE ─────────────────────────────── */
-    .timeline {
-      position: relative;
-      padding: 1rem 0;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 28px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, var(--blue), var(--purple), var(--pink));
-      border-radius: 2px;
-    }
-
-    .timeline-item {
-      display: flex;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-      align-items: flex-start;
-    }
-
-    .tl-dot {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: var(--mode-bg2);
-      border: 2px solid var(--blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      flex-shrink: 0;
-      position: relative;
-      z-index: 1;
-      box-shadow: 0 0 0 4px rgba(79, 142, 247, 0.1);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .timeline-item:hover .tl-dot {
-      transform: scale(1.1);
-      box-shadow: 0 0 0 8px rgba(79, 142, 247, 0.15);
-    }
-
-    .tl-content {
-      background: var(--mode-surface);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--radius);
-      padding: 1.1rem 1.3rem;
-      flex: 1;
-      transition: border-color 0.2s;
-    }
-
-    .timeline-item:hover .tl-content {
-      border-color: rgba(79, 142, 247, 0.3);
-    }
-
-    .tl-year {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 0.25rem;
-    }
-
-    .tl-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--mode-txt);
-      margin-bottom: 0.3rem;
-    }
-
-    .tl-desc {
-      font-size: 0.82rem;
-      color: var(--mode-txt2);
-      line-height: 1.6;
-    }
-
-    /* ── 12. PROTOCOL CARDS ───────────────────────── */
-    .protocol-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-
-    .protocol-card {
-      background: var(--mode-surface);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--radius);
-      padding: 1.25rem;
-      transition: transform 0.2s, border-color 0.2s;
-      cursor: default;
-    }
-
-    .protocol-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--blue);
-    }
-
-    .protocol-badge {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
-      margin-bottom: 0.75rem;
-    }
-
-    .protocol-card .p-title {
-      font-size: 1rem;
-      font-weight: 800;
-      margin-bottom: 0.35rem;
-      color: var(--mode-txt);
-    }
-
-    .protocol-card .p-desc {
-      font-size: 0.8rem;
-      color: var(--mode-txt2);
-      line-height: 1.55;
-    }
-
-    /* ── 13. CSS PLAYGROUND ───────────────────────── */
-    .playground-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      align-items: start;
-    }
-
-    @media (max-width: 680px) {
-      .playground-wrap {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .prop-toggle-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-
-    .prop-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.65rem 1rem;
-      background: var(--mode-bg2);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--rad-sm);
-      cursor: pointer;
-      font-size: 0.85rem;
-      color: var(--mode-txt);
-      transition: border-color 0.2s;
-      user-select: none;
-    }
-
-    .prop-toggle.on {
-      border-color: var(--blue);
-    }
-
-    .toggle-switch {
-      width: 32px;
-      height: 20px;
-      background: var(--mode-bg3, #151f35);
-      border-radius: 100px;
-      position: relative;
-      transition: background 0.2s;
-      flex-shrink: 0;
-    }
-
-    .prop-toggle.on .toggle-switch {
-      background: var(--blue);
-    }
-
-    .toggle-switch::after {
-      content: '';
-      position: absolute;
-      top: 3px;
-      left: 3px;
-      width: 14px;
-      height: 14px;
-      background: #fff;
-      border-radius: 50%;
-      transition: transform 0.2s;
-    }
-
-    .prop-toggle.on .toggle-switch::after {
-      transform: translateX(12px);
-    }
-
-    .css-preview-box {
-      min-height: 200px;
-      background: var(--mode-bg2);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
-
-    .preview-target {
-      width: 100px;
-      height: 100px;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.85rem;
-      text-align: center;
-      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-      cursor: pointer;
-    }
-
-    /* ── 14. FLEXBOX / GRID DEMO ──────────────────── */
-    .layout-tabs {
-      display: flex;
-      gap: 0.4rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .layout-tab {
-      padding: 0.45rem 1rem;
-      border-radius: var(--rad-sm);
-      cursor: pointer;
-      font-size: 0.82rem;
-      font-weight: 600;
-      border: 1px solid var(--mode-border);
-      background: var(--mode-surface);
-      color: var(--mode-txt2);
-      font-family: inherit;
-      transition: all 0.2s;
-    }
-
-    .layout-tab.active {
-      background: var(--blue);
-      color: #fff;
-      border-color: var(--blue);
-    }
-
-    .layout-demo-area {
-      background: var(--mode-bg2);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      min-height: 200px;
-    }
-
-    .demo-children {
-      gap: 10px;
-    }
-
-    .demo-child {
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      border-radius: 8px;
-      height: 60px;
-      width: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.85rem;
-      transition: all 0.3s;
-      flex: none;
-    }
-
-    /* ── 15. JS COMPONENTS ────────────────────────── */
-
-    /* Calculator */
-    .calc-wrap {
-      background: var(--mode-bg2);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--radius);
-      padding: 1.25rem;
-      max-width: 280px;
-    }
-
-    .calc-display {
-      width: 100%;
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--rad-sm);
-      padding: 0.9rem 1rem;
-      text-align: right;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--mode-txt);
-      font-family: 'Fira Code', monospace;
-      margin-bottom: 1rem;
-      min-height: 3.5rem;
-      word-break: break-all;
-    }
-
-    .calc-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.5rem;
-    }
-
-    .calc-btn {
-      padding: 0.75rem;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 700;
-      font-family: inherit;
-      transition: opacity 0.15s, transform 0.1s;
-      background: var(--mode-surface);
-      color: var(--mode-txt);
-      border: 1px solid var(--mode-border);
-    }
-
-    .calc-btn:hover {
-      opacity: 0.85;
-      transform: scale(0.97);
-    }
-
-    .calc-btn:active {
-      transform: scale(0.93);
-    }
-
-    .calc-btn.op {
-      background: rgba(79, 142, 247, 0.15);
-      color: var(--blue);
-      border-color: rgba(79, 142, 247, 0.3);
-    }
-
-    .calc-btn.eq {
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      color: #fff;
-      border-color: transparent;
-    }
-
-    .calc-btn.clr {
-      background: rgba(248, 113, 113, 0.15);
-      color: var(--red);
-      border-color: rgba(248, 113, 113, 0.3);
-    }
-
-    .calc-btn.wide {
-      grid-column: span 2;
-    }
-
-    /* Todo list */
-    .todo-input-row {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .todo-input {
-      flex: 1;
-      padding: 0.65rem 0.9rem;
-      background: var(--mode-bg2);
-      border: 1.5px solid var(--mode-border);
-      border-radius: var(--rad-sm);
-      color: var(--mode-txt);
-      font-family: inherit;
-      font-size: 0.875rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .todo-input:focus {
-      border-color: var(--blue);
-    }
-
-    .todo-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      max-height: 260px;
-      overflow-y: auto;
-    }
-
-    .todo-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.7rem 1rem;
-      background: var(--mode-surface);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--rad-sm);
-      animation: slideIn 0.3s ease;
-    }
-
-    .todo-item.done .todo-text {
-      text-decoration: line-through;
-      opacity: 0.45;
-    }
-
-    .todo-check {
-      width: 20px;
-      height: 20px;
-      border-radius: 6px;
-      border: 2px solid var(--mode-border);
-      cursor: pointer;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      transition: all 0.2s;
-    }
-
-    .todo-item.done .todo-check {
-      background: var(--green);
-      border-color: var(--green);
-      color: #fff;
-    }
-
-    .todo-text {
-      flex: 1;
-      font-size: 0.875rem;
-      color: var(--mode-txt);
-    }
-
-    .todo-del {
-      background: none;
-      border: none;
-      color: var(--mode-txt2);
-      cursor: pointer;
-      font-size: 0.9rem;
-      padding: 0.2rem;
-      transition: color 0.2s;
-    }
-
-    .todo-del:hover {
-      color: var(--red);
-    }
-
-    /* Quiz component */
-    .quiz-card {
-      background: var(--mode-surface);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-    }
-
-    .quiz-q-text {
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin-bottom: 1.2rem;
-      line-height: 1.5;
-    }
-
-    .quiz-opts {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .quiz-opt-btn {
-      padding: 0.65rem 1rem;
-      border: 1px solid var(--mode-border);
-      border-radius: var(--rad-sm);
-      background: var(--mode-bg2);
-      color: var(--mode-txt);
-      text-align: left;
-      cursor: pointer;
-      font-size: 0.875rem;
-      font-family: inherit;
-      transition: all 0.15s;
-    }
-
-    .quiz-opt-btn:hover:not(:disabled) {
-      border-color: var(--blue);
-    }
-
-    .quiz-opt-btn.correct {
-      border-color: var(--green);
-      background: rgba(52, 211, 153, 0.1);
-      color: var(--green);
-    }
-
-    .quiz-opt-btn.wrong {
-      border-color: var(--red);
-      background: rgba(248, 113, 113, 0.1);
-      color: var(--red);
-    }
-
-    /* Countdown timer */
-    .timer-display {
-      font-family: 'Fira Code', monospace;
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: var(--mode-txt);
-      text-align: center;
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.05em;
-    }
-
-    .timer-display.urgent {
-      color: var(--red);
-      animation: pulse 1s infinite;
-    }
-
-    .timer-controls {
-      display: flex;
-      gap: 0.6rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-
-    .timer-set-row {
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-    }
-
-    .timer-set-row input {
-      width: 80px;
-      padding: 0.5rem;
-      border-radius: var(--rad-sm);
-      background: var(--mode-bg2);
-      border: 1px solid var(--mode-border);
-      color: var(--mode-txt);
-      font-family: 'Fira Code', monospace;
-      font-size: 1rem;
-      text-align: center;
-      outline: none;
-    }
-
-    /* Product cards */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1.1rem;
-    }
-
-    .product-card {
-      background: var(--mode-surface);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--radius);
-      padding: 1.25rem;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .product-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--blue);
-    }
-
-    .product-emoji {
-      font-size: 2.5rem;
-      margin-bottom: 0.75rem;
-      display: block;
-    }
-
-    .product-name {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--mode-txt);
-      margin-bottom: 0.2rem;
-    }
-
-    .product-cat {
-      font-size: 0.72rem;
-      color: var(--blue);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-    }
-
-    .product-price {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: var(--green);
-    }
-
-    .product-btn {
-      display: block;
-      width: 100%;
-      margin-top: 0.75rem;
-      padding: 0.5rem;
-      border-radius: 8px;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      color: #fff;
-      border: none;
-      font-weight: 700;
-      font-size: 0.8rem;
-      cursor: pointer;
-      font-family: inherit;
-      transition: opacity 0.2s;
-    }
-
-    .product-btn:hover {
-      opacity: 0.85;
-    }
-
-    /* ── 16. FETCH / AJAX SECTION ─────────────────── */
-    .fetch-tabs {
-      display: flex;
-      gap: 0.4rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .spinner {
-      width: 32px;
-      height: 32px;
-      border: 3px solid var(--mode-border);
-      border-bottom-color: var(--blue);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-      margin: 2rem auto;
-    }
-
-    .posts-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      max-height: 420px;
-      overflow-y: auto;
-    }
-
-    .post-card {
-      background: var(--mode-surface);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--rad-sm);
-      padding: 1rem 1.25rem;
-      animation: slideIn 0.3s ease;
-    }
-
-    .post-card h4 {
-      font-size: 0.875rem;
-      font-weight: 700;
-      color: var(--mode-txt);
-      margin-bottom: 0.25rem;
-    }
-
-    .post-card p {
-      font-size: 0.8rem;
-      color: var(--mode-txt2);
-      line-height: 1.5;
-    }
-
-    .user-card {
-      background: var(--mode-surface);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--rad-sm);
-      padding: 1rem 1.25rem;
-      animation: slideIn 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .user-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fff;
-      flex-shrink: 0;
-    }
-
-    .user-info h4 {
-      font-size: 0.875rem;
-      font-weight: 700;
-      color: var(--mode-txt);
-    }
-
-    .user-info p {
-      font-size: 0.78rem;
-      color: var(--mode-txt2);
-    }
-
-    .fetch-status {
-      font-size: 0.8rem;
-      padding: 0.6rem 1rem;
-      border-radius: var(--rad-sm);
-      margin-bottom: 1rem;
-    }
-
-    .fetch-status.loading {
-      background: rgba(79, 142, 247, 0.1);
-      color: var(--blue);
-    }
-
-    .fetch-status.error {
-      background: rgba(248, 113, 113, 0.1);
-      color: var(--red);
-    }
-
-    .fetch-status.success {
-      background: rgba(52, 211, 153, 0.1);
-      color: var(--green);
-    }
-
-    /* ── 17. A11Y SECTION ─────────────────────────── */
-    .a11y-demo {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.25rem;
-    }
-
-    .a11y-card {
-      background: var(--mode-surface);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--radius);
-      padding: 1.25rem;
-    }
-
-    .a11y-card h4 {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--mode-txt);
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .focus-demo-btn {
-      display: block;
-      width: 100%;
-      padding: 0.6rem;
-      border-radius: var(--rad-sm);
-      border: 2px solid var(--mode-border);
-      background: var(--mode-bg2);
-      color: var(--mode-txt);
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 0.85rem;
-      transition: all 0.2s;
-      margin-bottom: 0.4rem;
-    }
-
-    .focus-demo-btn:focus {
-      outline: 3px solid var(--blue);
-      outline-offset: 3px;
-      border-color: var(--blue);
-    }
-
-    .contrast-pair {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-
-    .contrast-box {
-      flex: 1;
-      padding: 0.65rem;
-      border-radius: 6px;
-      text-align: center;
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-
-    /* ── 18. RESPONSIVE DEMO ──────────────────────── */
-    .breakpoint-indicator {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 1.5rem;
-    }
-
-    .bp-badge {
-      padding: 0.3rem 0.75rem;
-      border-radius: 100px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      border: 1px solid var(--mode-border);
-      background: var(--mode-surface);
-      color: var(--mode-txt2);
-      transition: all 0.3s;
-    }
-
-    .bp-badge.active {
-      background: var(--blue);
-      color: #fff;
-      border-color: var(--blue);
-    }
-
-    .fluid-text-demo {
-      font-size: clamp(1rem, 5vw, 2.5rem);
-      font-weight: 800;
-      background: linear-gradient(90deg, var(--blue), var(--purple));
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-align: center;
-      margin: 2rem 0;
-      padding: 1rem;
-      border: 1px dashed var(--mode-border);
-      border-radius: var(--radius);
-    }
-
-    /* ── 19. BACK TO TOP ──────────────────────────── */
-    #back-to-top {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s, transform 0.2s;
-      z-index: 700;
-      box-shadow: 0 4px 20px rgba(79, 142, 247, 0.4);
-    }
-
-    #back-to-top.visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    #back-to-top:hover {
-      transform: translateY(-3px);
-    }
-
-    /* ── 20. FOOTER ───────────────────────────────── */
-    footer {
-      text-align: center;
-      padding: 3rem 1rem;
-      color: var(--mode-txt2);
-      font-size: 0.83rem;
-      border-top: 1px solid var(--mode-border);
-    }
-
-    footer a {
-      color: var(--blue);
-      text-decoration: none;
-    }
-
-    /* ── 21. RESPONSIVE BREAKPOINTS ──────────────── */
-    @media (max-width: 900px) {
-      .navbar-nav {
-        display: none;
-      }
-
-      #hamburger {
-        display: flex;
-      }
-
-      .navbar-nav.mobile-open {
-        display: flex;
-        position: fixed;
-        top: 62px;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        background: var(--mode-bg2);
-        border-bottom: 1px solid var(--mode-border);
-        padding: 1rem;
-        z-index: 799;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .showcase-section {
-        padding: 3rem 1rem;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      .products-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .playground-wrap {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ── 22. MICRO-ANIMATION DEMOS ────────────────── */
-    .anim-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 1rem;
-    }
-
-    .anim-box {
-      background: var(--mode-surface);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--radius);
-      padding: 1.25rem;
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .anim-preview {
-      width: 60px;
-      height: 60px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      margin: 0 auto 0.75rem;
-      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .anim-box:hover .anim-scale {
-      transform: scale(1.3);
-    }
-
-    .anim-box:hover .anim-rotate {
-      transform: rotate(45deg);
-    }
-
-    .anim-box:hover .anim-bounce {
-      transform: translateY(-15px);
-    }
-
-    .anim-box:hover .anim-skew {
-      transform: skewX(20deg);
-    }
-
-    .anim-box:hover .anim-shadow {
-      box-shadow: 0 0 30px rgba(79, 142, 247, 0.6);
-    }
-
-    .anim-label {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--mode-txt2);
-    }
-
-    /* ── 23. UTILITY CLASSES ──────────────────────── */
-    .mt-1 {
-      margin-top: 0.5rem;
-    }
-
-    .mt-2 {
-      margin-top: 1rem;
-    }
-
-    .mt-3 {
-      margin-top: 1.5rem;
-    }
-
-    .mb-1 {
-      margin-bottom: 0.5rem;
-    }
-
-    .mb-2 {
-      margin-bottom: 1rem;
-    }
-
-    .flex {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-
-    @media (max-width: 640px) {
-      .split {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 0.15rem 0.6rem;
-      border-radius: 6px;
-    }
-
-    .tag-blue {
-      background: rgba(79, 142, 247, 0.15);
-      color: var(--blue);
-    }
-
-    .tag-green {
-      background: rgba(52, 211, 153, 0.15);
-      color: var(--green);
-    }
-
-    .tag-purple {
-      background: rgba(168, 85, 247, 0.15);
-      color: var(--purple);
-    }
-
-    .tag-red {
-      background: rgba(248, 113, 113, 0.15);
-      color: var(--red);
-    }
-
-    .tag-yellow {
-      background: rgba(252, 211, 77, 0.15);
-      color: var(--yellow);
-    }
-
-    /* ── 24. HTTP METHODS GRID ────────────────────── */
-    .methods-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-      margin-top: 2rem;
-    }
-
-    .http-m-card {
-      border-radius: var(--radius);
-      padding: 1.25rem 1.1rem 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-      border: 2.5px solid transparent;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .http-m-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.14);
-    }
-
-    .http-m-card.get {
-      background: #ffe4e6;
-      border-color: #fda4af;
-    }
-
-    .http-m-card.put {
-      background: #dbeafe;
-      border-color: #93c5fd;
-    }
-
-    .http-m-card.post {
-      background: #dcfce7;
-      border-color: #86efac;
-    }
-
-    .http-m-card.delete {
-      background: #ffe4e6;
-      border-color: #fda4af;
-    }
-
-    .http-m-card.patch {
-      background: #ede9fe;
-      border-color: #c4b5fd;
-    }
-
-    .http-m-card.head {
-      background: #dcfce7;
-      border-color: #86efac;
-    }
-
-    .http-m-card.connect {
-      background: #ffe4e6;
-      border-color: #fda4af;
-    }
-
-    .http-m-card.options {
-      background: #fef9c3;
-      border-color: #fde047;
-    }
-
-    .http-m-card.trace {
-      background: #fae8ff;
-      border-color: #e879f9;
-    }
-
-    .http-m-card .card-title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .http-m-card .card-title h3 {
-      font-size: 1.45rem;
-      font-weight: 900;
-      letter-spacing: 0.02em;
-      color: #0f172a;
-      margin-bottom: 0;
-    }
-
-    .http-m-card .emoji {
-      font-size: 1.5rem;
-    }
-
-    .http-m-card .url-pill {
-      display: inline-block;
-      font-family: 'Fira Code', monospace;
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 0.3rem 0.75rem;
-      border-radius: 8px;
-      width: 100%;
-    }
-
-    .get .url-pill,
-    .delete .url-pill,
-    .connect .url-pill {
-      background: #fecdd3;
-      color: #9f1239;
-    }
-
-    .put .url-pill {
-      background: #bfdbfe;
-      color: #1e40af;
-    }
-
-    .post .url-pill,
-    .head .url-pill {
-      background: #bbf7d0;
-      color: #14532d;
-    }
-
-    .patch .url-pill {
-      background: #ddd6fe;
-      color: #4c1d95;
-    }
-
-    .options .url-pill {
-      background: #fef08a;
-      color: #713f12;
-    }
-
-    .trace .url-pill {
-      background: #f5d0fe;
-      color: #701a75;
-    }
-
-    .http-m-card .label {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
-      width: fit-content;
-      color: #fff;
-    }
-
-    .label.request {
-      background: #1e40af;
-    }
-
-    .label.response {
-      background: #7c3aed;
-    }
-
-    .get .label.response,
-    .delete .label.response,
-    .head .label.response,
-    .connect .label.response,
-    .options .label.response,
-    .trace .label.response {
-      background: #b45309;
-    }
-
-    .http-m-card .code-block {
-      background: #0f172a;
-      border-radius: 10px;
-      padding: 0.75rem 0.9rem;
-      font-family: 'Fira Code', monospace;
-      font-size: 0.75rem;
-      line-height: 1.6;
-      color: #e2e8f0;
-      white-space: pre-wrap;
-      overflow-x: auto;
-      border: none;
-    }
-
-    .http-m-card .s200 {
-      color: #4ade80;
-    }
-
-    .http-m-card .s201 {
-      color: #34d399;
-    }
-
-    .http-m-card .s204 {
-      color: #f87171;
-      font-weight: 700;
-    }
-
-    .http-m-card .description {
-      margin-top: auto;
-      padding-top: 0.6rem;
-      border-top: 1.5px dashed rgba(0, 0, 0, 0.12);
-      font-size: 0.82rem;
-      color: #334155;
-      text-align: center;
-      line-height: 1.5;
-    }
-
-    .http-m-card .hl {
-      color: #dc2626;
-      font-weight: 700;
-    }
-
-    .http-m-card .hlg {
-      color: #16a34a;
-      font-weight: 700;
-    }
-
-    .http-m-card .hlp {
-      color: #7c3aed;
-      font-weight: 700;
-    }
-
-    @media (max-width: 900px) {
-      .methods-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .methods-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ── 20. PEDAGOGICAL BLOCKS ───────────────────── */
-    .exercise-card {
-      background: rgba(30, 41, 59, 0.4);
-      border: 1px solid var(--mode-border);
-      padding: 1.75rem;
-      margin: 2rem 0;
-      border-radius: var(--radius);
-      position: relative;
-      overflow: hidden;
-    }
-
-    body.light .exercise-card {
-      background: #fff;
-      border-color: rgba(0, 0, 0, 0.1);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .exercise-card::before {
-      content: "🔥 Desafio Hands-on";
-      position: absolute;
-      top: 0;
-      right: 0;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      color: white;
-      font-size: 0.65rem;
-      font-weight: 800;
-      padding: 0.35rem 0.85rem;
-      border-bottom-left-radius: 12px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      z-index: 2;
-    }
-
-    .exercise-card h3 {
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      color: var(--mode-txt);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .exercise-card ul,
-    .exercise-card ol {
-      margin-left: 1.25rem;
-      color: var(--mode-txt2);
-      font-size: 0.875rem;
-      line-height: 1.7;
-    }
-
-    .exercise-card li {
-      margin-bottom: 0.6rem;
-    }
-
-    /* ── 21. PERFORMANCE & AUDIT ─────────────────── */
-    .audit-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .audit-item {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      background: rgba(52, 211, 153, 0.08);
-      border: 1px solid rgba(52, 211, 153, 0.2);
-      padding: 1rem 1.25rem;
-      border-radius: var(--rad-sm);
-      transition: transform 0.2s;
-    }
-
-    .audit-item:hover {
-      transform: translateX(5px);
-    }
-
-    .audit-score {
-      width: 44px;
-      height: 44px;
-      border: 3px solid var(--green);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 0.9rem;
-      color: var(--green);
-      flex-shrink: 0;
-      background: rgba(52, 211, 153, 0.1);
-    }
-
-    .audit-info strong {
-      display: block;
-      font-size: 0.9rem;
-      color: var(--mode-txt);
-      margin-bottom: 0.2rem;
-    }
-
-    .audit-info p {
-      font-size: 0.8rem;
-      color: var(--mode-txt2);
-      line-height: 1.5;
-    }
-
-    /* ── 22. WEB APIS EXPLORER ───────────────────── */
-    .api-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.25rem;
-    }
-
-    .api-card {
-      background: var(--mode-surface);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      transition: all 0.3s ease;
-    }
-
-    .api-card:hover {
-      border-color: var(--blue);
-      background: rgba(79, 142, 247, 0.05);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .api-icon {
-      font-size: 2rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .api-card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-    }
-
-    .api-card p {
-      font-size: 0.8rem;
-      color: var(--mode-txt2);
-      line-height: 1.5;
-      flex-grow: 1;
-    }
-
-    .api-action {
-      margin-top: 0.5rem;
-    }
-
-    .api-result {
-      font-size: 0.75rem;
-      font-family: 'Fira Code', monospace;
-      color: var(--blue);
-      padding: 0.5rem;
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 6px;
-      margin-top: 0.5rem;
-      min-height: 2.2rem;
-      display: flex;
-      align-items: center;
-      word-break: break-all;
-    }
-
-    /* Battery Bar */
-    .battery-container {
-      width: 100%;
-      height: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 100px;
-      margin-top: 0.5rem;
-      overflow: hidden;
-    }
-
-    .battery-fill {
-      height: 100%;
-      background: var(--green);
-      width: 0%;
-      transition: width 0.5s ease;
-    }
-
-    /* ── 23. GAME AREA ────────────────────────────── */
-    .game-container {
-      background: var(--mode-surface);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--radius);
-      padding: 2rem;
-      max-width: 480px;
-      margin-top: 1rem;
-    }
-
-    .game-stats {
-      display: flex;
-      justify-content: space-around;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .stat-box .val {
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: var(--blue);
-      display: block;
-      line-height: 1;
-    }
-
-    .stat-box .lbl {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--mode-txt2);
-      font-weight: 700;
-    }
-
-    .stat-box .val.timer {
-      color: var(--red);
-    }
-
-    .game-controls {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .btn-game {
-      flex: 1;
-      height: 60px;
-      font-size: 1.1rem;
-      font-weight: 800;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.1s;
-    }
-
-    .btn-start {
-      background: var(--green);
-      color: #fff;
-      box-shadow: 0 4px 15px rgba(52, 211, 153, 0.3);
-    }
-
-    .btn-click {
-      background: var(--red);
-      color: #fff;
-      box-shadow: 0 4px 15px rgba(248, 113, 113, 0.3);
-    }
-
-    .btn-click:active:not(:disabled) {
-      transform: scale(0.95);
-    }
-
-    .btn-game:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-      filter: grayscale(1);
-    }
-
-    /* ── 24. UI LAB ───────────────────────────────── */
-    .lab-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .lab-card {
-      background: var(--mode-surface);
-      border: 1px solid var(--mode-border);
-      border-radius: var(--radius);
-      padding: 2rem;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.25rem;
-    }
-
-    /* Ripple */
-    .ripple-btn {
-      position: relative;
-      overflow: hidden;
-      padding: 0.8rem 2rem;
-      background: var(--blue);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .ripple-btn .ripple {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.4);
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      border-radius: 50%;
-      animation: rippleEffect 0.6s linear;
-    }
-
-    @keyframes rippleEffect {
-      from {
-        width: 0;
-        height: 0;
-        opacity: 0.5;
-      }
-
-      to {
-        width: 500px;
-        height: 500px;
-        opacity: 0;
-      }
-    }
-
-    /* Loader */
-    .css-loader {
-      width: 48px;
-      height: 48px;
-      border: 5px solid var(--mode-border);
-      border-bottom-color: var(--blue);
-      border-radius: 50%;
-      display: inline-block;
-      animation: rotation 1s linear infinite;
-    }
-
-    /* Glass */
-    .glass-preview {
-      width: 100%;
-      height: 100px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #fff;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -2223,6 +33,8 @@
       <li><a href="#sec-protocols" aria-label="Ir para Protocolos">📡 Protocolos</a></li>
       <li><a href="#sec-methods" aria-label="Ir para Métodos HTTP">🌐 Methods</a></li>
       <li><a href="#sec-html" aria-label="Ir para HTML5">📄 HTML5</a></li>
+      <li><a href="#sec-ux" aria-label="Ir para UX/UI">✨ UX</a></li>
+      <li><a href="#sec-a11y" aria-label="Ir para Acessibilidade">♿ A11Y</a></li>
       <li><a href="#sec-forms" aria-label="Ir para Formulários">📋 Forms</a></li>
       <li><a href="#sec-css" aria-label="Ir para CSS">💅 CSS</a></li>
       <li><a href="#sec-layout" aria-label="Ir para Layouts">🏗️ Layout</a></li>
@@ -2230,8 +42,6 @@
       <li><a href="#sec-deploy" aria-label="Ir para Deploy">🚀 Deploy</a></li>
       <li><a href="#sec-perf" aria-label="Ir para Performance">📈 Performance</a></li>
       <li><a href="#sec-sec" aria-label="Ir para Segurança">🔒 Segurança</a></li>
-      <li><a href="#sec-a11y" aria-label="Ir para Acessibilidade">♿ A11Y</a></li>
-      <li><a href="#sec-ux" aria-label="Ir para UX/UI">✨ UX</a></li>
       <li><a href="#sec-jsbasics" aria-label="Ir para JavaScript">⚡ JS</a></li>
       <li><a href="#sec-fwk" aria-label="Ir para Frameworks">🏗️ Fwk</a></li>
       <li><a href="#sec-apis" aria-label="Ir para Web APIs">🌐 Web APIs</a></li>
@@ -2677,6 +487,60 @@
             </div>
           </div>
         </div>
+
+        <!-- PROCESSO DE RENDERIZAÇÃO VISUAL -->
+        <div class="render-flow-container mt-3">
+          <h3 style="font-size:1.1rem;font-weight:800;color:var(--mode-txt);margin-bottom:1.5rem;">🖥️ Processo de
+            Renderização Visual</h3>
+
+          <div class="render-steps">
+            <div class="render-step">
+              <div class="render-step-num">1</div>
+              <h4>Estrutura HTML</h4>
+              <p>O arquivo HTML define a estrutura e é analisado (parsed) pelo navegador.</p>
+            </div>
+            <div class="render-step">
+              <div class="render-step-num">2</div>
+              <h4>Criação do DOM</h4>
+              <p>O navegador converte o código em uma estrutura de árvore chamada Document Object Model.</p>
+            </div>
+            <div class="render-step">
+              <div class="render-step-num">3</div>
+              <h4>DOM na Memória</h4>
+              <p>O DOM representa a estrutura do documento na memória para interação via JavaScript.</p>
+            </div>
+          </div>
+
+          <div class="flow-diagram">
+            <h4 style="font-size:0.8rem;text-transform:uppercase;color:var(--mode-txt2);margin-bottom:0.5rem;">Fluxo de
+              Carregamento com CSS</h4>
+
+            <!-- Row 1: HTML -->
+            <div class="flow-row">
+              <div class="flow-box accent-blue">Load HTML</div>
+              <div class="flow-arrow">▶</div>
+              <div class="flow-box accent-cyan">Parse HTML</div>
+              <div class="flow-arrow">▶</div>
+              <div class="flow-box accent-purple">Create DOM Tree</div>
+              <div class="flow-arrow">▶</div>
+              <div class="flow-box accent-green">Display / Render</div>
+            </div>
+
+            <!-- Row 2: CSS (Connected to DOM) -->
+            <div style="display:flex;gap:4.5rem;margin-left:-8.5rem;margin-top:-0.5rem;margin-bottom:-0.5rem;">
+              <div class="flow-connector"></div>
+              <div class="flow-connector"></div>
+            </div>
+
+            <div class="flow-row">
+              <div class="flow-box">Load CSS</div>
+              <div class="flow-arrow">▶</div>
+              <div class="flow-box">Parse CSS</div>
+              <div class="flow-arrow">▶</div>
+              <div style="font-size:0.75rem;color:var(--mode-txt2);font-style:italic;">Attach style to DOM nodes</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2793,6 +657,301 @@
     </section>
 
     <!-- ═══════════════════════════════════════════
+         SECTION — UX/UI
+    ═══════════════════════════════════════════ -->
+    <section class="showcase-section" id="sec-ux" aria-labelledby="h-ux">
+      <div class="section-inner">
+        <span class="section-label">Módulo</span>
+        <h2 class="section-title" id="h-ux">UX/UI — Micro-interações &amp; Animações</h2>
+        <p class="section-desc">Demonstração de hover effects, transform, transitions e animações CSS que tornam a
+          interface premium e responsiva.</p>
+
+        <!-- UI vs UX COMPARISON -->
+        <div class="ui-ux-comparison mt-3">
+          <div class="ui-ux-col ui">
+            <div class="ui-ux-header">UI Design</div>
+            <div class="ui-ux-item">
+              <h4>Aparência</h4>
+              <p>Como as interfaces do produto se parecem e funcionam.</p>
+            </div>
+            <div class="ui-ux-item">
+              <h4>Design Visual</h4>
+              <p>Finaliza produtos e interfaces para a utilização do usuário.</p>
+            </div>
+            <div class="ui-ux-item">
+              <h4>Detalhes</h4>
+              <p>Verifica páginas, botões e interações individuais, garantindo que sejam polidos e funcionais.</p>
+            </div>
+          </div>
+
+          <div class="ui-ux-col ux">
+            <div class="ui-ux-header">UX Design</div>
+            <div class="ui-ux-item">
+              <h4>Sentimento</h4>
+              <p>A sensação geral da experiência com o uso do produto.</p>
+            </div>
+            <div class="ui-ux-item">
+              <h4>Prototipação</h4>
+              <p>Criação de wireframes e protótipos testáveis que formam a base do fluxo de usuários.</p>
+            </div>
+            <div class="ui-ux-item">
+              <h4>Visão Geral</h4>
+              <p>Tem uma visão geral de um produto, garantindo que o fluxo seja funcionalmente consistente.</p>
+            </div>
+          </div>
+
+          <div class="ui-ux-quote">
+            "UI é o que você vê, UX é como você usa e sente."
+          </div>
+        </div>
+
+        <!-- Micro animations -->
+        <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:1rem;color:var(--mode-txt);">Hover sobre cada card
+          para ver o efeito:</h3>
+        <div class="anim-grid mb-2" aria-label="Demonstrações de animação CSS">
+          <div class="anim-box" tabindex="0">
+            <div class="anim-preview anim-scale"></div>
+            <div class="anim-label">scale(1.3)</div>
+          </div>
+          <div class="anim-box" tabindex="0">
+            <div class="anim-preview anim-rotate"></div>
+            <div class="anim-label">rotate(45°)</div>
+          </div>
+          <div class="anim-box" tabindex="0">
+            <div class="anim-preview anim-bounce"></div>
+            <div class="anim-label">translateY(-15px)</div>
+          </div>
+          <div class="anim-box" tabindex="0">
+            <div class="anim-preview anim-skew"></div>
+            <div class="anim-label">skewX(20deg)</div>
+          </div>
+          <div class="anim-box" tabindex="0">
+            <div class="anim-preview anim-shadow"></div>
+            <div class="anim-label">glow shadow</div>
+          </div>
+        </div>
+
+        <!-- Gradient animated keyframes -->
+        <div class="demo-panel mb-2">
+          <h3>CSS @keyframes — Animação Automática</h3>
+          <div class="keyframe-demo" aria-label="Demonstração de gradiente animado com @keyframes">
+            Gradiente animado com @keyframes
+          </div>
+        </div>
+
+        <!-- Scroll reveal explanation -->
+        <div class="demo-panel">
+          <h3>✨ Recursos UX desta Página</h3>
+          <div class="card-grid" style="grid-template-columns:repeat(auto-fill,minmax(180px,1fr));">
+            <div class="card" style="padding:1rem;">
+              <div class="card-icon">📊</div>
+              <h3>Barra de Progresso</h3>
+              <p>Indica progresso de leitura no topo via scroll event.</p>
+            </div>
+            <div class="card" style="padding:1rem;">
+              <div class="card-icon">👁️</div>
+              <h3>Scroll Reveal</h3>
+              <p>Seções aparecem suavemente via IntersectionObserver.</p>
+            </div>
+            <div class="card" style="padding:1rem;">
+              <div class="card-icon">🌙</div>
+              <h3>Dark / Light Mode</h3>
+              <p>Toggle persistido em localStorage entre sessões.</p>
+            </div>
+            <div class="card" style="padding:1rem;">
+              <div class="card-icon">⬆️</div>
+              <h3>Back to Top</h3>
+              <p>Aparece após scroll e retorna suavemente ao topo.</p>
+            </div>
+            <div class="card" style="padding:1rem;">
+              <div class="card-icon">🔗</div>
+              <h3>Active Nav Links</h3>
+              <p>Link da navbar ativo baseado na seção visível.</p>
+            </div>
+            <div class="card" style="padding:1rem;">
+              <div class="card-icon">📱</div>
+              <h3>Mobile Menu</h3>
+              <p>Hamburger menu responsivo para telas pequenas.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- UI LAB -->
+        <div class="mt-3">
+          <h3 style="font-size:1.1rem;font-weight:800;color:var(--mode-txt);margin-bottom:1.5rem;">🧪 UI Lab —
+            Componentes Premium</h3>
+          <div class="lab-grid">
+            <!-- Ripple -->
+            <div class="lab-card">
+              <div class="card-icon">🌊</div>
+              <h3>Ripple Effect</h3>
+              <p>Animação de onda inspirada no Material Design.</p>
+              <button class="ripple-btn" onclick="createRipple(event)">Clique em mim</button>
+            </div>
+            <!-- Loader -->
+            <div class="lab-card">
+              <div class="card-icon">⌛</div>
+              <h3>CSS Loader</h3>
+              <p>Spinners leves construídos apenas com CSS puro.</p>
+              <div class="css-loader"></div>
+            </div>
+            <!-- Glass -->
+            <div class="lab-card">
+              <div class="card-icon">💎</div>
+              <h3>Glassmorphism</h3>
+              <p>Efeito de vidro fosco com backdrop-filter.</p>
+              <div class="glass-preview">Glass Card</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION — ACCESSIBILITY
+    ═══════════════════════════════════════════ -->
+    <section class="showcase-section" id="sec-a11y" aria-labelledby="h-a11y">
+      <div class="section-inner">
+        <span class="section-label">Módulo</span>
+        <h2 class="section-title" id="h-a11y">Acessibilidade (A11Y)</h2>
+        <p class="section-desc">Demonstrações práticas de ARIA, foco por teclado, contraste WCAG e estrutura semântica
+          correta para leitores de tela.</p>
+
+        <div class="a11y-demo">
+          <!-- Keyboard navigation -->
+          <div class="a11y-card">
+            <h4>⌨️ Navegação por Teclado</h4>
+            <p style="font-size:0.8rem;color:var(--mode-txt2);margin-bottom:0.75rem;">Use Tab para navegar entre estes
+              botões — o foco visível segue WCAG 2.1:</p>
+            <button class="focus-demo-btn" aria-label="Botão de demonstração 1">Botão 1 (Tab aqui)</button>
+            <button class="focus-demo-btn" aria-label="Botão de demonstração 2">Botão 2 (Tab aqui)</button>
+            <button class="focus-demo-btn" aria-label="Botão de demonstração 3">Botão 3 (Tab aqui)</button>
+          </div>
+
+          <!-- ARIA Labels -->
+          <div class="a11y-card">
+            <h4>🏷️ ARIA Labels</h4>
+            <p style="font-size:0.8rem;color:var(--mode-txt2);margin-bottom:0.75rem;">Elementos com aria-label correto
+              para leitores de tela:</p>
+            <button class="focus-demo-btn" aria-label="Fechar modal de confirmação" title="Fechar">✕ (aria-label: Fechar
+              modal)</button>
+            <button class="focus-demo-btn" aria-label="Adicionar produto ao carrinho" title="Carrinho">🛒 (aria-label:
+              Add ao carrinho)</button>
+            <button class="focus-demo-btn" aria-expanded="false" aria-controls="hidden-menu" title="Menu">☰
+              (aria-expanded: false)</button>
+          </div>
+
+          <!-- Contrast -->
+          <div class="a11y-card">
+            <h4>🎨 Contraste WCAG</h4>
+            <p style="font-size:0.8rem;color:var(--mode-txt2);margin-bottom:0.5rem;">Mínimo 4.5:1 para texto normal
+              (WCAG AA):</p>
+            <div class="contrast-pair">
+              <div class="contrast-box" style="background:#fff;color:#111;" aria-label="Alto contraste — aprovado">
+                ✓ Alto<br><small>21:1</small>
+              </div>
+              <div class="contrast-box" style="background:#777;color:#888;" aria-label="Baixo contraste — reprovado">
+                ✗ Baixo<br><small>1.2:1</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Semantic structure -->
+          <div class="a11y-card">
+            <h4>🌲 Estrutura Semântica</h4>
+            <p style="font-size:0.8rem;color:var(--mode-txt2);margin-bottom:0.75rem;">Hierarquia correta de headings
+              para screen readers:</p>
+            <div
+              style="font-size:0.8rem;font-family:'Fira Code',monospace;display:flex;flex-direction:column;gap:0.2rem;">
+              <span style="color:var(--blue)">h1 → Título Principal</span>
+              <span style="color:var(--purple);padding-left:1rem">h2 → Seção</span>
+              <span style="color:var(--cyan);padding-left:2rem">h3 → Subseção</span>
+              <span style="color:var(--green);padding-left:3rem">h4 → Detalhe</span>
+            </div>
+            <p style="font-size:0.72rem;color:var(--red);margin-top:0.5rem;">⚠️ Nunca pule níveis de heading (h1→h3 sem
+              h2)</p>
+          </div>
+
+          <!-- Skip links -->
+          <div class="a11y-card">
+            <h4>⏭️ Skip Links</h4>
+            <p style="font-size:0.8rem;color:var(--mode-txt2);margin-bottom:0.75rem;">Link "pular para conteúdo" —
+              essencial para navegação por teclado:</p>
+            <pre
+              style="font-family:'Fira Code',monospace;font-size:0.72rem;background:rgba(0,0,0,0.3);padding:0.6rem;border-radius:6px;color:#a5d6ff;overflow:auto;">&lt;a href="#main"
+   class="skip-link"&gt;
+  Pular para conteúdo
+&lt;/a&gt;</pre>
+          </div>
+
+          <!-- Live regions -->
+          <div class="a11y-card">
+            <h4>📢 Live Regions</h4>
+            <p style="font-size:0.8rem;color:var(--mode-txt2);margin-bottom:0.75rem;">aria-live anuncia mudanças
+              dinâmicas para screen readers:</p>
+            <button class="focus-demo-btn" onclick="testLiveRegion()" aria-label="Testar região live">Anunciar
+              mensagem</button>
+            <div id="live-region-out" aria-live="polite" aria-atomic="true"
+              style="margin-top:0.5rem;font-size:0.8rem;color:var(--green);min-height:1.2rem;"></div>
+          </div>
+        </div>
+
+        <div class="demo-panel mt-3">
+          <h3>📘 Guia Avançado de Acessibilidade: Do's &amp; Don'ts</h3>
+          <p style="font-size:0.85rem;color:var(--mode-txt2);margin-bottom:1.5rem;">Boas práticas de design e
+            desenvolvimento para diferentes perfis de usuários, inspiradas no GOV.UK.</p>
+
+          <!-- Category Selector -->
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.5rem;" role="tablist"
+            aria-label="Categorias de acessibilidade">
+            <button class="a11y-category-btn active" onclick="switchA11yTab('dislexia')" role="tab" aria-selected="true"
+              aria-controls="panel-a11y">Dislexia</button>
+            <button class="a11y-category-btn" onclick="switchA11yTab('motora')" role="tab" aria-selected="false"
+              aria-controls="panel-a11y">Deficiência Motora</button>
+            <button class="a11y-category-btn" onclick="switchA11yTab('auditiva')" role="tab" aria-selected="false"
+              aria-controls="panel-a11y">Surdez / Auditiva</button>
+            <button class="a11y-category-btn" onclick="switchA11yTab('visao')" role="tab" aria-selected="false"
+              aria-controls="panel-a11y">Baixa Visão</button>
+            <button class="a11y-category-btn" onclick="switchA11yTab('readers')" role="tab" aria-selected="false"
+              aria-controls="panel-a11y">Leitores de Tela</button>
+            <button class="a11y-category-btn" onclick="switchA11yTab('autista')" role="tab" aria-selected="false"
+              aria-controls="panel-a11y">Espectro Autista</button>
+          </div>
+
+          <!-- Content Panel -->
+          <div id="panel-a11y" class="a11y-guide-card" role="tabpanel" aria-live="polite">
+            <div class="a11y-guide-header">
+              <h4 id="a11y-title">🧠 Projetando para usuários com Dislexia</h4>
+            </div>
+            <table class="a11y-table">
+              <thead>
+                <tr>
+                  <th>Faça (Do...)</th>
+                  <th>Não faça (Don't...)</th>
+                </tr>
+              </thead>
+              <tbody id="a11y-content">
+                <!-- Conteúdo dinâmico via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <h3>♿ Hands-on: Testando com NVDA/VoiceOver</h3>
+          <ul>
+            <li>Ative o <strong>Narrador</strong> (Windows + Ctrl + Enter) ou <strong>VoiceOver</strong> (Cmd + F5).
+            </li>
+            <li>Tente navegar por esta página usando apenas as teclas <strong>Tab</strong>, <strong>Shift + Tab</strong>
+              e <strong>Enter</strong>.</li>
+            <li>Feche os olhos e tente entender a estrutura da página apenas ouvindo.</li>
+            <li>Verifique se o foco está sempre visível e se a ordem faz sentido.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
          SECTION — CSS FUNDAMENTALS
     ═══════════════════════════════════════════ -->
     <section class="showcase-section" id="sec-css" aria-labelledby="h-css">
@@ -2856,6 +1015,117 @@
   background: <span class="st">linear-gradient(135deg, #4f8ef7, #a855f7)</span>;
   transition: <span class="st">all 0.5s ease</span>;
 }</pre>
+        </div>
+
+        <!-- SELETORES CSS -->
+        <div class="selectors-container">
+          <div class="selector-types">
+            <h3 style="font-size:1.1rem;font-weight:800;color:var(--mode-txt);margin-bottom:0.5rem;">🎯 Seletores CSS
+            </h3>
+            <p style="font-size:0.85rem;color:var(--mode-txt2);margin-bottom:1rem;">Padrões usados para identificar e
+              aplicar estilos a elementos específicos.</p>
+
+            <div class="selector-card element">
+              <h4>Seletor de Elemento</h4>
+              <p>Seleciona todos os elementos de uma tag específica.</p>
+              <code>p { color: blue; }</code>
+            </div>
+
+            <div class="selector-card id">
+              <h4>Seletor de ID</h4>
+              <p>Seleciona um único elemento com um atributo <code>id</code> exclusivo.</p>
+              <code>#pgf { background: #f0f0f0; }</code>
+            </div>
+
+            <div class="selector-card class">
+              <h4>Seletor de Classe</h4>
+              <p>Seleciona elementos que possuem o atributo <code>class</code>.</p>
+              <code>.pgf { font-weight: bold; }</code>
+            </div>
+          </div>
+
+          <div class="selector-demo-box">
+            <h4 style="color:#fff;font-size:0.9rem;margin-bottom:0.5rem;">Live Demo &amp; Code</h4>
+
+            <div class="selector-demo-html">
+              &lt;p id="pgf" class="pgf"&gt;Parágrafo&lt;/p&gt;
+            </div>
+
+            <div class="selector-demo-css">
+              <span class="comment">/* Aplica azul em todos os &lt;p&gt; */</span><br>
+              <span class="sel-el">p</span> { color: blue; }<br><br>
+              <span class="comment">/* Aplica fundo no id="pgf" */</span><br>
+              <span class="sel-id">#pgf</span> { background-color: #f0f0f0; }<br><br>
+              <span class="comment">/* Aplica negrito na classe "pgf" */</span><br>
+              <span class="sel-cl">.pgf</span> { font-weight: bold; }
+            </div>
+
+            <div class="selector-live-preview">
+              <p id="demo-para">Texto de Exemplo</p>
+              <div style="display:flex;gap:0.5rem;margin-top:1rem;flex-wrap:wrap;">
+                <button class="btn btn-primary" style="font-size:0.7rem;padding:0.4rem 0.8rem;"
+                  onclick="toggleHighlight('el')">Toggle Element (p)</button>
+                <button class="btn btn-primary" style="font-size:0.7rem;padding:0.4rem 0.8rem;"
+                  onclick="toggleHighlight('id')">Toggle ID (#pgf)</button>
+                <button class="btn btn-primary" style="font-size:0.7rem;padding:0.4rem 0.8rem;"
+                  onclick="toggleHighlight('cl')">Toggle Class (.pgf)</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- SELETORES COMBINADOS -->
+        <div class="mt-3">
+          <h3 style="font-size:1.1rem;font-weight:800;color:var(--mode-txt);margin-bottom:0.5rem;">🔗 Seletores
+            Combinados
+          </h3>
+          <p style="font-size:0.85rem;color:var(--mode-txt2);margin-bottom:1.5rem;">Permitem combinar seletores para
+            especificar relações hierárquicas entre elementos.</p>
+
+          <div class="combined-selectors-grid">
+            <!-- Descendente -->
+            <div class="combined-card">
+              <h4>Descendente <span class="symbol">(espaço)</span></h4>
+              <code>div p { ... }</code>
+              <p>Seleciona <strong>todos</strong> os elementos &lt;p&gt; que estejam dentro de uma &lt;div&gt;, não
+                importa quão profundo.</p>
+            </div>
+
+            <!-- Filho Direto -->
+            <div class="combined-card">
+              <h4>Filho Direto <span class="symbol">&gt;</span></h4>
+              <code>div &gt; p { ... }</code>
+              <p>Seleciona apenas os elementos &lt;p&gt; que são <strong>filhos imediatos</strong> da &lt;div&gt;.</p>
+            </div>
+
+            <!-- Irmão Adjacente -->
+            <div class="combined-card">
+              <h4>Irmão Adjacente <span class="symbol">+</span></h4>
+              <code>h1 + p { ... }</code>
+              <p>Seleciona o <strong>primeiro</strong> &lt;p&gt; que aparece logo após um &lt;h1&gt;.</p>
+            </div>
+
+            <!-- Irmãos Gerais -->
+            <div class="combined-card">
+              <h4>Irmãos Gerais <span class="symbol">~</span></h4>
+              <code>h1 ~ p { ... }</code>
+              <p>Seleciona <strong>todos</strong> os &lt;p&gt; que são irmãos e aparecem após o &lt;h1&gt;.</p>
+            </div>
+          </div>
+
+          <!-- BOX MODEL TIP -->
+          <div class="demo-panel mt-2" style="background:var(--mode-surface);border-left:4px solid var(--blue);">
+            <h4 style="font-size:0.9rem;margin-bottom:0.5rem;color:var(--blue);">📦 Dica: Box Model em ação</h4>
+            <div class="split" style="align-items:center;">
+              <pre
+                style="font-family:'Fira Code',monospace;font-size:0.78rem;background:#000;padding:1rem;border-radius:8px;color:#ff7b72;">div {
+  margin: 20px auto;
+  padding: 10px;
+  border: 2px solid black;
+}</pre>
+              <p style="font-size:0.8rem;color:var(--mode-txt2);">O segredo para centralizar elementos de bloco com
+                largura dinâmica é usar <code>margin: auto</code> nas laterais.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -3027,6 +1297,114 @@
           </div>
         </div>
 
+        <!-- NOVOS DETALHES DE HOSPEDAGEM -->
+        <div class="mt-3">
+          <h3 style="font-size:1.1rem;font-weight:800;color:var(--mode-txt);margin-bottom:1.5rem;">🏢 Tipos de
+            Hospedagem
+            &amp; Infraestrutura</h3>
+          <div class="card-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+
+            <!-- Dedicado -->
+            <div class="card">
+              <div class="card-icon">💎</div>
+              <h3>Servidor Dedicado ($$$$)</h3>
+              <p style="font-size:0.85rem;margin-bottom:1rem;">A solução de maior performance para projetos que exigem
+                exclusividade total de hardware (CPU, RAM e armazenamento). Não divide recursos, garantindo máxima
+                estabilidade.</p>
+              <div
+                style="font-size:0.75rem;color:var(--mode-txt2);background:rgba(0,0,0,0.2);padding:0.75rem;border-radius:8px;">
+                <strong>Players:</strong> HostGator, Hostinger, Locaweb, AWS EC2 Dedicated, HostDime, Bluehost.
+              </div>
+            </div>
+
+            <!-- VPS -->
+            <div class="card">
+              <div class="card-icon">🔲</div>
+              <h3>VPS (Virtual Private Server)</h3>
+              <p style="font-size:0.85rem;">Meio-termo entre compartilhada e dedicada. Você recebe uma fatia isolada de
+                um servidor físico com recursos garantidos de CPU e RAM.</p>
+            </div>
+
+            <!-- Cloud -->
+            <div class="card">
+              <div class="card-icon">☁️</div>
+              <h3>Cloud Hosting</h3>
+              <p style="font-size:0.85rem;">Infraestrutura virtualizada onde os recursos não dependem de uma única
+                máquina física, permitindo escalabilidade instantânea.</p>
+            </div>
+
+            <!-- Compartilhada -->
+            <div class="card">
+              <div class="card-icon">🏢</div>
+              <h3>Hospedagem Compartilhada</h3>
+              <p style="font-size:0.85rem;">Divisão de um servidor entre diversos sites. Como um prédio: cada um tem seu
+                espaço, mas compartilham a infraestrutura comum.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEVOPS VS DEVSECOPS -->
+        <div class="demo-panel mt-3">
+          <h3>🚀 Cultura: DevOps vs DevSecOps</h3>
+          <div class="split">
+            <div
+              style="background:rgba(14, 165, 233, 0.05);padding:1.25rem;border-radius:12px;border:1px solid rgba(14, 165, 233, 0.2);">
+              <h4 style="color:var(--blue);margin-bottom:0.5rem;">DevOps</h4>
+              <p style="font-size:0.85rem;color:var(--mode-txt2);line-height:1.6;">União de desenvolvimento
+                (<strong>Dev</strong>) e operações (<strong>Ops</strong>) para automatizar e integrar o ciclo de entrega
+                de software.</p>
+            </div>
+            <div
+              style="background:rgba(52, 211, 153, 0.05);padding:1.25rem;border-radius:12px;border:1px solid rgba(52, 211, 153, 0.2);">
+              <h4 style="color:var(--green);margin-bottom:0.5rem;">DevSecOps</h4>
+              <p style="font-size:0.85rem;color:var(--mode-txt2);line-height:1.6;">Integração proativa da
+                <strong>Segurança (Sec)</strong> em todas as fases do DevOps, não apenas no final do processo.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- BENEFÍCIOS DO CI/CD -->
+        <div class="mt-3">
+          <h3 style="font-size:1.1rem;font-weight:800;color:var(--mode-txt);margin-bottom:1.5rem;">⚙️ Por que usar
+            CI/CD?
+          </h3>
+          <div class="card-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+            <div class="card" style="padding:1.25rem;">
+              <h4 style="color:var(--blue);margin-bottom:0.5rem;font-size:0.95rem;">🤖 Redução de Erros Humanos</h4>
+              <p style="font-size:0.82rem;color:var(--mode-txt2);line-height:1.6;">A automação de testes e deploys
+                elimina
+                falhas manuais comuns e garante que o código em produção siga padrões rigorosos.</p>
+            </div>
+            <div class="card" style="padding:1.25rem;">
+              <h4 style="color:var(--purple);margin-bottom:0.5rem;font-size:0.95rem;">⏱️ Time-to-Market Acelerado</h4>
+              <p style="font-size:0.82rem;color:var(--mode-txt2);line-height:1.6;">Reduz o ciclo de entrega de semanas
+                ou
+                meses para apenas minutos, acelerando o lançamento de novas funcionalidades.</p>
+            </div>
+            <div class="card" style="padding:1.25rem;">
+              <h4 style="color:var(--cyan);margin-bottom:0.5rem;font-size:0.95rem;">🔍 Detecção Precoce de Bugs</h4>
+              <p style="font-size:0.82rem;color:var(--mode-txt2);line-height:1.6;">Problemas são identificados e
+                corrigidos assim que surgem, antes que se tornem complexos e caros de resolver.</p>
+            </div>
+            <div class="card" style="padding:1.25rem;">
+              <h4 style="color:var(--green);margin-bottom:0.5rem;font-size:0.95rem;">💬 Feedback Contínuo</h4>
+              <p style="font-size:0.82rem;color:var(--mode-txt2);line-height:1.6;">Permite que desenvolvedores vejam o
+                progresso em tempo real e recebam feedback rápido através de lançamentos frequentes.</p>
+            </div>
+            <div class="card" style="padding:1.25rem;">
+              <h4 style="color:var(--pink);margin-bottom:0.5rem;font-size:0.95rem;">🤝 Melhoria na Colaboração</h4>
+              <p style="font-size:0.82rem;color:var(--mode-txt2);line-height:1.6;">Facilita o trabalho de múltiplos
+                devs, resolvendo conflitos de integração automaticamente e aumentando a produtividade.</p>
+            </div>
+            <div class="card" style="padding:1.25rem;">
+              <h4 style="color:var(--yellow);margin-bottom:0.5rem;font-size:0.95rem;">🛡️ Segurança Integrada</h4>
+              <p style="font-size:0.82rem;color:var(--mode-txt2);line-height:1.6;">Pipelines modernos incluem
+                verificações de segurança automáticas em cada etapa (DevSecOps), mitigando vulnerabilidades.</p>
+            </div>
+          </div>
+        </div>
+
         <div class="exercise-card">
           <h3>🚀 Hands-on: Deploy no Render</h3>
           <ul>
@@ -3140,237 +1518,7 @@
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         SECTION — ACCESSIBILITY
-    ═══════════════════════════════════════════ -->
-    <section class="showcase-section" id="sec-a11y" aria-labelledby="h-a11y">
-      <div class="section-inner">
-        <span class="section-label">Módulo</span>
-        <h2 class="section-title" id="h-a11y">Acessibilidade (A11Y)</h2>
-        <p class="section-desc">Demonstrações práticas de ARIA, foco por teclado, contraste WCAG e estrutura semântica
-          correta para leitores de tela.</p>
 
-        <div class="a11y-demo">
-          <!-- Keyboard navigation -->
-          <div class="a11y-card">
-            <h4>⌨️ Navegação por Teclado</h4>
-            <p style="font-size:0.8rem;color:var(--mode-txt2);margin-bottom:0.75rem;">Use Tab para navegar entre estes
-              botões — o foco visível segue WCAG 2.1:</p>
-            <button class="focus-demo-btn" aria-label="Botão de demonstração 1">Botão 1 (Tab aqui)</button>
-            <button class="focus-demo-btn" aria-label="Botão de demonstração 2">Botão 2 (Tab aqui)</button>
-            <button class="focus-demo-btn" aria-label="Botão de demonstração 3">Botão 3 (Tab aqui)</button>
-          </div>
-
-          <!-- ARIA Labels -->
-          <div class="a11y-card">
-            <h4>🏷️ ARIA Labels</h4>
-            <p style="font-size:0.8rem;color:var(--mode-txt2);margin-bottom:0.75rem;">Elementos com aria-label correto
-              para leitores de tela:</p>
-            <button class="focus-demo-btn" aria-label="Fechar modal de confirmação" title="Fechar">✕ (aria-label: Fechar
-              modal)</button>
-            <button class="focus-demo-btn" aria-label="Adicionar produto ao carrinho" title="Carrinho">🛒 (aria-label:
-              Add ao carrinho)</button>
-            <button class="focus-demo-btn" aria-expanded="false" aria-controls="hidden-menu" title="Menu">☰
-              (aria-expanded: false)</button>
-          </div>
-
-          <!-- Contrast -->
-          <div class="a11y-card">
-            <h4>🎨 Contraste WCAG</h4>
-            <p style="font-size:0.8rem;color:var(--mode-txt2);margin-bottom:0.5rem;">Mínimo 4.5:1 para texto normal
-              (WCAG AA):</p>
-            <div class="contrast-pair">
-              <div class="contrast-box" style="background:#fff;color:#111;" aria-label="Alto contraste — aprovado">
-                ✓ Alto<br><small>21:1</small>
-              </div>
-              <div class="contrast-box" style="background:#777;color:#888;" aria-label="Baixo contraste — reprovado">
-                ✗ Baixo<br><small>1.2:1</small>
-              </div>
-            </div>
-          </div>
-
-          <!-- Semantic structure -->
-          <div class="a11y-card">
-            <h4>🌲 Estrutura Semântica</h4>
-            <p style="font-size:0.8rem;color:var(--mode-txt2);margin-bottom:0.75rem;">Hierarquia correta de headings
-              para screen readers:</p>
-            <div
-              style="font-size:0.8rem;font-family:'Fira Code',monospace;display:flex;flex-direction:column;gap:0.2rem;">
-              <span style="color:var(--blue)">h1 → Título Principal</span>
-              <span style="color:var(--purple);padding-left:1rem">h2 → Seção</span>
-              <span style="color:var(--cyan);padding-left:2rem">h3 → Subseção</span>
-              <span style="color:var(--green);padding-left:3rem">h4 → Detalhe</span>
-            </div>
-            <p style="font-size:0.72rem;color:var(--red);margin-top:0.5rem;">⚠️ Nunca pule níveis de heading (h1→h3 sem
-              h2)</p>
-          </div>
-
-          <!-- Skip links -->
-          <div class="a11y-card">
-            <h4>⏭️ Skip Links</h4>
-            <p style="font-size:0.8rem;color:var(--mode-txt2);margin-bottom:0.75rem;">Link "pular para conteúdo" —
-              essencial para navegação por teclado:</p>
-            <pre
-              style="font-family:'Fira Code',monospace;font-size:0.72rem;background:rgba(0,0,0,0.3);padding:0.6rem;border-radius:6px;color:#a5d6ff;overflow:auto;">&lt;a href="#main"
-   class="skip-link"&gt;
-  Pular para conteúdo
-&lt;/a&gt;</pre>
-          </div>
-
-          <!-- Live regions -->
-          <div class="a11y-card">
-            <h4>📢 Live Regions</h4>
-            <p style="font-size:0.8rem;color:var(--mode-txt2);margin-bottom:0.75rem;">aria-live anuncia mudanças
-              dinâmicas para screen readers:</p>
-            <button class="focus-demo-btn" onclick="testLiveRegion()" aria-label="Testar região live">Anunciar
-              mensagem</button>
-            <div id="live-region-out" aria-live="polite" aria-atomic="true"
-              style="margin-top:0.5rem;font-size:0.8rem;color:var(--green);min-height:1.2rem;"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════
-         SECTION — UX/UI
-    ═══════════════════════════════════════════ -->
-    <section class="showcase-section" id="sec-ux" aria-labelledby="h-ux">
-      <div class="section-inner">
-        <span class="section-label">Módulo</span>
-        <h2 class="section-title" id="h-ux">UX/UI — Micro-interações &amp; Animações</h2>
-        <p class="section-desc">Demonstração de hover effects, transform, transitions e animações CSS que tornam a
-          interface premium e responsiva.</p>
-
-        <!-- Micro animations -->
-        <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:1rem;color:var(--mode-txt);">Hover sobre cada card
-          para ver o efeito:</h3>
-        <div class="anim-grid mb-2" aria-label="Demonstrações de animação CSS">
-          <div class="anim-box" tabindex="0">
-            <div class="anim-preview anim-scale"></div>
-            <div class="anim-label">scale(1.3)</div>
-          </div>
-          <div class="anim-box" tabindex="0">
-            <div class="anim-preview anim-rotate"></div>
-            <div class="anim-label">rotate(45°)</div>
-          </div>
-          <div class="anim-box" tabindex="0">
-            <div class="anim-preview anim-bounce"></div>
-            <div class="anim-label">translateY(-15px)</div>
-          </div>
-          <div class="anim-box" tabindex="0">
-            <div class="anim-preview anim-skew"></div>
-            <div class="anim-label">skewX(20deg)</div>
-          </div>
-          <div class="anim-box" tabindex="0">
-            <div class="anim-preview anim-shadow"></div>
-            <div class="anim-label">glow shadow</div>
-          </div>
-        </div>
-
-        <!-- Gradient animated keyframes -->
-        <div class="demo-panel mb-2">
-          <h3>CSS @keyframes — Animação Automática</h3>
-          <style>
-            @keyframes gradientShift {
-              0% {
-                background-position: 0% 50%;
-              }
-
-              50% {
-                background-position: 100% 50%;
-              }
-
-              100% {
-                background-position: 0% 50%;
-              }
-            }
-
-            .keyframe-demo {
-              height: 80px;
-              border-radius: 12px;
-              background: linear-gradient(270deg, #4f8ef7, #a855f7, #f472b6, #22d3ee);
-              background-size: 400% 400%;
-              animation: gradientShift 3s ease infinite;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-weight: 700;
-              color: #fff;
-              font-size: 1rem;
-            }
-          </style>
-          <div class="keyframe-demo" aria-label="Demonstração de gradiente animado com @keyframes">
-            Gradiente animado com @keyframes
-          </div>
-        </div>
-
-        <!-- Scroll reveal explanation -->
-        <div class="demo-panel">
-          <h3>✨ Recursos UX desta Página</h3>
-          <div class="card-grid" style="grid-template-columns:repeat(auto-fill,minmax(180px,1fr));">
-            <div class="card" style="padding:1rem;">
-              <div class="card-icon">📊</div>
-              <h3>Barra de Progresso</h3>
-              <p>Indica progresso de leitura no topo via scroll event.</p>
-            </div>
-            <div class="card" style="padding:1rem;">
-              <div class="card-icon">👁️</div>
-              <h3>Scroll Reveal</h3>
-              <p>Seções aparecem suavemente via IntersectionObserver.</p>
-            </div>
-            <div class="card" style="padding:1rem;">
-              <div class="card-icon">🌙</div>
-              <h3>Dark / Light Mode</h3>
-              <p>Toggle persistido em localStorage entre sessões.</p>
-            </div>
-            <div class="card" style="padding:1rem;">
-              <div class="card-icon">⬆️</div>
-              <h3>Back to Top</h3>
-              <p>Aparece após scroll e retorna suavemente ao topo.</p>
-            </div>
-            <div class="card" style="padding:1rem;">
-              <div class="card-icon">🔗</div>
-              <h3>Active Nav Links</h3>
-              <p>Link da navbar ativo baseado na seção visível.</p>
-            </div>
-            <div class="card" style="padding:1rem;">
-              <div class="card-icon">📱</div>
-              <h3>Mobile Menu</h3>
-              <p>Hamburger menu responsivo para telas pequenas.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- UI LAB -->
-        <div class="mt-3">
-          <h3 style="font-size:1.1rem;font-weight:800;color:var(--mode-txt);margin-bottom:1.5rem;">🧪 UI Lab —
-            Componentes Premium</h3>
-          <div class="lab-grid">
-            <!-- Ripple -->
-            <div class="lab-card">
-              <div class="card-icon">🌊</div>
-              <h3>Ripple Effect</h3>
-              <p>Animação de onda inspirada no Material Design.</p>
-              <button class="ripple-btn" onclick="createRipple(event)">Clique em mim</button>
-            </div>
-            <!-- Loader -->
-            <div class="lab-card">
-              <div class="card-icon">⌛</div>
-              <h3>CSS Loader</h3>
-              <p>Spinners leves construídos apenas com CSS puro.</p>
-              <div class="css-loader"></div>
-            </div>
-            <!-- Glass -->
-            <div class="lab-card">
-              <div class="card-icon">💎</div>
-              <h3>Glassmorphism</h3>
-              <p>Efeito de vidro fosco com backdrop-filter.</p>
-              <div class="glass-preview">Glass Card</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
 
 
@@ -3807,1015 +1955,7 @@
   <!-- ═══════════════════════════════════════════════════════
        JAVASCRIPT — ALL LOGIC IN ONE FILE
   ═══════════════════════════════════════════════════════ -->
-  <script>
-    /* ════════════════════════════════════════
-       1. DARK/LIGHT MODE
-    ════════════════════════════════════════ */
-    const body = document.body;
-    const modeBtn = document.getElementById('mode-toggle');
-
-    // Load saved preference
-    if (localStorage.getItem('showcase-theme') === 'light') {
-      body.classList.add('light');
-      modeBtn.textContent = '☀️';
-    }
-
-    modeBtn.addEventListener('click', () => {
-      body.classList.toggle('light');
-      const isLight = body.classList.contains('light');
-      modeBtn.textContent = isLight ? '☀️' : '🌙';
-      localStorage.setItem('showcase-theme', isLight ? 'light' : 'dark');
-    });
-
-    /* ════════════════════════════════════════
-       2. SCROLL PROGRESS + BACK TO TOP
-    ════════════════════════════════════════ */
-    const scrollBar = document.getElementById('scroll-bar');
-    const backTop = document.getElementById('back-to-top');
-
-    window.addEventListener('scroll', () => {
-      const total = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
-      scrollBar.style.width = pct + '%';
-
-      // Back to top visibility
-      if (window.scrollY > 400) backTop.classList.add('visible');
-      else backTop.classList.remove('visible');
-
-      // Navbar active link
-      updateActiveNav();
-      updateBreakpoints();
-    }, { passive: true });
-
-    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    /* ════════════════════════════════════════
-       3. SCROLL REVEAL (IntersectionObserver)
-    ════════════════════════════════════════ */
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.07 });
-
-    document.querySelectorAll('.showcase-section').forEach(s => revealObserver.observe(s));
-
-    /* ════════════════════════════════════════
-       4. ACTIVE NAVBAR LINK
-    ════════════════════════════════════════ */
-    function updateActiveNav() {
-      const sections = document.querySelectorAll('.showcase-section');
-      const navLinks = document.querySelectorAll('.navbar-nav a');
-
-      sections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top <= 100 && rect.bottom >= 100) {
-          navLinks.forEach(a => a.classList.remove('active'));
-          const link = document.querySelector(`.navbar-nav a[href="#${sec.id}"]`);
-          if (link) link.classList.add('active');
-        }
-      });
-    }
-
-    /* ════════════════════════════════════════
-       5. MOBILE NAV
-    ════════════════════════════════════════ */
-    function toggleMobileNav() {
-      const nav = document.getElementById('navbar-nav');
-      const btn = document.getElementById('hamburger');
-      const isOpen = nav.classList.toggle('mobile-open');
-      btn.textContent = isOpen ? '✕' : '☰';
-      btn.setAttribute('aria-expanded', isOpen.toString());
-    }
-
-    // Close mobile nav on link click
-    document.querySelectorAll('.navbar-nav a').forEach(a => {
-      a.addEventListener('click', () => {
-        document.getElementById('navbar-nav').classList.remove('mobile-open');
-        document.getElementById('hamburger').textContent = '☰';
-        document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    /* ════════════════════════════════════════
-       6. RESPONSIVE BREAKPOINT INDICATOR
-    ════════════════════════════════════════ */
-    function updateBreakpoints() {
-      const w = window.innerWidth;
-      document.getElementById('bp-xs').classList.toggle('active', w < 480);
-      document.getElementById('bp-sm').classList.toggle('active', w >= 480 && w < 768);
-      document.getElementById('bp-md').classList.toggle('active', w >= 768 && w < 1024);
-      document.getElementById('bp-lg').classList.toggle('active', w >= 1024);
-    }
-
-    window.addEventListener('resize', updateBreakpoints);
-    updateBreakpoints();
-
-    /* ════════════════════════════════════════
-       7. HTTP REQUEST ANIMATION
-    ════════════════════════════════════════ */
-    async function animarRequisicao() {
-      const reqArrow = document.getElementById('req-arrow');
-      const resArrow = document.getElementById('res-arrow');
-      const log = document.getElementById('req-log');
-      const btn = document.getElementById('req-btn');
-
-      btn.disabled = true;
-
-      // Step 1 — client sends request
-      reqArrow.style.opacity = '1';
-      log.textContent = '① Cliente envia: GET /index.html HTTP/1.1';
-      await sleep(1200);
-
-      // Step 2 — server processes
-      reqArrow.style.opacity = '0.3';
-      log.textContent = '② Servidor processa a requisição... (DNS → TCP → HTTP)';
-      await sleep(900);
-
-      // Step 3 — response
-      resArrow.style.opacity = '1';
-      log.textContent = '③ Servidor responde: HTTP/1.1 200 OK + HTML payload';
-      await sleep(1200);
-
-      // Step 4 — render
-      log.textContent = '④ Browser recebe o HTML e renderiza a página. ✓ Completo!';
-      await sleep(1800);
-
-      // Reset
-      reqArrow.style.opacity = '0';
-      resArrow.style.opacity = '0';
-      log.textContent = '';
-      btn.disabled = false;
-    }
-
-    function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-
-    /* ════════════════════════════════════════
-       8. HTML TAG EXPLORER
-    ════════════════════════════════════════ */
-    const tagContent = {
-      semantic: `<div>
-        <p style="font-size:0.82rem;color:var(--mode-txt2);margin-bottom:1rem;">Tags semânticas transmitem significado ao browser e ao SEO:</p>
-        <div style="display:flex;flex-direction:column;gap:0.5rem;">
-          ${['header', 'nav', 'main', 'section', 'article', 'aside', 'footer'].map(t => `
-          <div style="display:flex;align-items:center;gap:0.75rem;padding:0.6rem;background:var(--mode-bg2);border-radius:8px;border:1px solid var(--mode-border);">
-            <code style="color:var(--blue);font-family:'Fira Code',monospace;font-size:0.82rem;min-width:90px;">&lt;${t}&gt;</code>
-            <span style="font-size:0.82rem;color:var(--mode-txt2);">${{ header: 'Cabeçalho da página ou seção', nav: 'Bloco de links de navegação', main: 'Conteúdo principal (único)', section: 'Seção temática com heading', article: 'Conteúdo autônomo', aside: 'Conteúdo lateral/complementar', footer: 'Rodapé da página' }[t]}</span>
-          </div>`).join('')}
-        </div></div>`,
-
-      form: `<form onsubmit="event.preventDefault()" style="display:flex;flex-direction:column;gap:0.75rem;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
-          <input type="text" placeholder="&lt;input type=text&gt;" style="padding:0.5rem;background:var(--mode-bg2);border:1px solid var(--mode-border);border-radius:6px;color:var(--mode-txt);">
-          <input type="email" placeholder="&lt;input type=email&gt;" style="padding:0.5rem;background:var(--mode-bg2);border:1px solid var(--mode-border);border-radius:6px;color:var(--mode-txt);">
-          <input type="password" placeholder="&lt;input type=password&gt;" style="padding:0.5rem;background:var(--mode-bg2);border:1px solid var(--mode-border);border-radius:6px;color:var(--mode-txt);">
-          <input type="number" placeholder="&lt;input type=number&gt;" style="padding:0.5rem;background:var(--mode-bg2);border:1px solid var(--mode-border);border-radius:6px;color:var(--mode-txt);">
-          <input type="date" style="padding:0.5rem;background:var(--mode-bg2);border:1px solid var(--mode-border);border-radius:6px;color:var(--mode-txt);">
-          <select style="padding:0.5rem;background:var(--mode-bg2);border:1px solid var(--mode-border);border-radius:6px;color:var(--mode-txt);"><option>&lt;select&gt;</option><option>Opção 1</option></select>
-        </div>
-        <textarea rows="2" placeholder="&lt;textarea&gt; — campo de texto longo" style="padding:0.5rem;background:var(--mode-bg2);border:1px solid var(--mode-border);border-radius:6px;color:var(--mode-txt);"></textarea>
-        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-          <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;"><input type="radio" name="rg"> Radio 1</label>
-          <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;"><input type="radio" name="rg"> Radio 2</label>
-          <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;"><input type="checkbox"> Checkbox A</label>
-          <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;"><input type="checkbox"> Checkbox B</label>
-        </div>
-        <button type="submit" style="padding:0.6rem;background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;">&lt;button type="submit"&gt;</button>
-      </form>`,
-
-      table: `<table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
-        <caption style="text-align:left;font-size:0.78rem;color:var(--mode-txt2);margin-bottom:0.5rem;">&lt;table&gt; com thead, tbody, tfoot</caption>
-        <thead><tr style="border-bottom:2px solid var(--mode-border);">
-          <th style="padding:0.75rem;text-align:left;color:var(--blue);">Tag</th>
-          <th style="padding:0.75rem;text-align:left;color:var(--blue);">Finalidade</th>
-          <th style="padding:0.75rem;text-align:left;color:var(--blue);">Obrigatório?</th>
-        </tr></thead>
-        <tbody>
-          ${[['&lt;thead&gt;', 'Cabeçalho da tabela', 'Recomendado'], ['&lt;tbody&gt;', 'Corpo de dados', 'Recomendado'], ['&lt;tr&gt;', 'Linha de dados', 'Sim'], ['&lt;th&gt;', 'Célula de cabeçalho', 'Sim (em thead)'], ['&lt;td&gt;', 'Célula de dado', 'Sim'], ['&lt;caption&gt;', 'Descrição da tabela', 'WCAG A11Y']].map((r, i) => `
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.05);background:${i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)'};">
-            <td style="padding:0.6rem;font-family:'Fira Code',monospace;color:var(--cyan);">${r[0]}</td>
-            <td style="padding:0.6rem;color:var(--mode-txt2);">${r[1]}</td>
-            <td style="padding:0.6rem;color:${r[2] === 'Sim' ? 'var(--green)' : 'var(--mode-txt2)'};">${r[2]}</td>
-          </tr>`).join('')}
-        </tbody>
-      </table>`,
-
-      media: `<div style="display:flex;flex-direction:column;gap:1rem;">
-        <div>
-          <p style="font-size:0.75rem;color:var(--mode-txt2);margin-bottom:0.4rem;">&lt;audio controls&gt; — Player de áudio nativo:</p>
-          <audio controls style="width:100%;" aria-label="Demonstração de audio HTML5">
-            <source src="https://www.soundjay.com/buttons/beep-01a.mp3" type="audio/mpeg">
-            Seu navegador não suporta &lt;audio&gt;.
-          </audio>
-        </div>
-        <div>
-          <p style="font-size:0.75rem;color:var(--mode-txt2);margin-bottom:0.4rem;">&lt;video controls&gt; — Player de vídeo nativo:</p>
-          <video controls width="100%" style="border-radius:8px;max-height:200px;" aria-label="Demonstração de video HTML5">
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-            Seu navegador não suporta &lt;video&gt;.
-          </video>
-        </div>
-        <div>
-          <p style="font-size:0.75rem;color:var(--mode-txt2);margin-bottom:0.4rem;">&lt;iframe&gt; — Conteúdo externo embutido:</p>
-          <iframe src="https://info.cern.ch" title="Primeiro website do mundo — CERN" width="100%" height="150" style="border:1px solid var(--mode-border);border-radius:8px;background:#fff;" loading="lazy"></iframe>
-        </div>
-      </div>`,
-
-      'meta-demo': `<div style="display:flex;flex-direction:column;gap:0.75rem;">
-        <p style="font-size:0.82rem;color:var(--mode-txt2);">Meta tags no &lt;head&gt; controlam charset, viewport, SEO e redes sociais:</p>
-        ${[
-          ['charset', 'UTF-8', 'Codificação de caracteres. Sempre UTF-8.'],
-          ['viewport', 'width=device-width, initial-scale=1.0', 'Controla escala em dispositivos móveis. Obrigatório para responsive.'],
-          ['description', 'Texto até 155 chars...', 'Snippet exibido nos resultados do Google (SEO crítico).'],
-          ['og:title', 'Título para redes sociais', 'OpenGraph — compartilhamento no Facebook, LinkedIn, WhatsApp.'],
-          ['og:image', 'URL da imagem', 'Imagem exibida quando o link é compartilhado nas redes.'],
-        ].map(([n, v, d]) => `
-        <div style="background:var(--mode-bg2);border:1px solid var(--mode-border);border-radius:8px;padding:0.75rem;">
-          <code style="font-family:'Fira Code',monospace;font-size:0.76rem;color:var(--blue);">&lt;meta name="${n}" content="${v}"&gt;</code>
-          <p style="font-size:0.78rem;color:var(--mode-txt2);margin-top:0.25rem;">${d}</p>
-        </div>`).join('')}
-      </div>`
-    };
-
-    function showTag(key) {
-      document.getElementById('tag-display').innerHTML = tagContent[key];
-      document.querySelectorAll('.layout-tab').forEach((t, i) => {
-        const keys = ['semantic', 'form', 'table', 'media', 'meta-demo'];
-        t.classList.toggle('active', keys[i] === key);
-        t.setAttribute('aria-pressed', (keys[i] === key).toString());
-      });
-    }
-
-    // Init HTML explorer
-    showTag('semantic');
-
-    /* ════════════════════════════════════════
-       9. FORM VALIDATION
-    ════════════════════════════════════════ */
-    function validateField(id, check, okMsg, errMsg) {
-      const el = document.getElementById(id);
-      const msg = document.getElementById(id + '-msg');
-      if (!el || !msg) return true;
-      const valid = check(el.value);
-      el.classList.toggle('valid', valid);
-      el.classList.toggle('invalid', !valid && el.value.length > 0);
-      if (el.value.length === 0) { msg.textContent = ''; msg.className = 'field-msg'; return false; }
-      msg.textContent = valid ? okMsg : errMsg;
-      msg.className = 'field-msg ' + (valid ? 'ok' : 'err');
-      return valid;
-    }
-
-    document.getElementById('f-name').addEventListener('input', () =>
-      validateField('f-name', v => v.trim().length >= 3, '✓ Nome válido', '✗ Mínimo 3 caracteres'));
-
-    document.getElementById('f-email').addEventListener('input', () =>
-      validateField('f-email', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), '✓ E-mail válido', '✗ E-mail inválido'));
-
-    document.getElementById('f-pass').addEventListener('input', () =>
-      validateField('f-pass', v => v.length >= 8, '✓ Senha forte', '✗ Mínimo 8 caracteres'));
-
-    document.getElementById('f-age').addEventListener('input', () =>
-      validateField('f-age', v => !v || (Number(v) >= 1 && Number(v) <= 120), '✓ Idade válida', '✗ Entre 1 e 120'));
-
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      const nameOk = validateField('f-name', v => v.trim().length >= 3, '✓ OK', '✗ Mínimo 3 caracteres');
-      const emailOk = validateField('f-email', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), '✓ OK', '✗ E-mail inválido');
-      const passOk = validateField('f-pass', v => v.length >= 8, '✓ OK', '✗ Mínimo 8 caracteres');
-
-      // Advanced Validation: Radio & Checkbox
-      const levelSelected = document.querySelector('input[name="level"]:checked');
-      const levelMsg = document.getElementById('f-level-msg');
-      if (!levelSelected) {
-        levelMsg.textContent = '✗ Selecione seu nível';
-        levelMsg.className = 'field-msg err';
-      } else {
-        levelMsg.textContent = '✓ OK';
-        levelMsg.className = 'field-msg ok';
-      }
-
-      const techSelected = document.querySelectorAll('input[name="tech"]:checked');
-      const techMsg = document.getElementById('f-tech-msg');
-      if (techSelected.length === 0) {
-        techMsg.textContent = '✗ Selecione ao menos uma tecnologia';
-        techMsg.className = 'field-msg err';
-      } else {
-        techMsg.textContent = '✓ OK';
-        techMsg.className = 'field-msg ok';
-      }
-
-      const result = document.getElementById('form-result');
-      result.style.display = 'block';
-
-      if (nameOk && emailOk && passOk && levelSelected && techSelected.length > 0) {
-        result.style.background = 'rgba(52,211,153,0.12)';
-        result.style.border = '1px solid rgba(52,211,153,0.3)';
-        result.style.color = 'var(--green)';
-        result.textContent = '✓ Formulário enviado com sucesso! (simulação — nenhum dado foi enviado)';
-      } else {
-        result.style.background = 'rgba(248,113,113,0.12)';
-        result.style.border = '1px solid rgba(248,113,113,0.3)';
-        result.style.color = 'var(--red)';
-        result.textContent = '✗ Corrija os campos em vermelho antes de continuar.';
-      }
-    }
-
-    function resetForm() {
-      document.getElementById('form-result').style.display = 'none';
-      document.querySelectorAll('#showcase-form .field-msg').forEach(m => { m.textContent = ''; m.className = 'field-msg'; });
-      document.querySelectorAll('#showcase-form input').forEach(i => { i.classList.remove('valid', 'invalid'); });
-    }
-
-    /* ════════════════════════════════════════
-       10. CSS PLAYGROUND
-    ════════════════════════════════════════ */
-    const cssState = { shadow: false, radius: false, gradient: false, rotate: false, scale: false, blur: false, opacity: false };
-
-    function toggleCSS(prop) {
-      cssState[prop] = !cssState[prop];
-      const tog = document.getElementById('tog-' + prop);
-      tog.classList.toggle('on', cssState[prop]);
-      tog.setAttribute('aria-checked', cssState[prop].toString());
-
-      const el = document.getElementById('preview-el');
-      const rules = [];
-      if (cssState.shadow) rules.push('box-shadow: 0 0 40px rgba(79,142,247,0.7)');
-      if (cssState.radius) rules.push('border-radius: 50%');
-      if (cssState.gradient) el.style.backgroundSize = '200% 200%';
-      if (cssState.rotate) rules.push('transform: rotate(45deg)');
-      if (cssState.scale) rules.push('transform: ' + (cssState.rotate ? 'rotate(45deg) scale(1.5)' : 'scale(1.5)'));
-      if (cssState.blur) rules.push('filter: blur(3px)');
-      if (cssState.opacity) rules.push('opacity: 0.3');
-
-      let combined = {};
-      rules.forEach(r => {
-        const [k, v] = r.split(/: (.+)/);
-        combined[k.trim()] = v.trim();
-      });
-
-      el.style.boxShadow = cssState.shadow ? '0 0 40px rgba(79,142,247,0.7)' : '';
-      el.style.borderRadius = cssState.radius ? '50%' : '12px';
-      el.style.filter = cssState.blur ? 'blur(3px)' : '';
-      el.style.opacity = cssState.opacity ? '0.3' : '';
-
-      let transform = '';
-      if (cssState.rotate) transform += 'rotate(45deg) ';
-      if (cssState.scale) transform += 'scale(1.5)';
-      el.style.transform = transform.trim();
-
-      // Update code display
-      const activeRules = Object.entries(cssState).filter(([, v]) => v).map(([k]) => k);
-      const codeLines = [
-        `.preview-target {`,
-        `  background: linear-gradient(135deg, #4f8ef7, #a855f7);`,
-        `  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);`,
-        ...(cssState.shadow ? [`  box-shadow: 0 0 40px rgba(79,142,247, 0.7);`] : []),
-        ...(cssState.radius ? [`  border-radius: 50%;`] : []),
-        ...(cssState.rotate ? [`  transform: rotate(45deg);`] : []),
-        ...(cssState.scale ? [`  transform: scale(1.5);`] : []),
-        ...(cssState.blur ? [`  filter: blur(3px);`] : []),
-        ...(cssState.opacity ? [`  opacity: 0.3;`] : []),
-        `}`,
-      ];
-      document.getElementById('css-code-display').textContent = codeLines.join('\n');
-    }
-
-    /* ════════════════════════════════════════
-       11. LAYOUT DEMO (FLEX/GRID/POSITION)
-    ════════════════════════════════════════ */
-    let currentLayout = 'flex';
-    let flexDir = 'row';
-    let flexJustify = 'center';
-    let flexAlign = 'center';
-    let flexWrap = 'nowrap';
-    let gridCols = 3;
-
-    function setLayout(type) {
-      currentLayout = type;
-      document.querySelectorAll('.layout-tab').forEach(t => {
-        t.classList.remove('active');
-        t.setAttribute('aria-pressed', 'false');
-      });
-      document.getElementById('lt-' + type).classList.add('active');
-      document.getElementById('lt-' + type).setAttribute('aria-pressed', 'true');
-      renderLayoutDemo();
-    }
-
-    function renderLayoutDemo() {
-      const container = document.getElementById('layout-children');
-      const controls = document.getElementById('layout-controls');
-      const codeEl = document.getElementById('layout-code');
-      const label = document.getElementById('layout-label');
-
-      const children = Array.from({ length: 4 }, (_, i) => `<div class="demo-child">Item ${i + 1}</div>`).join('');
-
-      if (currentLayout === 'flex') {
-        label.textContent = 'Flexbox Demo';
-        container.style.cssText = `display:flex;flex-direction:${flexDir};justify-content:${flexJustify};align-items:${flexAlign};flex-wrap:${flexWrap};gap:10px;height:100%;min-height:180px;`;
-        container.innerHTML = children;
-        controls.innerHTML = `
-          <select onchange="flexDir=this.value;renderLayoutDemo()" aria-label="flex-direction" style="padding:0.4rem;background:var(--mode-bg2);border:1px solid var(--mode-border);border-radius:6px;color:var(--mode-txt);">
-            ${['row', 'column', 'row-reverse', 'column-reverse'].map(v => `<option ${v === flexDir ? 'selected' : ''}>${v}</option>`).join('')}
-          </select>
-          <select onchange="flexJustify=this.value;renderLayoutDemo()" aria-label="justify-content" style="padding:0.4rem;background:var(--mode-bg2);border:1px solid var(--mode-border);border-radius:6px;color:var(--mode-txt);">
-            ${['flex-start', 'center', 'flex-end', 'space-between', 'space-around', 'space-evenly'].map(v => `<option ${v === flexJustify ? 'selected' : ''}>${v}</option>`).join('')}
-          </select>
-          <select onchange="flexAlign=this.value;renderLayoutDemo()" aria-label="align-items" style="padding:0.4rem;background:var(--mode-bg2);border:1px solid var(--mode-border);border-radius:6px;color:var(--mode-txt);">
-            ${['flex-start', 'center', 'flex-end', 'stretch', 'baseline'].map(v => `<option ${v === flexAlign ? 'selected' : ''}>${v}</option>`).join('')}
-          </select>
-          <select onchange="flexWrap=this.value;renderLayoutDemo()" aria-label="flex-wrap" style="padding:0.4rem;background:var(--mode-bg2);border:1px solid var(--mode-border);border-radius:6px;color:var(--mode-txt);">
-            ${['nowrap', 'wrap', 'wrap-reverse'].map(v => `<option ${v === flexWrap ? 'selected' : ''}>${v}</option>`).join('')}
-          </select>`;
-        codeEl.textContent = `.container {\n  display: flex;\n  flex-direction: ${flexDir};\n  justify-content: ${flexJustify};\n  align-items: ${flexAlign};\n  flex-wrap: ${flexWrap};\n  gap: 10px;\n}`;
-
-      } else if (currentLayout === 'grid') {
-        label.textContent = 'CSS Grid Demo';
-        container.style.cssText = `display:grid;grid-template-columns:repeat(${gridCols},1fr);gap:10px;`;
-        container.innerHTML = children;
-        controls.innerHTML = `
-          <label style="font-size:0.82rem;color:var(--mode-txt2)">Colunas:
-          <input type="range" min="1" max="5" value="${gridCols}" oninput="gridCols=+this.value;this.nextSibling.textContent=this.value;renderLayoutDemo()" style="margin:0 0.5rem;vertical-align:middle;"><span>${gridCols}</span>
-          </label>`;
-        codeEl.textContent = `.container {\n  display: grid;\n  grid-template-columns: repeat(${gridCols}, 1fr);\n  gap: 10px;\n}`;
-
-      } else {
-        label.textContent = 'Position Demo';
-        container.style.cssText = 'position:relative;height:180px;';
-        container.innerHTML = `
-          <div class="demo-child" style="position:static;height:40px;flex:none;width:auto;min-width:0;padding:0.5rem 1rem;font-size:0.78rem;">static</div>
-          <div class="demo-child" style="position:relative;top:10px;left:10px;height:40px;flex:none;width:auto;min-width:0;padding:0.5rem 1rem;font-size:0.78rem;">relative (top:10,left:10)</div>
-          <div class="demo-child" style="position:absolute;top:0;right:0;height:40px;flex:none;width:auto;min-width:0;padding:0.5rem 1rem;font-size:0.78rem;background:linear-gradient(135deg,var(--green),var(--cyan));">absolute (top:0,right:0)</div>`;
-        controls.innerHTML = '<span style="font-size:0.8rem;color:var(--mode-txt2)">Demonstração de position: static, relative e absolute</span>';
-        codeEl.textContent = `.parent { position: relative; }\n.static   { position: static; }\n.relative { position: relative; top: 10px; left: 10px; }\n.absolute { position: absolute; top: 0; right: 0; }`;
-      }
-    }
-
-    renderLayoutDemo();
-
-    /* ════════════════════════════════════════
-       12. JS FUNDAMENTALS DEMOS
-    ════════════════════════════════════════ */
-
-    // Template literals & variables
-    function updateGreeting() {
-      const name = document.getElementById('js-name-in').value;
-      const year = parseInt(document.getElementById('js-year-in').value);
-      const out = document.getElementById('js-greeting-out');
-
-      if (!name && !year) { out.textContent = '// Saída aparecerá aqui'; return; }
-
-      const currentYear = new Date().getFullYear();
-      const age = year ? currentYear - year : '?';
-      out.textContent = `const nome = "${name || 'Anônimo'}";\nconst idade = ${age};\nconsole.log(\`Olá, ${name || 'Anônimo'}! Você tem ${age} anos.\`);`;
-    }
-
-    // Array methods
-    const sampleArr = [3, 7, 12, 1, 45, 8, 23, 6];
-
-    function runArrayDemo(method) {
-      const codeOut = document.getElementById('array-code-out');
-      const resOut = document.getElementById('array-result-out');
-      const arr = sampleArr;
-
-      const demos = {
-        map: {
-          code: `const arr = [${arr}];\narr.map(x => x * 2);\n// Multiplica cada elemento por 2`,
-          result: `→ [${arr.map(x => x * 2).join(', ')}]`
-        },
-        filter: {
-          code: `const arr = [${arr}];\narr.filter(x => x > 10);\n// Mantém apenas os maiores que 10`,
-          result: `→ [${arr.filter(x => x > 10).join(', ')}]`
-        },
-        reduce: {
-          code: `const arr = [${arr}];\narr.reduce((acc, x) => acc + x, 0);\n// Soma todos os elementos`,
-          result: `→ ${arr.reduce((a, b) => a + b, 0)} (soma total)`
-        },
-        foreach: {
-          code: `const arr = [${arr}];\narr.forEach(x => console.log(x * x));\n// Eleva ao quadrado (efeito colateral)`,
-          result: `→ ${arr.map(x => x * x).join(', ')}`
-        }
-      };
-
-      codeOut.textContent = demos[method].code;
-      resOut.textContent = demos[method].result;
-    }
-
-    // DOM manipulation
-    let domCounter = 0;
-
-    function domAddItem() {
-      const list = document.getElementById('dom-list');
-      domCounter++;
-      const li = document.createElement('li');
-      li.style.cssText = 'display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.75rem;background:var(--mode-surface);border:1px solid var(--mode-border);border-radius:8px;font-size:0.83rem;animation:slideIn 0.3s ease;';
-      li.innerHTML = `<span style="color:var(--blue);font-family:'Fira Code',monospace;font-size:0.72rem;min-width:28px;">#${domCounter}</span>
-        <span style="color:var(--mode-txt);">Elemento criado dinamicamente</span>
-        <button onclick="this.parentElement.remove()" style="margin-left:auto;background:none;border:none;color:var(--red);cursor:pointer;font-size:0.8rem;" aria-label="Remover item">✕</button>`;
-      list.appendChild(li);
-    }
-
-    function domClearItems() { document.getElementById('dom-list').innerHTML = ''; domCounter = 0; }
-
-    // Loop demo
-    function runLoop() {
-      const n = parseInt(document.getElementById('loop-n').value) || 5;
-      const out = document.getElementById('loop-out');
-      out.innerHTML = '';
-      const colors = ['var(--blue)', 'var(--purple)', 'var(--cyan)', 'var(--green)', 'var(--pink)'];
-      for (let i = 1; i <= n; i++) {
-        const el = document.createElement('div');
-        el.style.cssText = `width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;color:#fff;background:${colors[(i - 1) % 5]};animation:fadeUp 0.3s ease ${(i - 1) * 0.05}s both;`;
-        el.textContent = i;
-        el.setAttribute('aria-label', `Item ${i}`);
-        out.appendChild(el);
-      }
-    }
-
-    /* ════════════════════════════════════════
-       13. CALCULATOR
-    ════════════════════════════════════════ */
-    let calcExpr = '';
-    let calcResult = false;
-
-    function calcInput(val) {
-      const disp = document.getElementById('calc-display');
-
-      if (val === 'C') { calcExpr = ''; calcResult = false; disp.textContent = '0'; return; }
-
-      if (val === '=') {
-        try {
-          // Replace display chars with JS operators
-          const sanitized = calcExpr.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-');
-          if (!sanitized) return;
-          const res = Function('"use strict";return (' + sanitized + ')')();
-          disp.textContent = parseFloat(res.toFixed(10)).toString();
-          calcExpr = disp.textContent;
-          calcResult = true;
-        } catch { disp.textContent = 'Erro'; calcExpr = ''; }
-        return;
-      }
-
-      if (val === '±') {
-        if (calcExpr.startsWith('-')) calcExpr = calcExpr.slice(1);
-        else calcExpr = '-' + calcExpr;
-        disp.textContent = calcExpr || '0';
-        return;
-      }
-
-      if (val === '%') {
-        try {
-          const v = Function('"use strict";return (' + calcExpr.replace(/×/g, '*').replace(/÷/g, '/') + ')')();
-          calcExpr = (v / 100).toString();
-          disp.textContent = calcExpr;
-        } catch { }
-        return;
-      }
-
-      if (calcResult && /[0-9.]/.test(val)) { calcExpr = ''; calcResult = false; }
-
-      calcExpr += val;
-      disp.textContent = calcExpr;
-    }
-
-    /* ════════════════════════════════════════
-       14. TO-DO LIST
-    ════════════════════════════════════════ */
-    let todos = [];
-
-    function addTodo() {
-      const inp = document.getElementById('todo-in');
-      const text = inp.value.trim();
-      if (!text) return;
-      todos.push({ id: Date.now(), text, done: false });
-      inp.value = '';
-      renderTodos();
-    }
-
-    function toggleTodo(id) {
-      todos = todos.map(t => t.id === id ? { ...t, done: !t.done } : t);
-      renderTodos();
-    }
-
-    function deleteTodo(id) {
-      todos = todos.filter(t => t.id !== id);
-      renderTodos();
-    }
-
-    function renderTodos() {
-      const list = document.getElementById('todo-list');
-      const count = document.getElementById('todo-count');
-      list.innerHTML = todos.map(t => `
-        <li class="todo-item ${t.done ? 'done' : ''}" role="listitem">
-          <div class="todo-check" onclick="toggleTodo(${t.id})" role="checkbox" aria-checked="${t.done}" tabindex="0" aria-label="${t.done ? 'Desmarcar' : 'Marcar'}: ${t.text}">${t.done ? '✓' : ''}</div>
-          <span class="todo-text">${t.text}</span>
-          <button class="todo-del" onclick="deleteTodo(${t.id})" aria-label="Remover tarefa: ${t.text}">✕</button>
-        </li>`).join('');
-      count.textContent = `${todos.length} tarefa${todos.length !== 1 ? 's' : ''} · ${todos.filter(t => t.done).length} concluída${todos.filter(t => t.done).length !== 1 ? 's' : ''}`;
-    }
-
-    // Init with sample todos
-    todos = [
-      { id: 1, text: 'Estudar HTML5 semântico', done: true },
-      { id: 2, text: 'Praticar Flexbox e Grid', done: false },
-      { id: 3, text: 'Fazer quiz de revisão', done: false }
-    ];
-    renderTodos();
-
-    /* ════════════════════════════════════════
-       15. COUNTDOWN TIMER
-    ════════════════════════════════════════ */
-    let timerInterval = null;
-    let timerSeconds = 0;
-
-    function timerStart() {
-      if (timerInterval) return;
-      const m = parseInt(document.getElementById('timer-min').value) || 0;
-      const s = parseInt(document.getElementById('timer-sec').value) || 0;
-      if (timerSeconds === 0) timerSeconds = m * 60 + s;
-      if (timerSeconds <= 0) return;
-
-      timerInterval = setInterval(() => {
-        timerSeconds--;
-        updateTimerDisplay();
-        if (timerSeconds <= 0) {
-          clearInterval(timerInterval);
-          timerInterval = null;
-          document.getElementById('timer-display').textContent = '🔔 Tempo!';
-          document.getElementById('timer-display').classList.remove('urgent');
-        }
-      }, 1000);
-    }
-
-    function timerPause() {
-      clearInterval(timerInterval);
-      timerInterval = null;
-    }
-
-    function timerReset() {
-      clearInterval(timerInterval);
-      timerInterval = null;
-      timerSeconds = 0;
-      document.getElementById('timer-display').textContent = '00:00';
-      document.getElementById('timer-display').classList.remove('urgent');
-    }
-
-    function updateTimerDisplay() {
-      const m = Math.floor(timerSeconds / 60);
-      const s = timerSeconds % 60;
-      const disp = document.getElementById('timer-display');
-      disp.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
-      disp.classList.toggle('urgent', timerSeconds <= 10 && timerSeconds > 0);
-    }
-
-    /* ════════════════════════════════════════
-       16. DYNAMIC PRODUCT CARDS
-    ════════════════════════════════════════ */
-    const productsData = [
-      { name: 'Notebook Pro', cat: 'tech', emoji: '💻', price: 'R$ 4.299', desc: 'I7 + 16GB RAM' },
-      { name: 'Fone Noise Cancelling', cat: 'tech', emoji: '🎧', price: 'R$ 799', desc: 'Bluetooth 5.3' },
-      { name: 'Smartwatch Ultra', cat: 'tech', emoji: '⌚', price: 'R$ 1.599', desc: 'GPS integrado' },
-      { name: 'Café Especial', cat: 'food', emoji: '☕', price: 'R$ 49', desc: 'Arábica 250g' },
-      { name: 'Kit Granola Premium', cat: 'food', emoji: '🥣', price: 'R$ 35', desc: 'Sem adição de açúcar' },
-      { name: 'Whey Protein', cat: 'food', emoji: '💪', price: 'R$ 129', desc: 'Chocolate 900g' },
-      { name: 'Clean Code', cat: 'book', emoji: '📗', price: 'R$ 89', desc: 'Robert C. Martin' },
-      { name: 'You Don\'t Know JS', cat: 'book', emoji: '📘', price: 'R$ 79', desc: 'Kyle Simpson' },
-      { name: 'Design Patterns', cat: 'book', emoji: '📙', price: 'R$ 99', desc: 'Gang of Four' },
-    ];
-
-    function filterProducts(cat) {
-      document.querySelectorAll('#sec-components .layout-tab').forEach(t => {
-        t.classList.remove('active');
-        t.setAttribute('aria-pressed', 'false');
-      });
-      event.target.classList.add('active');
-      event.target.setAttribute('aria-pressed', 'true');
-
-      const filtered = cat === 'all' ? productsData : productsData.filter(p => p.cat === cat);
-      renderProducts(filtered);
-    }
-
-    function renderProducts(data) {
-      const grid = document.getElementById('products-grid');
-      grid.innerHTML = data.map(p => `
-        <article class="product-card" aria-label="Produto: ${p.name}">
-          <span class="product-emoji" aria-hidden="true">${p.emoji}</span>
-          <div class="product-name">${p.name}</div>
-          <div class="product-cat">${p.cat}</div>
-          <div style="font-size:0.78rem;color:var(--mode-txt2);margin-bottom:0.4rem;">${p.desc}</div>
-          <div class="product-price">${p.price}</div>
-          <button class="product-btn" onclick="alert('${p.name} adicionado ao carrinho! 🛒')" aria-label="Adicionar ${p.name} ao carrinho">+ Carrinho</button>
-        </article>`).join('');
-    }
-
-    renderProducts(productsData);
-
-    /* ════════════════════════════════════════
-       17. MINI QUIZ
-    ════════════════════════════════════════ */
-    const miniQuizData = [
-      {
-        q: 'Em que ano Tim Berners-Lee criou o World Wide Web?',
-        opts: ['1969', '1983', '1991', '1995'],
-        correct: 2,
-        explain: '1991 — no CERN, com o primeiro website em info.cern.ch'
-      },
-      {
-        q: 'Qual verbo HTTP é usado para CRIAR um novo recurso?',
-        opts: ['GET', 'PUT', 'POST', 'DELETE'],
-        correct: 2,
-        explain: 'POST — retorna geralmente 201 Created'
-      },
-      {
-        q: 'Qual propriedade CSS cria um layout bidimensional (linhas E colunas)?',
-        opts: ['display: flex', 'display: grid', 'display: block', 'display: inline'],
-        correct: 1,
-        explain: 'CSS Grid é 2D — controla linhas e colunas simultaneamente'
-      }
-    ];
-
-    let miniQ = 0, miniScore = 0, miniAnswered = false;
-
-    function renderMiniQuiz() {
-      const wrap = document.getElementById('mini-quiz-wrap');
-      if (miniQ >= miniQuizData.length) {
-        wrap.innerHTML = `<div style="text-align:center;padding:1.5rem;">
-          <div style="font-size:2.5rem;font-weight:900;background:linear-gradient(90deg,var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">${miniScore}/${miniQuizData.length}</div>
-          <p style="color:var(--mode-txt2);margin:0.5rem 0 1rem;">Quiz concluído! ${miniScore === miniQuizData.length ? '🏆 Perfeito!' : ''}</p>
-          <button class="btn btn-primary" onclick="miniQ=0;miniScore=0;miniAnswered=false;renderMiniQuiz()">↺ Repetir</button>
-        </div>`;
-        return;
-      }
-
-      const q = miniQuizData[miniQ];
-      wrap.innerHTML = `
-        <div class="quiz-card">
-          <div style="font-size:0.72rem;color:var(--mode-txt2);margin-bottom:0.75rem;">Questão ${miniQ + 1} de ${miniQuizData.length} · Pontos: ${miniScore}</div>
-          <p class="quiz-q-text">${q.q}</p>
-          <div class="quiz-opts">
-            ${q.opts.map((o, i) => `<button class="quiz-opt-btn" id="mq-opt-${i}" onclick="answerMini(${i})" aria-label="Resposta: ${o}">${o}</button>`).join('')}
-          </div>
-          <div id="mini-fb" style="font-size:0.82rem;min-height:1rem;margin-top:0.75rem;" aria-live="polite"></div>
-          <button id="mini-next" class="btn btn-primary" onclick="miniQ++;miniAnswered=false;renderMiniQuiz()" style="margin-top:1rem;display:none;" aria-label="Próxima questão">Próxima →</button>
-        </div>`;
-    }
-
-    function answerMini(idx) {
-      if (miniAnswered) return;
-      miniAnswered = true;
-      const q = miniQuizData[miniQ];
-      const fb = document.getElementById('mini-fb');
-      const next = document.getElementById('mini-next');
-
-      document.querySelectorAll('.quiz-opt-btn').forEach((b, i) => {
-        b.disabled = true;
-        if (i === q.correct) b.classList.add('correct');
-        else if (i === idx) b.classList.add('wrong');
-      });
-
-      if (idx === q.correct) {
-        miniScore++;
-        fb.style.color = 'var(--green)';
-        fb.textContent = `✓ Correto! ${q.explain}`;
-      } else {
-        fb.style.color = 'var(--red)';
-        fb.textContent = `✗ Incorreto. ${q.explain}`;
-      }
-      next.style.display = 'inline-flex';
-    }
-
-    renderMiniQuiz();
-
-    /* ════════════════════════════════════════
-       18. FETCH API DEMO
-    ════════════════════════════════════════ */
-    async function loadFetchData(type) {
-      // Update active tab
-      document.querySelectorAll('.fetch-tabs .layout-tab').forEach(t => {
-        t.classList.remove('active');
-        t.setAttribute('aria-pressed', 'false');
-      });
-      document.getElementById('fetch-tab-' + type).classList.add('active');
-      document.getElementById('fetch-tab-' + type).setAttribute('aria-pressed', 'true');
-
-      const status = document.getElementById('fetch-status');
-      const content = document.getElementById('fetch-content');
-
-      // Loading state
-      status.style.display = 'block';
-      status.className = 'fetch-status loading';
-      status.textContent = '⟳ Buscando dados de jsonplaceholder.typicode.com...';
-      content.innerHTML = '<div class="spinner"></div>';
-
-      try {
-        const limit = type === 'posts' ? 6 : 8;
-        const res = await fetch(`https://jsonplaceholder.typicode.com/${type}?_limit=${limit}`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-
-        status.className = 'fetch-status success';
-        status.textContent = `✓ ${data.length} ${type} carregados com sucesso!`;
-
-        if (type === 'posts') {
-          content.innerHTML = `<div class="posts-list">${data.map(p => `
-            <div class="post-card" role="article" aria-label="Post: ${p.title}">
-              <h4>#${p.id} — ${p.title}</h4>
-              <p>${p.body}</p>
-            </div>`).join('')}</div>`;
-        } else {
-          content.innerHTML = `<div class="posts-list">${data.map(u => `
-            <div class="user-card" role="article" aria-label="Usuário: ${u.name}">
-              <div class="user-avatar" aria-hidden="true">${u.name.charAt(0)}</div>
-              <div class="user-info">
-                <h4>${u.name}</h4>
-                <p>📧 ${u.email} · 🌐 ${u.website}</p>
-              </div>
-            </div>`).join('')}</div>`;
-        }
-      } catch (err) {
-        status.className = 'fetch-status error';
-        status.textContent = `✗ Erro: ${err.message}`;
-        content.innerHTML = `<div style="text-align:center;padding:2rem;color:var(--red);">
-          <div style="font-size:2rem;margin-bottom:0.5rem;">⚠️</div>
-          <p style="font-weight:700;">Falha na requisição</p>
-          <p style="font-size:0.82rem;color:var(--mode-txt2);margin-top:0.25rem;">${err.message}</p>
-        </div>`;
-      }
-    }
-
-    function simulateFetchError() {
-      const status = document.getElementById('fetch-status');
-      const content = document.getElementById('fetch-content');
-      status.style.display = 'block';
-      status.className = 'fetch-status loading';
-      status.textContent = '⟳ Tentando conectar a URL inválida...';
-      content.innerHTML = '<div class="spinner"></div>';
-
-      setTimeout(() => {
-        status.className = 'fetch-status error';
-        status.textContent = '✗ Erro 404: Recurso não encontrado (simulado)';
-        content.innerHTML = `<div style="text-align:center;padding:2rem;color:var(--red);">
-          <div style="font-size:2.5rem;margin-bottom:0.5rem;">❌</div>
-          <p style="font-weight:700;">404 — Not Found</p>
-          <p style="font-size:0.82rem;color:var(--mode-txt2);margin-top:0.25rem;">Trate sempre erros de rede com try/catch para evitar crash na UI</p>
-        </div>`;
-      }, 1500);
-    }
-
-    /* ════════════════════════════════════════
-       19. A11Y LIVE REGION TEST
-    ════════════════════════════════════════ */
-    const liveMessages = [
-      '✓ Produto adicionado ao carrinho!',
-      '📩 Mensagem enviada com sucesso!',
-      '⚠️ Preencha todos os campos obrigatórios.',
-      '🔔 Notificação: nova mensagem recebida.',
-      '✓ Preferências salvas!'
-    ];
-    let liveIdx = 0;
-
-    function testLiveRegion() {
-      const el = document.getElementById('live-region-out');
-      el.textContent = liveMessages[liveIdx % liveMessages.length];
-      liveIdx++;
-    }
-
-    /* ════════════════════════════════════════
-       21. NAVIGATOR APIs
-    ════════════════════════════════════════ */
-    function checkBattery() {
-      const fill = document.getElementById('bat-fill');
-      const res = document.getElementById('bat-res');
-      if (!navigator.getBattery) {
-        res.textContent = 'Não suportado';
-        return;
-      }
-      navigator.getBattery().then(bat => {
-        const pct = Math.round(bat.level * 100);
-        fill.style.width = pct + '%';
-        res.textContent = `${pct}% (${bat.charging ? 'Carregando' : 'Bateria'})`;
-      });
-    }
-
-    function checkGeo() {
-      const res = document.getElementById('geo-res');
-      res.textContent = 'Localizando...';
-      navigator.geolocation.getCurrentPosition(
-        pos => res.textContent = `Lat: ${pos.coords.latitude.toFixed(4)}, Lon: ${pos.coords.longitude.toFixed(4)}`,
-        err => res.textContent = 'Erro: ' + err.message
-      );
-    }
-
-    function triggerVibrate() {
-      const res = document.getElementById('vib-res');
-      if (navigator.vibrate) {
-        navigator.vibrate(200);
-        res.textContent = 'Vibrando! 📳';
-      } else {
-        res.textContent = 'Não suportado ❌';
-      }
-    }
-
-    function askNotify() {
-      const res = document.getElementById('not-res');
-      Notification.requestPermission().then(p => {
-        res.textContent = p === 'granted' ? 'Autorizado! ✅' : 'Negado ❌';
-        if (p === 'granted') new Notification('Tagliari Showcase', { body: 'Notificações ativadas!' });
-      });
-    }
-
-    function triggerShare() {
-      const res = document.getElementById('share-res');
-      if (navigator.share) {
-        navigator.share({
-          title: 'Tagliari Web Showcase',
-          text: 'Confira este guia de Programação Web!',
-          url: window.location.href
-        }).then(() => res.textContent = 'Sucesso!')
-          .catch(() => res.textContent = 'Cancelado');
-      } else {
-        res.textContent = 'Não suportado ❌';
-      }
-    }
-
-    function listMedia() {
-      const res = document.getElementById('media-res');
-      res.innerHTML = '<li>Solicitando...</li>';
-      if (!navigator.mediaDevices) {
-        res.innerHTML = '<li>Não suportado ❌</li>';
-        return;
-      }
-      navigator.mediaDevices.enumerateDevices().then(devices => {
-        res.innerHTML = devices.map(d => `<li>${d.kind === 'videoinput' ? '📷' : '🎤'} ${d.label || d.kind}</li>`).join('') || '<li>Nenhum encontrado</li>';
-      }).catch(err => res.innerHTML = `<li>Erro: ${err.message}</li>`);
-    }
-
-    /* ════════════════════════════════════════
-       22. JOGO DO CLIQUE
-    ════════════════════════════════════════ */
-    let gameScore = 0;
-    let gameTime = 5.0;
-    let gameInterval = null;
-
-    function startGame() {
-      gameScore = 0;
-      gameTime = 5.0;
-      document.getElementById('game-score').textContent = '0';
-      document.getElementById('game-timer').textContent = '5.0';
-      document.getElementById('game-msg').textContent = 'VAI!';
-      document.getElementById('btn-start-game').disabled = true;
-      document.getElementById('btn-click-game').disabled = false;
-
-      gameInterval = setInterval(() => {
-        gameTime -= 0.1;
-        document.getElementById('game-timer').textContent = gameTime.toFixed(1);
-        if (gameTime <= 0) {
-          clearInterval(gameInterval);
-          document.getElementById('game-timer').textContent = '0.0';
-          document.getElementById('btn-click-game').disabled = true;
-          document.getElementById('btn-start-game').disabled = false;
-          document.getElementById('game-msg').textContent = `Fim! Score: ${gameScore}`;
-        }
-      }, 100);
-    }
-
-    function recordClick() {
-      gameScore++;
-      document.getElementById('game-score').textContent = gameScore;
-      if (navigator.vibrate) navigator.vibrate(50);
-    }
-
-    /* ════════════════════════════════════════
-       23. UI LAB (Ripple)
-    ════════════════════════════════════════ */
-    function createRipple(event) {
-      const btn = event.currentTarget;
-      const circle = document.createElement('span');
-      const diameter = Math.max(btn.clientWidth, btn.clientHeight);
-      const radius = diameter / 2;
-
-      circle.style.width = circle.style.height = `${diameter}px`;
-      circle.style.left = `${event.pageX - btn.offsetLeft - radius}px`;
-      circle.style.top = `${event.pageY - btn.offsetTop - radius}px`;
-      circle.classList.add('ripple');
-
-      const ripple = btn.getElementsByClassName('ripple')[0];
-      if (ripple) ripple.remove();
-
-      btn.appendChild(circle);
-    }
-
-    /* Update Network status */
-    window.addEventListener('online', () => { if (document.getElementById('net-res')) document.getElementById('net-res').textContent = 'Online ✅'; });
-    window.addEventListener('offline', () => { if (document.getElementById('net-res')) document.getElementById('net-res').textContent = 'Offline 🔴'; });
-
-    /* ════════════════════════════════════════
-       24. INITIALIZATION
-    ════════════════════════════════════════ */
-    updateBreakpoints();
-  </script>
+  <script src="script.js"></script>
 
 </body>
 
