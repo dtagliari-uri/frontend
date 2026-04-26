@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Web Programming Showcase — Prova 2: JavaScript, AJAX, Fetch API e Acessibilidade (A11Y).">
+  <meta property="og:title" content="Web Programming Showcase — Prova 2">
+  <meta property="og:description" content="Módulo focado em JavaScript e desenvolvimento avançado para a segunda prova de Programação Web.">
+  <title>Revisão Prova 2 — Web Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ── 1. CSS VARIABLES (DESIGN TOKENS) ─────────── */
+    :root {
+      --bg: #070b14;
+      --bg2: #0e1524;
+      --bg3: #151f35;
+      --surface: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.09);
+
+      --blue: #4f8ef7;
+      --purple: #a855f7;
+      --cyan: #22d3ee;
+      --green: #34d399;
+      --yellow: #fcd34d;
+      --red: #f87171;
+      --pink: #f472b6;
+
+      --txt: #e8edf5;
+      --txt2: #8896b0;
+      --txt3: #4a5568;
+
+      --radius: 14px;
+      --rad-sm: 8px;
+
+      --mode-bg: var(--bg);
+      --mode-bg2: var(--bg2);
+      --mode-txt: var(--txt);
+      --mode-txt2: var(--txt2);
+      --mode-border: var(--border);
+      --mode-surface: var(--surface);
+    }
+
+    body.light {
+      --mode-bg: #f0f4f8;
+      --mode-bg2: #ffffff;
+      --mode-txt: #1a202c;
+      --mode-txt2: #4a5568;
+      --mode-border: rgba(0, 0, 0, 0.1);
+      --mode-surface: rgba(0, 0, 0, 0.03);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Inter', sans-serif; background: var(--mode-bg); color: var(--mode-txt); min-height: 100vh; overflow-x: hidden; transition: background 0.4s, color 0.4s; }
+
+    #scroll-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink)); z-index: 9999; transition: width 0.08s linear; border-radius: 0 100px 100px 0; }
+
+    #navbar { position: sticky; top: 0; z-index: 800; background: rgba(7, 11, 20, 0.82); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); height: 62px; display: flex; align-items: center; padding: 0 1.5rem; gap: 1.5rem; }
+    body.light #navbar { background: rgba(240, 244, 248, 0.88); }
+    .navbar-brand { font-weight: 900; font-size: 1rem; background: linear-gradient(90deg, var(--blue), var(--purple)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; white-space: nowrap; text-decoration: none; flex-shrink: 0; }
+    .navbar-nav { display: flex; list-style: none; gap: 0; flex: 1; overflow-x: auto; scrollbar-width: none; }
+    .navbar-nav::-webkit-scrollbar { display: none; }
+    .navbar-nav a { display: block; padding: 0.4rem 0.75rem; color: var(--mode-txt2); text-decoration: none; font-size: 0.78rem; font-weight: 500; border-radius: 8px; white-space: nowrap; transition: background 0.2s, color 0.2s; }
+    .navbar-nav a:hover, .navbar-nav a.active { background: var(--mode-surface); color: var(--mode-txt); }
+    .navbar-actions { display: flex; gap: 0.5rem; align-items: center; flex-shrink: 0; }
+    #mode-toggle { width: 40px; height: 40px; border-radius: var(--rad-sm); background: var(--mode-surface); border: 1px solid var(--mode-border); color: var(--mode-txt); cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+    .nav-back-link { text-decoration: none; color: var(--mode-txt2); font-size: 0.78rem; font-weight: 600; padding: 0.4rem 0.85rem; border: 1px solid var(--mode-border); border-radius: 8px; transition: all 0.2s; white-space: nowrap; }
+    .nav-back-link:hover { color: var(--mode-txt); border-color: var(--blue); background: rgba(79, 142, 247, 0.08); }
+    #hamburger { display: none; background: none; border: none; color: var(--mode-txt); font-size: 1.3rem; cursor: pointer; padding: 0.4rem; }
+
+    #hero { min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 1.5rem; background: radial-gradient(ellipse 80% 40% at 20% 0%, rgba(79, 142, 247, 0.15) 0%, transparent 60%), radial-gradient(ellipse 60% 30% at 80% 100%, rgba(168, 85, 247, 0.12) 0%, transparent 60%); position: relative; overflow: hidden; }
+    #hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(79, 142, 247, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(79, 142, 247, 0.05) 1px, transparent 1px); background-size: 50px 50px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%); z-index: 0; }
+    #hero>* { position: relative; z-index: 1; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(79, 142, 247, 0.1); border: 1px solid rgba(79, 142, 247, 0.3); border-radius: 100px; padding: 0.35rem 1.2rem; font-size: 0.78rem; font-weight: 700; color: var(--blue); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 2rem; animation: fadeUp 0.6s ease both; }
+    .hero h1 { font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; animation: fadeUp 0.7s ease both 0.1s; }
+    .hero h1 .grad { background: linear-gradient(120deg, var(--blue), var(--purple), var(--pink)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-sub { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--mode-txt2); max-width: 600px; line-height: 1.75; margin-bottom: 2.5rem; animation: fadeUp 0.7s ease both 0.2s; }
+    .hero-pills { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2.5rem; animation: fadeUp 0.7s ease both 0.3s; }
+    .hero-pill { background: var(--mode-surface); border: 1px solid var(--mode-border); border-radius: 100px; padding: 0.3rem 0.9rem; font-size: 0.75rem; font-weight: 600; color: var(--mode-txt2); }
+    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.7s ease both 0.4s; }
+
+    .showcase-section { padding: 5rem 1.5rem; border-bottom: 1px solid var(--mode-border); scroll-margin-top: 70px; opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .showcase-section.visible { opacity: 1; transform: none; }
+    .section-inner { max-width: 1040px; margin: 0 auto; }
+    .section-label { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); background: rgba(79, 142, 247, 0.1); padding: 0.2rem 0.8rem; border-radius: 100px; margin-bottom: 0.8rem; }
+    .section-title { font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 0.75rem; color: var(--mode-txt); }
+    .section-desc { color: var(--mode-txt2); font-size: 1rem; line-height: 1.7; max-width: 660px; margin-bottom: 3rem; }
+
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+    .card { background: var(--mode-surface); border: 1px solid var(--mode-border); border-radius: var(--radius); padding: 1.5rem; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-4px); border-color: rgba(79, 142, 247, 0.35); box-shadow: 0 10px 30px rgba(79, 142, 247, 0.12); }
+    .card-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--mode-txt); }
+    .card p { font-size: 0.83rem; color: var(--mode-txt2); line-height: 1.6; }
+
+    .code-block { background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--rad-sm); padding: 1.1rem 1.25rem; font-family: 'Fira Code', monospace; font-size: 0.82rem; color: #a5d6ff; overflow-x: auto; white-space: pre; line-height: 1.65; }
+    body.light .code-block { background: #1e293b; border-color: rgba(0, 0, 0, 0.15); }
+    .demo-panel { background: var(--mode-surface); border: 1px solid var(--mode-border); border-radius: var(--radius); padding: 1.75rem; }
+    .demo-panel h3 { font-size: 0.88rem; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 1.25rem; }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--mode-txt2); margin-bottom: 0.35rem; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.65rem 0.9rem; background: var(--mode-bg2); border: 1.5px solid var(--mode-border); border-radius: var(--rad-sm); color: var(--mode-txt); font-family: inherit; font-size: 0.875rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+    .form-group input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(79, 142, 247, 0.15); }
+
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media (max-width: 768px) { .split { grid-template-columns: 1fr; } #hamburger { display: block; } .navbar-nav { display: none; position: absolute; top: 62px; left: 0; right: 0; background: var(--mode-bg2); flex-direction: column; padding: 1rem; border-bottom: 1px solid var(--mode-border); gap: 0.5rem; } .navbar-nav.mobile-open { display: flex; } }
+
+    .calc-wrap { background: #000; padding: 1.25rem; border-radius: 20px; width: 240px; }
+    .calc-display { background: #000; color: #fff; font-size: 2.2rem; text-align: right; margin-bottom: 1rem; overflow: hidden; height: 3.2rem; line-height: 3.2rem; }
+    .calc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .calc-btn { aspect-ratio: 1; border: none; border-radius: 50%; font-size: 1.2rem; font-weight: 600; cursor: pointer; transition: filter 0.1s; }
+    .calc-btn.op { background: #ff9f0a; color: #fff; }
+    .calc-btn.clr { background: #a5a5a5; color: #000; }
+    .calc-btn.eq { background: #ff9f0a; color: #fff; }
+    .calc-btn:not(.op):not(.clr) { background: #333; color: #fff; }
+    .calc-btn.wide { grid-column: span 2; aspect-ratio: auto; border-radius: 50px; }
+    .calc-btn:hover { filter: brightness(1.3); }
+
+    .todo-list { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .todo-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0.8rem; background: var(--mode-bg2); border: 1px solid var(--mode-border); border-radius: 10px; transition: transform 0.2s; }
+    .todo-item.done { opacity: 0.6; }
+    .todo-item.done .todo-text { text-decoration: line-through; }
+    .todo-check { width: 22px; height: 22px; border: 2px solid var(--blue); border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: var(--blue); }
+    .todo-text { flex: 1; font-size: 0.875rem; color: var(--mode-txt); }
+    .todo-del { background: none; border: none; color: var(--red); cursor: pointer; padding: 0.25rem; }
+
+    .timer-display { font-size: 4.5rem; font-weight: 900; text-align: center; font-family: 'Fira Code', monospace; color: var(--blue); margin-bottom: 1.5rem; text-shadow: 0 0 20px rgba(79, 142, 247, 0.3); }
+    .timer-display.urgent { color: var(--red); animation: pulse 1s infinite; text-shadow: 0 0 20px rgba(248, 113, 113, 0.3); }
+    .timer-set-row { display: flex; justify-content: center; gap: 0.5rem; }
+    .timer-set-row input { width: 70px; text-align: center; font-size: 1.2rem; font-weight: 700; background: var(--mode-bg2); border: 1.5px solid var(--mode-border); color: var(--mode-txt); border-radius: 10px; padding: 0.5rem; }
+
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+    .product-card { background: var(--mode-bg2); border: 1.5px solid var(--mode-border); border-radius: 16px; padding: 1rem; display: flex; flex-direction: column; transition: transform 0.2s; }
+    .product-card:hover { transform: scale(1.03); border-color: var(--blue); }
+    .product-emoji { font-size: 2.2rem; margin-bottom: 0.75rem; text-align: center; }
+    .product-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem; }
+    .product-cat { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--blue); font-weight: 800; margin-bottom: 0.5rem; }
+    .product-price { font-weight: 800; font-size: 1.1rem; color: var(--green); margin-top: auto; margin-bottom: 0.8rem; }
+    .product-btn { width: 100%; padding: 0.5rem; background: var(--blue); color: #fff; border: none; border-radius: 10px; font-weight: 700; font-size: 0.82rem; cursor: pointer; transition: 0.2s; }
+    .product-btn:hover { filter: brightness(1.1); }
+
+    .fetch-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .layout-tab { padding: 0.5rem 1.2rem; background: var(--mode-bg2); border: 1px solid var(--mode-border); border-radius: 100px; color: var(--mode-txt2); font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+    .layout-tab.active { background: var(--blue); color: #fff; border-color: var(--blue); box-shadow: 0 4px 12px rgba(79, 142, 247, 0.3); }
+
+    .fetch-status { padding: 0.75rem 1rem; border-radius: 10px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; border: 1px solid transparent; }
+    .fetch-status.loading { background: rgba(79, 142, 247, 0.1); border-color: rgba(79, 142, 247, 0.2); color: var(--blue); }
+    .fetch-status.success { background: rgba(52, 211, 153, 0.1); border-color: rgba(52, 211, 153, 0.2); color: var(--green); }
+    .fetch-status.error { background: rgba(248, 113, 113, 0.1); border-color: rgba(248, 113, 113, 0.2); color: var(--red); }
+    .posts-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .post-card, .user-card { background: var(--mode-bg2); padding: 1.25rem; border-radius: 12px; border: 1px solid var(--mode-border); }
+    .post-card h4, .user-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--mode-txt); }
+    .post-card p { font-size: 0.85rem; color: var(--mode-txt2); line-height: 1.6; }
+    .user-card { display: flex; align-items: center; gap: 1rem; }
+    .user-avatar { width: 44px; height: 44px; background: linear-gradient(135deg, var(--blue), var(--purple)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 1.2rem; }
+
+    .a11y-demo { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+    .a11y-card { background: var(--mode-bg2); border: 1px solid var(--mode-border); border-radius: 14px; padding: 1.25rem; }
+    .a11y-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--mode-txt); }
+    .focus-demo-btn { padding: 0.5rem 1rem; background: var(--mode-surface); border: 1.5px solid var(--mode-border); border-radius: 8px; color: var(--mode-txt); cursor: pointer; font-size: 0.82rem; transition: 0.2s; margin-right: 0.4rem; margin-bottom: 0.4rem; }
+    .focus-demo-btn:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(79, 142, 247, 0.4); border-width: 2px; }
+
+    .contrast-pair { display: flex; gap: 1rem; margin-top: 0.5rem; }
+    .contrast-box { flex: 1; height: 60px; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; text-align: center; }
+
+    footer { background: var(--bg2); padding: 4rem 1.5rem; border-top: 1px solid var(--border); text-align: center; }
+    footer p { color: var(--txt2); font-size: 0.875rem; }
+    footer a { color: var(--blue); text-decoration: none; font-weight: 600; margin: 0 0.5rem; }
+    body.light footer { background: #fff; }
+
+    #back-to-top { position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px; border-radius: 12px; background: var(--blue); color: #fff; border: none; cursor: pointer; z-index: 700; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 700; opacity: 0; transform: translateY(20px); transition: 0.3s; box-shadow: 0 4px 15px rgba(79, 142, 247, 0.4); }
+    #back-to-top.visible { opacity: 1; transform: translateY(0); }
+
+    .cm { color: #6e7d91; font-style: italic; }
+    .kw { color: #ff7b72; }
+    .fn { color: #d2a8ff; }
+    .st { color: #79c0ff; }
+    .vl { color: #ffa657; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: none; } }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+  </style>
+</head>
+
+<body>
+
+  <div id="scroll-bar" role="progressbar" aria-label="Progresso de leitura"></div>
+
+  <nav id="navbar" aria-label="Navegação principal">
+    <a href="index.html" class="navbar-brand" aria-label="Portfólio Web URI">Web Showcase</a>
+    <button id="hamburger" aria-label="Abrir menu" aria-expanded="false" onclick="toggleMobileNav()">☰</button>
+    <ul class="navbar-nav" id="navbar-nav" role="list">
+      <li><a href="index.html" aria-label="Voltar para Prova 1">← Prova 1</a></li>
+      <li><a href="#sec-jsbasics" aria-label="Ir para JavaScript">⚡ JS</a></li>
+      <li><a href="#sec-components" aria-label="Ir para Componentes">🕹️ Apps</a></li>
+      <li><a href="#sec-fetch" aria-label="Ir para AJAX">🔗 AJAX</a></li>
+      <li><a href="#sec-a11y" aria-label="Ir para Acessibilidade">♿ A11Y</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <button id="mode-toggle" aria-label="Alternar modo claro/escuro" title="Alternar tema">🌙</button>
+      <a href="index.html" class="nav-back-link" aria-label="Voltar ao início">← Início</a>
+    </div>
+  </nav>
+
+  <header id="hero" role="banner">
+    <div class="hero-badge">✦ Programação Web · Prova 2</div>
+    <h1>
+      <span class="grad">JavaScript &amp; Advanced Web</span>
+    </h1>
+    <p class="hero-sub">
+      Módulo avançado focado em lógica de programação, manipulação dinâmica do DOM, consumo de APIs e acessibilidade para a segunda prova do curso.
+    </p>
+    <div class="hero-pills" role="list" aria-label="Tópicos cobertos">
+      <span class="hero-pill" role="listitem">JavaScript ES6+</span>
+      <span class="hero-pill" role="listitem">DOM Manipulation</span>
+      <span class="hero-pill" role="listitem">Fetch / REST API</span>
+      <span class="hero-pill" role="listitem">JSON Handling</span>
+      <span class="hero-pill" role="listitem">Components</span>
+      <span class="hero-pill" role="listitem">Acessibilidade</span>
+      <span class="hero-pill" role="listitem">Event Loop</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#sec-jsbasics" class="btn btn-primary" aria-label="Começar revisão de JS">Iniciar Revisão JS</a>
+      <a href="index.html" class="btn btn-outline" aria-label="Voltar para Prova 1">← Conteúdo Prova 1</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- SECTION 8 — JAVASCRIPT FUNDAMENTALS -->
+    <section class="showcase-section" id="sec-jsbasics" aria-labelledby="h-jsbasics">
+      <div class="section-inner">
+        <span class="section-label">Módulo 8</span>
+        <h2 class="section-title" id="h-jsbasics">JavaScript Fundamentals</h2>
+        <p class="section-desc">Demonstrações ao vivo de variáveis, arrays, objetos, funções, loops, eventos e manipulação do DOM.</p>
+
+        <div class="split">
+          <div class="demo-panel">
+            <h3>Variáveis &amp; Template Literals</h3>
+            <div class="form-group">
+              <label for="js-name-in">Seu nome</label>
+              <input type="text" id="js-name-in" placeholder="Digite seu nome..." oninput="updateGreeting()" aria-label="Digite seu nome">
+            </div>
+            <div class="form-group">
+              <label for="js-year-in">Ano de nascimento</label>
+              <input type="number" id="js-year-in" placeholder="1999" min="1900" max="2025" oninput="updateGreeting()" aria-label="Ano de nascimento">
+            </div>
+            <div id="js-greeting-out" style="background:rgba(0,0,0,0.3);padding:0.75rem;border-radius:var(--rad-sm);font-size:0.85rem;color:var(--green);font-family:'Fira Code',monospace;min-height:3rem;" aria-live="polite">
+              // Saída aparecerá aqui
+            </div>
+          </div>
+
+          <div class="demo-panel">
+            <h3>Arrays — map, filter, reduce</h3>
+            <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+              <button class="btn btn-primary" onclick="runArrayDemo('map')">.map()</button>
+              <button class="btn btn-primary" onclick="runArrayDemo('filter')">.filter()</button>
+              <button class="btn btn-primary" onclick="runArrayDemo('reduce')">.reduce()</button>
+              <button class="btn btn-primary" onclick="runArrayDemo('foreach')">.forEach()</button>
+            </div>
+            <pre class="code-block" id="array-code-out" style="max-height:160px;overflow-y:auto;"><span class="cm">// Clique nos botões acima</span></pre>
+            <div id="array-result-out" style="margin-top:0.75rem;font-size:0.82rem;color:var(--green);font-family:'Fira Code',monospace;"></div>
+          </div>
+
+          <div class="demo-panel">
+            <h3>Manipulação do DOM</h3>
+            <div class="flex mb-2">
+              <button class="btn btn-primary" onclick="domAddItem()">+ Item</button>
+              <button class="btn btn-outline" onclick="domClearItems()">✕ Limpar</button>
+            </div>
+            <ul id="dom-list" style="list-style:none;display:flex;flex-direction:column;gap:0.4rem;max-height:180px;overflow-y:auto;margin-top:1rem;" aria-live="polite"></ul>
+          </div>
+
+          <div class="demo-panel">
+            <h3>Eventos &amp; Loops</h3>
+            <p style="font-size:0.82rem;color:var(--mode-txt2);margin-bottom:0.75rem;">Loop <code>for</code> para gerar elementos:</p>
+            <div class="flex mb-2" style="display:flex; gap:0.5rem;">
+              <input type="number" id="loop-n" value="5" min="1" max="20" style="width:80px;">
+              <button class="btn btn-primary" onclick="runLoop()">▶ Executar</button>
+            </div>
+            <div id="loop-out" style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:1rem;" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9 — INTERACTIVE JS COMPONENTS -->
+    <section class="showcase-section" id="sec-components" aria-labelledby="h-components">
+      <div class="section-inner">
+        <span class="section-label">Módulo 9</span>
+        <h2 class="section-title" id="h-components">Componentes Interativos</h2>
+        <p class="section-desc">Calculadora, to-do list, countdown e catálogo construídos com Vanilla JS.</p>
+
+        <div class="split mb-2">
+          <div class="demo-panel">
+            <h3>🧮 Calculadora</h3>
+            <div class="calc-wrap">
+              <div class="calc-display" id="calc-display">0</div>
+              <div class="calc-grid">
+                <button class="calc-btn clr" onclick="calcInput('C')">C</button>
+                <button class="calc-btn op" onclick="calcInput('±')">±</button>
+                <button class="calc-btn op" onclick="calcInput('%')">%</button>
+                <button class="calc-btn op" onclick="calcInput('÷')">÷</button>
+                <button class="calc-btn" onclick="calcInput('7')">7</button>
+                <button class="calc-btn" onclick="calcInput('8')">8</button>
+                <button class="calc-btn" onclick="calcInput('9')">9</button>
+                <button class="calc-btn op" onclick="calcInput('×')">×</button>
+                <button class="calc-btn" onclick="calcInput('4')">4</button>
+                <button class="calc-btn" onclick="calcInput('5')">5</button>
+                <button class="calc-btn" onclick="calcInput('6')">6</button>
+                <button class="calc-btn op" onclick="calcInput('-')">−</button>
+                <button class="calc-btn" onclick="calcInput('1')">1</button>
+                <button class="calc-btn" onclick="calcInput('2')">2</button>
+                <button class="calc-btn" onclick="calcInput('3')">3</button>
+                <button class="calc-btn op" onclick="calcInput('+')">+</button>
+                <button class="calc-btn wide" onclick="calcInput('0')">0</button>
+                <button class="calc-btn" onclick="calcInput('.')">.</button>
+                <button class="calc-btn eq" onclick="calcInput('=')">=</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-panel">
+            <h3>✅ To-Do List</h3>
+            <div style="display:flex;gap:0.5rem;">
+              <input class="form-group" style="margin:0" type="text" id="todo-in" placeholder="Nova tarefa..." onkeydown="if(event.key==='Enter') addTodo()">
+              <button class="btn btn-primary" onclick="addTodo()">+</button>
+            </div>
+            <ul class="todo-list" id="todo-list"></ul>
+            <p id="todo-count" style="margin-top:0.6rem;font-size:0.78rem;color:var(--mode-txt2);">0 tarefas</p>
+          </div>
+        </div>
+
+        <div class="demo-panel mb-2">
+          <h3>⏱️ Countdown Timer</h3>
+          <div class="timer-display" id="timer-display">00:00</div>
+          <div class="timer-set-row mb-2">
+            <input type="number" id="timer-min" value="5">
+            <span style="font-size:1.5rem;">:</span>
+            <input type="number" id="timer-sec" value="0">
+          </div>
+          <div class="timer-controls" style="display:flex;justify-content:center;gap:0.5rem;margin-top:1rem;">
+            <button class="btn btn-primary" onclick="timerStart()">▶ Iniciar</button>
+            <button class="btn btn-outline" onclick="timerPause()">⏸ Pausar</button>
+            <button class="btn btn-outline" onclick="timerReset()">↺ Reset</button>
+          </div>
+        </div>
+
+        <div class="demo-panel">
+          <h3>🛍️ Catálogo Dinâmico</h3>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+            <button class="layout-tab active" onclick="filterProducts('all')">Todos</button>
+            <button class="layout-tab" onclick="filterProducts('tech')">Tech</button>
+            <button class="layout-tab" onclick="filterProducts('food')">Alimentos</button>
+            <button class="layout-tab" onclick="filterProducts('book')">Livros</button>
+          </div>
+          <div class="products-grid" id="products-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 10 — AJAX / FETCH -->
+    <section class="showcase-section" id="sec-fetch" aria-labelledby="h-fetch">
+      <div class="section-inner">
+        <span class="section-label">Módulo 10</span>
+        <h2 class="section-title" id="h-fetch">AJAX &amp; Fetch API</h2>
+        <p class="section-desc">Consumo de APIs reais com async/await e tratamento de erros.</p>
+        <div class="demo-panel">
+          <div class="fetch-tabs">
+            <button class="layout-tab active" id="fetch-tab-posts" onclick="loadFetchData('posts')">📄 Posts</button>
+            <button class="layout-tab" id="fetch-tab-users" onclick="loadFetchData('users')">👥 Usuários</button>
+          </div>
+          <div id="fetch-status" class="fetch-status" style="display:none;"></div>
+          <div id="fetch-content"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 11 — ACCESSIBILITY -->
+    <section class="showcase-section" id="sec-a11y" aria-labelledby="h-a11y">
+      <div class="section-inner">
+        <span class="section-label">Módulo 11</span>
+        <h2 class="section-title" id="h-a11y">Acessibilidade (A11Y)</h2>
+        <p class="section-desc">Práticas de ARIA, foco e contraste para uma web inclusiva.</p>
+        <div class="a11y-demo">
+          <div class="a11y-card">
+            <h4>⌨️ Teclado &amp; Foco</h4>
+            <button class="focus-demo-btn">Botão 1 (Tab)</button>
+            <button class="focus-demo-btn">Botão 2 (Tab)</button>
+          </div>
+          <div class="a11y-card">
+            <h4>📢 Live Regions</h4>
+            <button class="btn btn-primary" onclick="testLiveRegion()">Anunciar Mensagem</button>
+            <div id="live-region-out" aria-live="polite" style="margin-top:0.5rem;color:var(--green);"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Web Programming Showcase · Prova 2 · <a href="index.html">← Prova 1</a></p>
+  </footer>
+
+  <button id="back-to-top" title="Topo">↑</button>
+
+  <script>
+    const body = document.body;
+    const modeBtn = document.getElementById('mode-toggle');
+    if (localStorage.getItem('showcase-theme') === 'light') { body.classList.add('light'); modeBtn.textContent = '☀️'; }
+    modeBtn.addEventListener('click', () => { body.classList.toggle('light'); const isLight = body.classList.contains('light'); modeBtn.textContent = isLight ? '☀️' : '🌙'; localStorage.setItem('showcase-theme', isLight ? 'light' : 'dark'); });
+
+    const scrollBar = document.getElementById('scroll-bar');
+    const backTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+      scrollBar.style.width = pct + '%';
+      if (window.scrollY > 400) backTop.classList.add('visible'); else backTop.classList.remove('visible');
+      updateActiveNav();
+    }, { passive: true });
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.showcase-section').forEach(s => revealObserver.observe(s));
+
+    function updateActiveNav() {
+      const sections = document.querySelectorAll('.showcase-section');
+      const navLinks = document.querySelectorAll('.navbar-nav a');
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top <= 100 && rect.bottom >= 100) {
+          navLinks.forEach(a => a.classList.remove('active'));
+          const link = document.querySelector(`.navbar-nav a[href="#${sec.id}"]`);
+          if (link) link.classList.add('active');
+        }
+      });
+    }
+
+    function toggleMobileNav() { const nav = document.getElementById('navbar-nav'); nav.classList.toggle('mobile-open'); }
+
+    // JS Fundamentals
+    function updateGreeting() {
+      const name = document.getElementById('js-name-in').value;
+      const year = parseInt(document.getElementById('js-year-in').value);
+      const out = document.getElementById('js-greeting-out');
+      if (!name && !year) { out.textContent = '// Saída aparecerá aqui'; return; }
+      const age = year ? new Date().getFullYear() - year : '?';
+      out.textContent = `const nome = "${name || 'Anônimo'}";\nconst idade = ${age};\nconsole.log(\`Olá, ${name || 'Anônimo'}! Você tem ${age} anos.\`);`;
+    }
+
+    const sampleArr = [3, 7, 12, 1, 45, 8, 23, 6];
+    function runArrayDemo(method) {
+      const codeOut = document.getElementById('array-code-out');
+      const resOut = document.getElementById('array-result-out');
+      const arr = sampleArr;
+      const demos = {
+        map: { code: `[${arr}].map(x => x * 2)`, result: `→ [${arr.map(x => x * 2).join(', ')}]` },
+        filter: { code: `[${arr}].filter(x => x > 10)`, result: `→ [${arr.filter(x => x > 10).join(', ')}]` },
+        reduce: { code: `[${arr}].reduce((a, b) => a + b, 0)`, result: `→ ${arr.reduce((a, b) => a + b, 0)}` },
+        foreach: { code: `[${arr}].forEach(x => ...)`, result: `→ ${arr.map(x => x * x).join(', ')}` }
+      };
+      codeOut.textContent = demos[method].code;
+      resOut.textContent = demos[method].result;
+    }
+
+    let domCounter = 0;
+    function domAddItem() {
+      const list = document.getElementById('dom-list');
+      domCounter++;
+      const li = document.createElement('li');
+      li.className = 'todo-item';
+      li.innerHTML = `<span style="color:var(--blue); font-weight:bold;">#${domCounter}</span> <span style="flex:1">Item dinâmico</span> <button onclick="this.parentElement.remove()" style="background:none; border:none; color:var(--red); cursor:pointer;">✕</button>`;
+      list.appendChild(li);
+    }
+    function domClearItems() { document.getElementById('dom-list').innerHTML = ''; domCounter = 0; }
+
+    function runLoop() {
+      const n = parseInt(document.getElementById('loop-n').value) || 5;
+      const out = document.getElementById('loop-out');
+      out.innerHTML = '';
+      const colors = ['var(--blue)', 'var(--purple)', 'var(--cyan)', 'var(--green)', 'var(--pink)'];
+      for (let i = 1; i <= n; i++) {
+        const el = document.createElement('div');
+        el.style.cssText = `width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;background:${colors[(i - 1) % 5]};`;
+        el.textContent = i;
+        out.appendChild(el);
+      }
+    }
+
+    // Calculator
+    let calcExpr = '';
+    let calcResult = false;
+    function calcInput(val) {
+      const disp = document.getElementById('calc-display');
+      if (val === 'C') { calcExpr = ''; calcResult = false; disp.textContent = '0'; return; }
+      if (val === '=') {
+        try {
+          const res = Function('"use strict";return (' + calcExpr.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-') + ')')();
+          disp.textContent = parseFloat(res.toFixed(10));
+          calcExpr = disp.textContent; calcResult = true;
+        } catch { disp.textContent = 'Erro'; calcExpr = ''; }
+        return;
+      }
+      if (calcResult && /[0-9.]/.test(val)) { calcExpr = ''; calcResult = false; }
+      calcExpr += val; disp.textContent = calcExpr;
+    }
+
+    // To-Do
+    let todos = [];
+    function addTodo() {
+      const inp = document.getElementById('todo-in');
+      const text = inp.value.trim();
+      if (!text) return;
+      todos.push({ id: Date.now(), text, done: false });
+      inp.value = ''; renderTodos();
+    }
+    function renderTodos() {
+      const list = document.getElementById('todo-list');
+      list.innerHTML = todos.map(t => `
+        <li class="todo-item ${t.done ? 'done' : ''}">
+          <div class="todo-check" onclick="toggleTodo(${t.id})">${t.done ? '✓' : ''}</div>
+          <span class="todo-text">${t.text}</span>
+          <button class="todo-del" onclick="deleteTodo(${t.id})">✕</button>
+        </li>`).join('');
+      document.getElementById('todo-count').textContent = `${todos.length} tarefas`;
+    }
+    function toggleTodo(id) { todos = todos.map(t => t.id === id ? { ...t, done: !t.done } : t); renderTodos(); }
+    function deleteTodo(id) { todos = todos.filter(t => t.id !== id); renderTodos(); }
+
+    // Timer
+    let timerInterval = null; let timerSeconds = 0;
+    function timerStart() {
+      if (timerInterval) return;
+      const m = parseInt(document.getElementById('timer-min').value) || 0;
+      const s = parseInt(document.getElementById('timer-sec').value) || 0;
+      if (timerSeconds === 0) timerSeconds = m * 60 + s;
+      if (timerSeconds <= 0) return;
+      timerInterval = setInterval(() => {
+        timerSeconds--; updateTimerDisplay();
+        if (timerSeconds <= 0) { clearInterval(timerInterval); timerInterval = null; document.getElementById('timer-display').textContent = '🔔!'; }
+      }, 1000);
+    }
+    function timerPause() { clearInterval(timerInterval); timerInterval = null; }
+    function timerReset() { clearInterval(timerInterval); timerInterval = null; timerSeconds = 0; document.getElementById('timer-display').textContent = '00:00'; }
+    function updateTimerDisplay() {
+      const m = Math.floor(timerSeconds / 60); const s = timerSeconds % 60;
+      document.getElementById('timer-display').textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+
+    // Products
+    const productsData = [
+      { name: 'Notebook Pro', cat: 'tech', emoji: '💻', price: 'R$ 4.299' },
+      { name: 'Smartwatch', cat: 'tech', emoji: '⌚', price: 'R$ 1.599' },
+      { name: 'Café Especial', cat: 'food', emoji: '☕', price: 'R$ 49' },
+      { name: 'Clean Code', cat: 'book', emoji: '📗', price: 'R$ 89' }
+    ];
+    function filterProducts(cat) {
+      document.querySelectorAll('#sec-components .layout-tab').forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+      const filtered = cat === 'all' ? productsData : productsData.filter(p => p.cat === cat);
+      renderProducts(filtered);
+    }
+    function renderProducts(data) {
+      document.getElementById('products-grid').innerHTML = data.map(p => `
+        <article class="product-card">
+          <div class="product-emoji">${p.emoji}</div>
+          <div class="product-name">${p.name}</div>
+          <div class="product-price">${p.price}</div>
+          <button class="product-btn">+ Carrinho</button>
+        </article>`).join('');
+    }
+    renderProducts(productsData);
+
+    // Fetch
+    async function loadFetchData(type) {
+      document.querySelectorAll('.fetch-tabs .layout-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('fetch-tab-' + type).classList.add('active');
+      const status = document.getElementById('fetch-status');
+      const content = document.getElementById('fetch-content');
+      status.style.display = 'block'; status.className = 'fetch-status loading'; status.textContent = 'Carregando...';
+      try {
+        const res = await fetch(`https://jsonplaceholder.typicode.com/${type}?_limit=5`);
+        const data = await res.json();
+        status.className = 'fetch-status success'; status.textContent = '✓ Sucesso';
+        content.innerHTML = `<ul style="list-style:none; display:grid; gap:0.5rem;">${data.map(d => `<li style="padding:0.75rem; background:var(--mode-bg2); border-radius:8px; border:1px solid var(--mode-border);">${d.title || d.name}</li>`).join('')}</ul>`;
+      } catch (err) { status.className = 'fetch-status error'; status.textContent = '✗ Erro'; }
+    }
+
+    // A11Y
+    let liveIdx = 0;
+    function testLiveRegion() {
+      const msgs = ['✓ Salvo!', '📩 Enviado!', '⚠️ Alerta!', '🔔 Novo!'];
+      document.getElementById('live-region-out').textContent = msgs[liveIdx % msgs.length];
+      liveIdx++;
+    }
+
+  </script>
+</body>
+</html>
