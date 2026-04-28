@@ -1,4 +1,4 @@
-﻿
+
 /* ════════════════════════════════════════
    1. DARK/LIGHT MODE
 ════════════════════════════════════════ */
@@ -1003,6 +1003,34 @@ window.addEventListener('online', () => { if (document.getElementById('net-res')
 window.addEventListener('offline', () => { if (document.getElementById('net-res')) document.getElementById('net-res').textContent = 'Offline 🔴'; });
 
 /* ════════════════════════════════════════
-   24. INITIALIZATION
+   24. SELETORES CSS DEMO
+════════════════════════════════════════ */
+function toggleHighlight(type) {
+  const p = document.getElementById('demo-para');
+  if (!p) return;
+
+  if (type === 'el') {
+    if (p.style.color === 'blue') {
+      p.style.color = '';
+    } else {
+      p.style.color = 'blue';
+    }
+  } else if (type === 'id') {
+    if (p.style.backgroundColor === 'rgb(240, 240, 240)' || p.style.backgroundColor === '#f0f0f0') {
+      p.style.backgroundColor = '';
+    } else {
+      p.style.backgroundColor = '#f0f0f0';
+    }
+  } else if (type === 'cl') {
+    if (p.style.fontWeight === 'bold') {
+      p.style.fontWeight = '';
+    } else {
+      p.style.fontWeight = 'bold';
+    }
+  }
+}
+
+/* ════════════════════════════════════════
+   25. INITIALIZATION
 ════════════════════════════════════════ */
 updateBreakpoints();
