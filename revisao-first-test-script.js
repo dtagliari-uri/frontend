@@ -1,5 +1,24 @@
 ﻿
 
+/* ════════════════════════════════════════
+   1. DARK/LIGHT MODE
+════════════════════════════════════════ */
+const body = document.body;
+const modeBtn = document.getElementById('mode-toggle');
+
+// Load saved preference
+if (localStorage.getItem('showcase-theme') === 'light') {
+  body.classList.add('light');
+  modeBtn.textContent = '☀️';
+}
+
+modeBtn.addEventListener('click', () => {
+  body.classList.toggle('light');
+  const isLight = body.classList.contains('light');
+  modeBtn.textContent = isLight ? '☀️' : '🌙';
+  localStorage.setItem('showcase-theme', isLight ? 'light' : 'dark');
+});
+
 
 /* ═══════════════════════════════════════
    2. SCROLL PROGRESS + BACK TO TOP
