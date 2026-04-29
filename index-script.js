@@ -1010,27 +1010,131 @@ function toggleHighlight(type) {
   if (!p) return;
 
   if (type === 'el') {
-    if (p.style.color === 'blue') {
-      p.style.color = '';
-    } else {
-      p.style.color = 'blue';
-    }
+    p.style.color = p.style.color === 'blue' ? '' : 'blue';
   } else if (type === 'id') {
-    if (p.style.backgroundColor === 'rgb(240, 240, 240)' || p.style.backgroundColor === '#f0f0f0') {
-      p.style.backgroundColor = '';
-    } else {
-      p.style.backgroundColor = '#f0f0f0';
-    }
+    p.style.backgroundColor = (p.style.backgroundColor === 'rgb(240, 240, 240)' || p.style.backgroundColor === '#f0f0f0') ? '' : '#f0f0f0';
   } else if (type === 'cl') {
-    if (p.style.fontWeight === 'bold') {
-      p.style.fontWeight = '';
-    } else {
-      p.style.fontWeight = 'bold';
-    }
+    p.style.fontWeight = p.style.fontWeight === 'bold' ? '' : 'bold';
   }
 }
 
 /* ════════════════════════════════════════
-   25. INITIALIZATION
+   26. A11Y GUIDE DATA & LOGIC
+════════════════════════════════════════ */
+const a11yData = {
+  dislexia: {
+    title: '🧠 Projetando para usuários com Dislexia',
+    content: [
+      ['Use imagens e diagramas para apoiar o texto', 'Use blocos grandes de texto denso'],
+      ['Alinhe o texto à esquerda e mantenha um layout consistente', 'Sublinhe palavras, use itálico ou escreva tudo em caixa alta'],
+      ['Mantenha o conteúdo curto, claro e simples', 'Force os usuários a lembrar coisas de páginas anteriores'],
+      ['Permita que os usuários alterem o contraste', 'Confie apenas na ortografia correta'],
+      ['Considere formatos alternativos (áudio/vídeo)', 'Coloque muita informação em um só lugar']
+    ]
+  },
+  motora: {
+    title: '⌨️ Projetando para usuários com Deficiência Motora',
+    content: [
+      ['Crie áreas clicáveis grandes', 'Exija precisão excessiva'],
+      ['Dê espaço aos campos de formulário', 'Agrupe interações muito próximas'],
+      ['Projete para uso apenas via teclado ou voz', 'Crie conteúdo dinâmico que exija muito movimento do mouse'],
+      ['Pense em dispositivos móveis e toque', 'Tenha janelas de tempo (timeout) curtas'],
+      ['Forneça atalhos de teclado', 'Tire usuários com muita digitação e scroll']
+    ]
+  },
+  auditiva: {
+    title: '👂 Projetando para usuários Surdos ou com Deficiência Auditiva',
+    content: [
+      ['Escreva em linguagem simples e direta', 'Use palavras complicadas ou figuras de linguagem'],
+      ['Use legendas ou forneça transcrições para vídeos', 'Coloque conteúdo apenas em áudio ou vídeo'],
+      ['Use um layout linear e lógico', 'Crie layouts e menus complexos'],
+      ['Divida o conteúdo com subtítulos e imagens', 'Force os usuários a ler longos blocos de texto'],
+      ['Ofereça múltiplas formas de contato', 'Faça do telefone o único meio de contato']
+    ]
+  },
+  visao: {
+    title: '👓 Projetando para usuários com Baixa Visão',
+    content: [
+      ['Use bons contrastes e fontes legíveis', 'Use baixo contraste e fontes pequenas'],
+      ['Publique informações em HTML', 'Esconda informações dentro de downloads'],
+      ['Combine cores, formas e texto', 'Use apenas cores para transmitir significado'],
+      ['Mantenha um layout linear e lógico', 'Espalhe o conteúdo por toda a página'],
+      ['Coloque botões e notificações em contexto', 'Separe ações de seus contextos']
+    ]
+  },
+  readers: {
+    title: '📢 Projetando para usuários de Leitores de Tela',
+    content: [
+      ['Descreva imagens e transcreva vídeos', 'Exiba informações apenas em imagens ou vídeos'],
+      ['Siga um layout linear e lógico', 'Espalhe o conteúdo aleatoriamente na página'],
+      ['Estruture o conteúdo com HTML5 semântico', 'Confie no tamanho e posição para estrutura'],
+      ['Construa para uso exclusivo via teclado', 'Force o uso do mouse ou toque'],
+      ['Escreva links e cabeçalhos descritivos', 'Use links vagos como "clique aqui"']
+    ]
+  },
+  autista: {
+    title: '🌈 Projetando para usuários no Espectro Autista',
+    content: [
+      ['Use cores simples e calmas', 'Use cores brilhantes e contrastantes'],
+      ['Escreva em linguagem direta e clara', 'Use figuras de linguagem e expressões idiomáticas'],
+      ['Use frases simples e listas (bullets)', 'Crie "paredes de texto"'],
+      ['Crie botões descritivos e previsíveis', 'Crie botões vagos (ex: "Clique aqui")'],
+      ['Construa layouts simples e consistentes', 'Construa layouts complexos e poluídos']
+    ]
+  }
+};
+
+function switchA11yTab(cat) {
+  const data = a11yData[cat];
+  if (!data) return;
+
+  document.querySelectorAll('.a11y-category-btn').forEach(btn => {
+    const isActive = btn.getAttribute('onclick').includes(`'${cat}'`);
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-selected', isActive.toString());
+  });
+
+  document.getElementById('a11y-title').textContent = data.title;
+  const tbody = document.getElementById('a11y-content');
+  tbody.innerHTML = data.content.map(row => `
+    <tr>
+      <td class="do">${row[0]}</td>
+      <td class="dont">${row[1]}</td>
+    </tr>
+  `).join('');
+}
+
+/* ════════════════════════════════════════
+   27. CORE WEB VITALS LOGIC
+════════════════════════════════════════ */
+function updateMetric(metric, value) {
+  const card = document.getElementById(`metric-${metric}`);
+  if (!card) return;
+  const valEl = card.querySelector('.metric-value');
+  const statusEl = card.querySelector('.metric-status');
+
+  valEl.textContent = value;
+
+  let status = 'good';
+  if (metric === 'lcp') {
+    const v = parseFloat(value);
+    status = v <= 2.5 ? 'good' : v <= 4.0 ? 'needs-improvement' : 'poor';
+  } else if (metric === 'inp') {
+    const v = parseInt(value);
+    status = v <= 200 ? 'good' : v <= 500 ? 'needs-improvement' : 'poor';
+  } else if (metric === 'cls') {
+    const v = parseFloat(value);
+    status = v <= 0.1 ? 'good' : v <= 0.25 ? 'needs-improvement' : 'poor';
+  }
+
+  card.className = `metric-card ${status}`;
+  statusEl.textContent = status === 'good' ? 'Bom' : status === 'needs-improvement' ? 'Melhorar' : 'Pobre';
+}
+
+/* ════════════════════════════════════════
+   28. INITIALIZATION
 ════════════════════════════════════════ */
 updateBreakpoints();
+if (document.getElementById('a11y-content')) {
+  switchA11yTab('dislexia');
+}

@@ -2624,3 +2624,153 @@ body.light .exercise-card {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+/* ── 26. A11Y GUIDE ───────────────────────────── */
+.a11y-category-btn {
+  padding: 0.5rem 1rem;
+  background: var(--mode-surface);
+  border: 1px solid var(--mode-border);
+  border-radius: 8px;
+  color: var(--mode-txt2);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.a11y-category-btn.active {
+  background: var(--blue);
+  color: white;
+  border-color: var(--blue);
+  box-shadow: 0 4px 12px rgba(79, 142, 247, 0.3);
+}
+
+.a11y-guide-card {
+  background: var(--mode-surface);
+  border: 1px solid var(--mode-border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.a11y-guide-header {
+  padding: 1rem 1.5rem;
+  background: rgba(79, 142, 247, 0.05);
+  border-bottom: 1px solid var(--mode-border);
+}
+
+.a11y-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.a11y-table th, .a11y-table td {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--mode-border);
+  font-size: 0.88rem;
+}
+
+.a11y-table th {
+  background: var(--mode-bg2);
+  color: var(--mode-txt);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.a11y-table td.do {
+  color: var(--green);
+  border-left: 4px solid var(--green);
+}
+
+.a11y-table td.dont {
+  color: var(--red);
+  border-left: 4px solid var(--red);
+}
+
+/* ── 27. SEO METRICS ──────────────────────────── */
+.seo-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.metric-card {
+  background: var(--mode-surface);
+  border: 1px solid var(--mode-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.metric-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metric-header h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--mode-txt);
+}
+
+.metric-status {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+}
+
+.metric-value {
+  font-size: 2.2rem;
+  font-weight: 900;
+  line-height: 1;
+  font-family: 'Fira Code', monospace;
+}
+
+.metric-desc {
+  font-size: 0.8rem;
+  color: var(--mode-txt2);
+  min-height: 2.5rem;
+}
+
+.metric-slider {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  background: var(--mode-bg2);
+  border-radius: 100px;
+  outline: none;
+}
+
+.metric-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--blue);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 3px solid var(--mode-surface);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* Status Colors */
+.metric-card.good .metric-value { color: var(--green); }
+.metric-card.good .metric-status { background: rgba(52, 211, 153, 0.1); color: var(--green); }
+.metric-card.good .metric-slider::-webkit-slider-thumb { background: var(--green); }
+
+.metric-card.needs-improvement .metric-value { color: var(--yellow); }
+.metric-card.needs-improvement .metric-status { background: rgba(250, 204, 21, 0.1); color: var(--yellow); }
+.metric-card.needs-improvement .metric-slider::-webkit-slider-thumb { background: var(--yellow); }
+
+.metric-card.poor .metric-value { color: var(--red); }
+.metric-card.poor .metric-status { background: rgba(248, 113, 113, 0.1); color: var(--red); }
+.metric-card.poor .metric-slider::-webkit-slider-thumb { background: var(--red); }

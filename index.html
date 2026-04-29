@@ -1450,22 +1450,44 @@
           </div>
         </div>
 
-        <div class="audit-list">
-          <div class="audit-item">
-            <div class="audit-score">98</div>
-            <div class="audit-info">
-              <strong>Performance</strong>
-              <p>Carregamento rápido via cache e imagens otimizadas.</p>
+        <div class="seo-metrics-grid">
+          <!-- LCP -->
+          <div class="metric-card good" id="metric-lcp">
+            <div class="metric-header">
+              <h4>LCP (Largest Contentful Paint)</h4>
+              <span class="metric-status">Bom</span>
             </div>
+            <div class="metric-value">2.5s</div>
+            <p class="metric-desc">Mede o tempo de carregamento da página (maior elemento).</p>
+            <input type="range" class="metric-slider" min="0.5" max="6.0" step="0.1" value="2.5"
+              oninput="updateMetric('lcp', this.value + 's')" aria-label="Ajustar valor de LCP">
           </div>
-          <div class="audit-item">
-            <div class="audit-score">100</div>
-            <div class="audit-info">
-              <strong>SEO</strong>
-              <p>Meta tags completas e estrutura semântica perfeita.</p>
+
+          <!-- FID / INP -->
+          <div class="metric-card good" id="metric-inp">
+            <div class="metric-header">
+              <h4>INP (Interaction to Next Paint)</h4>
+              <span class="metric-status">Bom</span>
             </div>
+            <div class="metric-value">100ms</div>
+            <p class="metric-desc">Mede a responsividade e latência das interações.</p>
+            <input type="range" class="metric-slider" min="50" max="800" step="10" value="100"
+              oninput="updateMetric('inp', this.value + 'ms')" aria-label="Ajustar valor de INP">
+          </div>
+
+          <!-- CLS -->
+          <div class="metric-card good" id="metric-cls">
+            <div class="metric-header">
+              <h4>CLS (Cumulative Layout Shift)</h4>
+              <span class="metric-status">Bom</span>
+            </div>
+            <div class="metric-value">0.05</div>
+            <p class="metric-desc">Mede a estabilidade visual da página.</p>
+            <input type="range" class="metric-slider" min="0" max="0.5" step="0.01" value="0.05"
+              oninput="updateMetric('cls', this.value)" aria-label="Ajustar valor de CLS">
           </div>
         </div>
+
 
         <div class="exercise-card">
           <h3>📈 Hands-on: Auditoria com Lighthouse</h3>
