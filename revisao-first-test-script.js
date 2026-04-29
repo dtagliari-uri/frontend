@@ -1,4 +1,4 @@
-﻿
+
 
 /* ════════════════════════════════════════
    1. DARK/LIGHT MODE
@@ -121,8 +121,56 @@ function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 function showFix(id) {
   const el = document.getElementById(id);
   el.classList.toggle('visible');
-  const btn = el.previousElementSibling.querySelector('button');
+  const btn = el.previousElementSibling.querySelector('button:last-child');
   if (btn) btn.textContent = el.classList.contains('visible') ? '▲ Ocultar' : 'Ver Correção';
+}
+
+function validateFTH(idx) {
+  const editor = document.getElementById('fth-editor-' + idx);
+  const fb = document.getElementById('fth-fb-' + idx);
+  const code = editor.innerText;
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(code, 'text/html');
+
+  fb.classList.remove('ok', 'err');
+  fb.classList.add('visible');
+
+  let errors = [];
+  const raw = code.toLowerCase();
+
+  if (idx === 1) {
+    const a = doc.querySelector('a');
+    if (!a || !a.getAttribute('href')) errors.push('Link &lt;a&gt; precisa de um href válido.');
+    const img = doc.querySelector('img');
+    if (!img || !img.hasAttribute('alt')) errors.push('Imagem &lt;img&gt; precisa do atributo alt.');
+    if (!raw.includes('</h1>')) errors.push('Tag &lt;h1&gt; deve ser fechada corretamente com &lt;/h1&gt;.');
+  }
+
+  if (idx === 2) {
+    if (raw.includes('type="txt"') || raw.includes("type='txt'")) errors.push('O tipo correto é "text", não "txt".');
+    if (!raw.includes('required')) errors.push('Campos obrigatórios devem ter o atributo required.');
+    if (doc.querySelectorAll('label').length < 2) errors.push('Use tags &lt;label&gt; para acessibilidade.');
+    const form = doc.querySelector('form');
+    if (!form || !form.hasAttribute('action') || !form.hasAttribute('method')) errors.push('O formulário precisa de action e method.');
+    const inputs = doc.querySelectorAll('input:not([type="submit"])');
+    inputs.forEach(i => { if (!i.name) errors.push(`Input ${i.type} precisa do atributo name.`); });
+  }
+
+  if (idx === 3) {
+    if (raw.includes('<div id="header"') || raw.includes('<div id="main"')) errors.push('Substitua divs genéricas por tags semânticas.');
+    if (!doc.querySelector('header')) errors.push('Use &lt;header&gt; para o topo.');
+    if (!doc.querySelector('nav')) errors.push('Use &lt;nav&gt; para links de navegação.');
+    if (!doc.querySelector('main')) errors.push('Use &lt;main&gt; para o conteúdo principal.');
+    if (!doc.querySelector('article')) errors.push('Use &lt;article&gt; para o conteúdo do artigo.');
+  }
+
+  if (errors.length === 0) {
+    fb.innerHTML = '<strong>✓ Excelente!</strong> Você corrigiu todos os erros deste trecho.';
+    fb.classList.add('ok');
+  } else {
+    fb.innerHTML = '<strong>⚠ Quase lá:</strong><br>• ' + errors.join('<br>• ');
+    fb.classList.add('err');
+  }
 }
 
 /* ═══════════════════════════════════════

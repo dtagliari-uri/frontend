@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --bg: #0d1117;
   --bg2: #161b22;
   --bg3: #21262d;
@@ -1648,3 +1648,31 @@ footer a {
   color: var(--cyan);
   margin-left: 0.5rem;
 }
+
+/* ═══════════════════════════════════════════
+       16. HTML CORRECTION FEEDBACK
+    ═══════════════════════════════════════════ */
+.fth-feedback {
+  font-size: 0.82rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  margin-top: 0.75rem;
+  line-height: 1.5;
+  display: none;
+}
+
+.fth-feedback.visible {
+  display: block;
+}
+
+.fth-feedback.ok {
+  background: rgba(63, 185, 80, 0.1);
+  border: 1px solid rgba(63, 185, 80, 0.25);
+  color: var(--green);
+}
+
+.fth-feedback.err {
+  background: rgba(247, 129, 102, 0.08);
+  border: 1px solid rgba(247, 129, 102, 0.25);
+  color: var(--accent);
+}

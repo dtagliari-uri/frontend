@@ -173,14 +173,14 @@
           <h4>#1 — Link e imagem com erros</h4>
           <span class="fth-badge broken">⚠ Quebrado</span>
         </div>
-        <div class="fth-body">
-          <div class="fth-code-area" contenteditable="true" spellcheck="false"><span class="error">&lt;a
-              href=""&gt;</span>Clique aqui&lt;/a&gt;
-            &lt;img <span class="error">src="foto.jpg"</span>&gt;
-            &lt;h1&gt;Título&lt;<span class="error">/h2</span>&gt;</div>
+          <div class="fth-code-area" id="fth-editor-1" contenteditable="true" spellcheck="false">&lt;a href=""&gt;Clique aqui&lt;/a&gt;
+&lt;img src="foto.jpg"&gt;
+&lt;h1&gt;Título&lt;/h2&gt;</div>
           <div class="flex-row mb-1">
+            <button class="btn btn-primary" onclick="validateFTH(1)" aria-label="Validar HTML">Validar</button>
             <button class="btn btn-ghost" onclick="showFix('fix1')" aria-label="Ver correção">Ver Correção</button>
           </div>
+          <div id="fth-fb-1" class="fth-feedback"></div>
           <div class="fth-answer" id="fix1">
             <div class="fth-code-area"><span class="fix">&lt;a href="https://exemplo.com"&gt;</span>Clique
               aqui&lt;/a&gt;
@@ -202,16 +202,16 @@
           <h4>#2 — Formulário mal estruturado</h4>
           <span class="fth-badge broken">⚠ Quebrado</span>
         </div>
-        <div class="fth-body">
-          <div class="fth-code-area" contenteditable="true" spellcheck="false">&lt;form&gt;
-            <span class="error">&lt;input type="txt" name="nome"&gt;</span>
-            <span class="error">&lt;input type="email"&gt;</span>
-            &lt;input type="submit" value="Enviar"&gt;
-            &lt;/form&gt;
-          </div>
+          <div class="fth-code-area" id="fth-editor-2" contenteditable="true" spellcheck="false">&lt;form&gt;
+&lt;input type="txt" name="nome"&gt;
+&lt;input type="email"&gt;
+&lt;input type="submit" value="Enviar"&gt;
+&lt;/form&gt;</div>
           <div class="flex-row mb-1">
+            <button class="btn btn-primary" onclick="validateFTH(2)" aria-label="Validar HTML">Validar</button>
             <button class="btn btn-ghost" onclick="showFix('fix2')" aria-label="Ver correção">Ver Correção</button>
           </div>
+          <div id="fth-fb-2" class="fth-feedback"></div>
           <div class="fth-answer" id="fix2">
             <div class="fth-code-area">&lt;form action="/enviar" method="POST"&gt;
               <span class="fix">&lt;label for="nome"&gt;Nome&lt;/label&gt;</span>
@@ -236,18 +236,17 @@
           <h4>#3 — Estrutura semântica incorreta</h4>
           <span class="fth-badge broken">⚠ Quebrado</span>
         </div>
-        <div class="fth-body">
-          <div class="fth-code-area" contenteditable="true" spellcheck="false"><span class="error">&lt;div
-              id="header"&gt;</span>
-            &lt;div&gt;&lt;a href="#"&gt;Home&lt;/a&gt; | &lt;a href="#"&gt;Sobre&lt;/a&gt;&lt;/div&gt;
-            <span class="error">&lt;/div&gt;</span>
-            <span class="error">&lt;div id="main"&gt;</span>
-            &lt;div&gt;&lt;h2&gt;Artigo&lt;/h2&gt;&lt;p&gt;Conteúdo...&lt;/p&gt;&lt;/div&gt;
-            <span class="error">&lt;/div&gt;</span>
-          </div>
+          <div class="fth-code-area" id="fth-editor-3" contenteditable="true" spellcheck="false">&lt;div id="header"&gt;
+  &lt;div&gt;&lt;a href="#"&gt;Home&lt;/a&gt; | &lt;a href="#"&gt;Sobre&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="main"&gt;
+  &lt;div&gt;&lt;h2&gt;Artigo&lt;/h2&gt;&lt;p&gt;Conteúdo...&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</div>
           <div class="flex-row mb-1">
+            <button class="btn btn-primary" onclick="validateFTH(3)" aria-label="Validar HTML">Validar</button>
             <button class="btn btn-ghost" onclick="showFix('fix3')" aria-label="Ver correção">Ver Correção</button>
           </div>
+          <div id="fth-fb-3" class="fth-feedback"></div>
           <div class="fth-answer" id="fix3">
             <div class="fth-code-area"><span class="fix">&lt;header&gt;</span>
               <span class="fix">&lt;nav&gt;</span>&lt;a href="#"&gt;Home&lt;/a&gt; | &lt;a
